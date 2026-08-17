@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+.tanstack
+posthog-setup-report.md
+.vscode

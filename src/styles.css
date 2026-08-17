@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #faf9f5;
+  --color-surface-card: #efe9de;
+  --color-surface-dark: #181715;
+  --color-surface-dark-elevated: #252320;
+  --color-hairline: #e6dfd8;
+  --color-ink: #141413;
+  --color-body: #3d3d3a;
+  --color-muted: #6c6a64;
+  --color-muted-soft: #8e8b82;
+  --color-teal: #0d9488;
+  --color-teal-hover: #0f766e;
+  --font-heading: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+.kanban-wrapper {
+  background: var(--color-surface-dark);
+  border-radius: 12px;
+  box-shadow:
+    0 32px 64px -16px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.kanban-inner {
+  background: var(--color-surface-dark);
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-indicator {
+    animation: none;
+  }
+
+  .scroll-indicator-pressed {
+    transform: none;
+  }
+}
+
+.scroll-indicator {
+  animation: bounce-down 1.8s var(--ease-in-out) infinite;
+}
+
+.scroll-indicator-pressed {
+  transform: scale(0.97) !important;
+  transition: transform 100ms var(--ease-out) !important;
+}
+
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-scale {
+    transition: transform 150ms var(--ease-out);
+  }
+  .hover-scale:hover {
+    transform: scale(1.03);
+  }
+}
