@@ -1,34 +1,142 @@
-# Structure 
+<p align="center">
+  <img src="public/icon.svg" alt="NuxiPro" width="80" />
+</p>
 
-app/lauding-page/web/
-├── index.html                          # HTML entry point (contains Umami analytics script)
-├── package.json                        # Dependencies & scripts
-├── vite.config.ts                      # Vite config (Tailwind, TanStack Router, React plugins)
-├── vercel.json                         # Vercel SPA rewrites
-├── tsconfig.json
-├── tsr.config.json
-├── public/
-│   ├── icon.svg
-│   ├── manifest.json
-│   ├── robots.txt
-│   └── text23.svg
-└── src/
-    ├── main.tsx                        # React entry point
-    ├── router.tsx                      # TanStack Router setup
-    ├── routeTree.gen.ts                # Auto-generated route tree
-    ├── styles.css                      # Global styles (Tailwind + custom theme)
-    ├── kanban.css                      # Kanban demo component styles
-    ├── components/
-    │   ├── FadeIn.tsx                  # Scroll-triggered fade-in animation wrapper
-    │   ├── KanbanDemo.tsx              # Interactive Kanban board demo with animated cursor
-    │   └── ThemeProvider.tsx            # Light theme provider (currently light-only)
-    ├── i18n/
-    │   ├── index.tsx                   # I18n context, provider, and useTranslation hook
-    │   ├── en.json                     # English translations (56 keys)
-    │   └── fr.json                     # French translations (56 keys)
-    └── routes/
-        ├── __root.tsx                  # Root layout (head meta, Google Fonts, ThemeProvider wrapper)
-        ├── index.tsx                   # Main landing page (the "/" route)
-        └── mentions-legales.tsx        # Legal notices page (the "/mentions-legales" route)
+<h1 align="center">NuxiPro</h1>
+
+<p align="center">
+  <strong>Minimalist Kanban task manager with automatic archiving</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/NuxiPro/NuxiPro-page/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-BSD--2--Clause-blue.svg" alt="BSD 2-Clause License" />
+  </a>
+  <a href="https://demo.nuxipro.com">
+    <img src="https://img.shields.io/badge/demo-live-brightgreen.svg" alt="Live Demo" />
+  </a>
+</p>
 
 ---
+
+## About
+
+NuxiPro is a personal Kanban task manager built around one core idea: **completed tasks should disappear**. No manual cleanup, no clutter. When a task reaches "Done", it automatically archives after a configurable delay.
+
+This repository contains the **landing page** for NuxiPro, built with React and deployed on Cloudflare Pages.
+
+**Live demo:** [demo.nuxipro.com](https://demo.nuxipro.com)
+
+## Features
+
+- **Zero-config archiving** — Tasks auto-archive when moved to "Done"
+- **Bilingual** — English & French with automatic browser detection
+- **Interactive demo** — Animated Kanban board directly on the landing page
+- **SEO optimized** — Structured data (JSON-LD), Open Graph, hreflang, sitemap
+- **AEO/GEO ready** — `llms.txt` for AI search engines
+- **Analytics** — PostHog integration via Cloudflare edge proxy
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [React 19](https://react.dev) | UI framework |
+| [Vite 8](https://vitejs.dev) | Build tool & dev server |
+| [Tailwind CSS 4](https://tailwindcss.com) | Styling |
+| [TanStack Router](https://tanstack.com/router) | File-based routing |
+| [Bun](https://bun.sh) | Package manager |
+| [Cloudflare Pages](https://pages.cloudflare.com) | Deployment |
+| [PostHog](https://posthog.com) | Analytics |
+
+## Getting Started
+
+### Prerequisites
+
+- [Bun](https://bun.sh) >= 1.3.13
+
+### Installation
+
+```bash
+git clone https://github.com/NuxiPro/NuxiPro-page.git
+cd NuxiPro-page
+bun install
+```
+
+### Development
+
+```bash
+bun dev
+```
+
+The dev server starts at `http://localhost:3000`.
+
+### Build
+
+```bash
+bun build
+```
+
+### Other Commands
+
+| Command | Description |
+|---|---|
+| `bun dev` | Start dev server (port 3000) |
+| `bun build` | Production build |
+| `bun preview` | Preview production build |
+| `bun test` | Run tests |
+| `bun run format` | Format code with Biome |
+| `bun run lint` | Lint code with Biome |
+| `bun run check` | Run all Biome checks |
+
+## Project Structure
+
+```
+NuxiPro-page/
+├── public/                    # Static assets
+│   ├── icon.svg               # NuxiPro icon
+│   ├── logo.png               # PNG logo
+│   ├── og-image.png           # Open Graph image
+│   ├── manifest.json          # PWA manifest
+│   ├── robots.txt             # Robots file (AI crawlers allowed)
+│   └── sitemap.xml            # XML Sitemap
+├── src/
+│   ├── components/
+│   │   ├── FadeIn.tsx         # Scroll-triggered fade-in animation
+│   │   ├── Footer.tsx         # Dark footer with links
+│   │   ├── KanbanDemo.tsx     # Animated Kanban board demo
+│   │   ├── Navbar.tsx         # Sticky navigation bar
+│   │   └── ThemeProvider.tsx  # Theme provider (light)
+│   ├── hooks/
+│   │   └── useSectionTracking.ts  # PostHog section tracking
+│   ├── i18n/
+│   │   ├── index.tsx          # i18n context & provider
+│   │   ├── en.json            # English translations
+│   │   └── fr.json            # French translations
+│   ├── routes/
+│   │   ├── __root.tsx         # Root layout (SEO, fonts, providers)
+│   │   ├── index.tsx          # Main landing page
+│   │   ├── faq.tsx            # FAQ page
+│   │   └── mentions-legales.tsx  # Legal notices
+│   ├── main.tsx               # React entry point
+│   ├── router.tsx             # TanStack Router setup
+│   ├── styles.css             # Global styles (Tailwind v4)
+│   └── kanban.css             # Kanban demo styles
+├── index.html                 # HTML entry (SEO, JSON-LD, meta tags)
+├── middleware.ts               # Cloudflare Pages middleware (PostHog proxy)
+├── vite.config.ts             # Vite configuration
+├── tsconfig.json              # TypeScript configuration
+├── wrangler.jsonc             # Cloudflare Pages deployment config
+└── package.json
+```
+
+## Documentation
+
+For detailed documentation, architecture guide, and contribution instructions, see **[docs/index.md](docs/index.md)**.
+
+## Author
+
+**Sebastien Babas** — [@Tybass450](https://twitter.com/Tybass450)
+
+## License
+
+This project is licensed under the [BSD 2-Clause "Simplified" License](LICENSE).

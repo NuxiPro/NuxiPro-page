@@ -4,3 +4,4 @@ dist/
 .tanstack
 posthog-setup-report.md
 .vscode
+.wrangler

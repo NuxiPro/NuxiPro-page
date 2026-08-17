@@ -1,5 +1,6 @@
 {
   "name": "nuxipro-page",
+  "main": "src/worker.ts",
   "compatibility_date": "2026-08-01",
   "assets": {
     "directory": "./dist",
