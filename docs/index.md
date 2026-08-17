@@ -50,8 +50,8 @@ This repository contains the **landing page** for NuxiPro. The landing page serv
 
 ### Product Features (NuxiPro SaaS)
 
-- **Auto-archiving** — Tasks archive automatically after reaching "Done"
-- **Zero configuration** — Works out of the box
+- **Auto-archiving** — Demo: tasks archive instantly when reaching "Done" (localStorage, not for real work). Cloud: you simply choose your archiving mode at sign-up — instant or after X days (persistent data, made for real work).
+- **Minimal configuration** — Demo works out of the box with instant archiving. Cloud requires one simple choice (archiving mode) at sign-up.
 - **No visual clutter** — Completed tasks disappear from view
 - **Simple tracking** — Quick overview of active work
 

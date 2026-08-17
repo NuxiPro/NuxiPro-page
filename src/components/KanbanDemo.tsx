@@ -416,7 +416,9 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
           <KanbanColumn col="done" title="Done" emptyMessage="Drop a task here" tasks={doneList} />
         </div>
         <div className="kanban-footer-note">
-          Completed tasks are <b>archived automatically</b>, keeping the workspace clean.
+          <span>
+            Demo mode: tasks archive instantly when moved to Done. Data stays in your browser.
+          </span>
         </div>
 
         {/* Carte volante rendue en absolute dans le board */}

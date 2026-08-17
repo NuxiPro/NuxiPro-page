@@ -2,17 +2,17 @@
 
 ## What it is
 
-NuxiPro is a minimalist, lightweight tool with no unnecessary features that clutter your workspace. Its core purpose is to create a self-cleaning workspace — tasks that reach "Done" are archived automatically, either instantly or after a delay chosen once during onboarding, preventing your board from becoming a graveyard of completed tasks. NuxiPro positions itself as a solo-first alternative to Trello: ready to use immediately with no heavy configuration, just a one-time choice of archiving mode at setup. In the cloud version, this automation is native — no need to search for workarounds to clean up your board after your interface has become overwhelmed with finished tasks. No manual archiving and no automation setup (like Trello's Butler) is required.
+NuxiPro is a minimalist, lightweight tool with no unnecessary features that clutter your workspace. Its core purpose is to create a self-cleaning workspace — tasks that reach "Done" are archived automatically. In the demo version, tasks archive instantly when moved to "Done" — data stays in your browser (localStorage) and may be lost. In the cloud version, you choose your archiving mode at onboarding: instant or time-based (X days). Cloud data is persistent and made for real work. NuxiPro positions itself as a solo-first alternative to Trello with minimal configuration. No manual archiving and no automation setup (like Trello's Butler) is required.
 
 ### Summary
 
-NuxiPro is a minimalist Kanban task manager that automatically archives completed tasks. No configuration, no clutter, no manual cleanup. Just a clean board that stays clean.
+NuxiPro is a minimalist Kanban task manager that automatically archives completed tasks. Minimal configuration, no clutter, no manual cleanup. Just a clean board that stays clean.
 
 ## FAQ
 
 - **What is NuxiPro?** — NuxiPro is a minimalist personal task manager that automatically cleans your Kanban board by archiving completed tasks.
 - **Is NuxiPro built for team collaboration?** — No. NuxiPro is intentionally designed for personal and single-user productivity, eliminating team features, notifications, and clutter.
-- **How does automatic task archiving work?** — Once a task enters the Done column on your board, NuxiPro automatically archives it so you never have to clean up manually.
+- **How does automatic task archiving work?** — The demo archives tasks instantly when moved to Done — data stays in your browser only. In the cloud version, you simply choose your archiving mode at sign-up: instant archiving or archiving after X days.
 - **Can I test NuxiPro right now?** — Yes, you can try the free interactive demo directly at demo.nuxipro.com without creating an account.
 - **How can I access the full version of NuxiPro?** — The full version (app.nuxipro.com) is currently in development and not accessible yet. You can join the waitlist to get early access at launch.
 - **Can I still find my tasks once they are archived?** — Yes, all archived tasks are safely stored and remain accessible at any time in your dedicated archive area.
@@ -47,6 +47,16 @@ NuxiPro is a minimalist Kanban task manager that automatically archives complete
 - **Quick start** — A tool ready to use, simple day-to-day and ready to handle your tasks
 - **Personal focus** — No team features, notifications, or collaboration overhead
 
+## Demo vs Cloud
+
+| | Demo (demo.nuxipro.com) | Cloud (app.nuxipro.com) |
+|---|---|---|
+| Archiving mode | Instant only | Instant or time-based (X days) |
+| Data storage | Browser localStorage (may be lost) | Server-side (persistent) |
+| Intended use | Discovery, not for real work | Production, real daily use |
+| Account required | No | Yes |
+| Configuration | None — instant archiving by default | One simple choice at onboarding |
+
 ## Cloud Version (Coming Soon)
 
 The cloud version of NuxiPro (app.nuxipro.com) is currently in development and will be available very soon. It will be minimalist and simple for everyday use, with the same automatic archiving feature.
@@ -66,8 +76,8 @@ Today's tools help us add tasks, but none help us remove them. NuxiPro is a mini
 ## Key facts
 - Category: Kanban task management SaaS
 - Target users: solo freelancers and independent consultants managing multiple projects
-- Core feature: zero-configuration automatic archiving of completed tasks
-- Comparison point: Trello supports archiving automation via Butler, but leaves it unconfigured by default; NuxiPro archives by default
+- Core feature: automatic archiving — instant in demo, configurable (instant or time-based) in cloud with minimal setup
+- Comparison point: Trello supports archiving automation via Butler, but leaves it unconfigured by default; NuxiPro archives instantly in demo and offers configurable archiving in cloud
 - Demo data storage: browser local storage only, not persisted server-side
 - Status: early stage, solo-built, cloud app in active development
 - Cloud launch: coming soon, join waitlist at demo.nuxipro.com

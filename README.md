@@ -21,7 +21,7 @@
 
 ## About
 
-NuxiPro is a personal Kanban task manager built around one core idea: **completed tasks should disappear**. No manual cleanup, no clutter. When a task reaches "Done", it automatically archives after a configurable delay.
+NuxiPro is a personal Kanban task manager built around one core idea: **completed tasks should disappear**. No manual cleanup, no clutter. When a task reaches "Done", it archives automatically. The demo uses instant archiving (data in localStorage, not for real work). The cloud version lets you choose between instant or time-based archiving (X days) — made for daily use with persistent data.
 
 This repository contains the **landing page** for NuxiPro, built with React and deployed on Cloudflare Pages.
 
@@ -29,7 +29,7 @@ This repository contains the **landing page** for NuxiPro, built with React and 
 
 ## Features
 
-- **Zero-config archiving** — Tasks auto-archive when moved to "Done"
+- **Automatic archiving** — Demo: instant archiving. Cloud: choose between instant or time-based (X days) with minimal setup
 - **Bilingual** — English & French with automatic browser detection
 - **Interactive demo** — Animated Kanban board directly on the landing page
 - **SEO optimized** — Structured data (JSON-LD), Open Graph, hreflang, sitemap
