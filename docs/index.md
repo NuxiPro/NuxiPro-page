@@ -96,8 +96,10 @@ src/
 │   ├── Navbar.tsx           # Sticky nav (logo, links, beta badge)
 │   ├── Footer.tsx           # Dark footer (brand, links, legal)
 │   ├── KanbanDemo.tsx       # Animated Kanban board (551 lines)
-│   ├── FadeIn.tsx           # Scroll-triggered fade-in wrapper
-│   └── ThemeProvider.tsx    # Light-only theme context
+│   └── FadeIn.tsx           # Scroll-triggered fade-in wrapper
+│
+├── config/                   # Configuration
+│   └── seo.ts               # SEO constants (OG, Twitter, hreflang)
 │
 ├── hooks/                   # Custom React hooks
 │   └── useSectionTracking.ts  # PostHog IntersectionObserver tracking
@@ -138,10 +140,6 @@ Scroll-triggered animation wrapper using `IntersectionObserver`:
 </FadeIn>
 ```
 
-#### ThemeProvider
-
-Light-only theme (no dark mode). Provides `useTheme()` hook.
-
 ### Routing
 
 TanStack Router with file-based routing:
@@ -156,7 +154,7 @@ The route tree is auto-generated in `routeTree.gen.ts`. Do not edit manually.
 
 ### Middleware
 
-Cloudflare Pages edge middleware (`middleware.ts`) proxies PostHog analytics:
+Cloudflare Workers edge middleware (`src/worker.ts`) proxies PostHog analytics:
 
 - Intercepts `/nuxi-data/:path*` requests
 - Routes to PostHog EU hosts
@@ -265,7 +263,7 @@ npx wrangler pages deploy dist
 
 - **Production:** `nuxipro.com`
 - **Demo:** `demo.nuxipro.com`
-- **Cloud (beta):** `app.nuxipro.com`
+- **Cloud (In development):** `app.nuxipro.com`
 
 ---
 
@@ -312,7 +310,7 @@ refactor: code restructuring
 
 ### Why is there no dark mode?
 
-NuxiPro uses a light-only theme by design. The `ThemeProvider` is hardcoded to `"light"`.
+NuxiPro uses a light-only theme by design. The theme is hardcoded to `"light"` in the root layout.
 
 ### Why Bun instead of npm/yarn?
 

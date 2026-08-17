@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "../i18n/index.tsx";
+import { useTranslation } from "../i18n";
 import "../kanban.css";
 
 // Noms de tâches affichées aléatoirement dans le kanban
@@ -30,6 +30,37 @@ interface FlyingCard {
   width: number;
   left: number;
   top: number;
+}
+
+interface KanbanColumnProps {
+  col: "todo" | "doing" | "done";
+  title: string;
+  emptyMessage: string;
+  tasks: TaskItem[];
+}
+
+function KanbanColumn({ col, title, emptyMessage, tasks }: KanbanColumnProps) {
+  return (
+    <div className="kanban-column" data-col={col}>
+      <div className="kanban-column-header">
+        <span className="kanban-column-title">{title}</span>
+        <span className="kanban-column-count">{tasks.filter((t) => !t.isArchiving).length}</span>
+      </div>
+      <div className="kanban-cards">
+        {tasks.length === 0 && <div className="kanban-empty-placeholder">{emptyMessage}</div>}
+        {tasks.map((task) => (
+          <div
+            key={task.id}
+            data-task-id={task.id}
+            className={`kanban-task ${task.isArchiving ? (task.isFading ? "archiving-fade" : "archiving") : ""}`}
+          >
+            <span className="label">{task.name}</span>
+            <span className="meta">a few seconds ago</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 interface KanbanDemoProps {
@@ -84,8 +115,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
     function setCursorState(type: "arrow" | "hand" | "grabbing") {
       cursorEl.classList.remove("state-arrow", "state-hand", "grabbing");
       if (type === "hand") cursorEl.classList.add("state-hand");
-      else if (type === "grabbing")
-        cursorEl.classList.add("state-hand", "grabbing");
+      else if (type === "grabbing") cursorEl.classList.add("state-hand", "grabbing");
       else cursorEl.classList.add("state-arrow");
     }
 
@@ -98,10 +128,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
       const clampedX = Math.max(rect.left, Math.min(x, rect.right - 24));
       const clampedY = Math.max(rect.top, Math.min(y, rect.bottom - 24));
       const isVisible =
-        x >= rect.left - 10 &&
-        x <= rect.right + 10 &&
-        y >= rect.top - 10 &&
-        y <= rect.bottom + 10;
+        x >= rect.left - 10 && x <= rect.right + 10 && y >= rect.top - 10 && y <= rect.bottom + 10;
       if (isVisible) {
         cursorEl.classList.add("visible");
       } else {
@@ -161,11 +188,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
         if (!isDraggingCard || !flyingCardRef.current) return;
         const rect = boardRef.current?.getBoundingClientRect();
         if (!rect) return;
-        const inBounds =
-          x >= rect.left &&
-          x <= rect.right &&
-          y >= rect.top &&
-          y <= rect.bottom;
+        const inBounds = x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
         flyingCardRef.current.style.opacity = inBounds ? "0.97" : "0";
         // Convert to board-relative coordinates
         const relX = x + dragOffsetX - rect.left;
@@ -177,14 +200,9 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
       function frame(now: number) {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const t =
-          progress < 0.5
-            ? 2 * progress * progress
-            : 1 - (-2 * progress + 2) ** 2 / 2;
-        const x =
-          (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * ctrlX + t * t * endX;
-        const y =
-          (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * ctrlY + t * t * endY;
+        const t = progress < 0.5 ? 2 * progress * progress : 1 - (-2 * progress + 2) ** 2 / 2;
+        const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * ctrlX + t * t * endX;
+        const y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * ctrlY + t * t * endY;
 
         setCursorPos(x, y);
         updateFlyingCard(x, y);
@@ -199,17 +217,11 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
     }
 
     // ── Drag complet : curseur → carte → lâcher dans la colonne cible ──
-    function dragTaskTo(
-      taskId: number,
-      nextStatus: "doing" | "done",
-      onDone?: () => void,
-    ) {
+    function dragTaskTo(taskId: number, nextStatus: "doing" | "done", onDone?: () => void) {
       if (state.isDragging) return;
       state.isDragging = true;
 
-      const el = boardRef.current?.querySelector(
-        `[data-task-id="${taskId}"]`,
-      ) as HTMLElement;
+      const el = boardRef.current?.querySelector(`[data-task-id="${taskId}"]`) as HTMLElement;
       if (!el) {
         state.isDragging = false;
         return;
@@ -223,8 +235,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
 
       const humanOffsetX = 18;
       const humanOffsetY = 12;
-      const targetCursorStartX =
-        startRect.left + startRect.width - humanOffsetX;
+      const targetCursorStartX = startRect.left + startRect.width - humanOffsetX;
       const targetCursorStartY = startRect.top + humanOffsetY;
 
       setCursorState("arrow");
@@ -246,11 +257,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
           setCursorState("grabbing");
 
           // La carte originale est marquée "archiving" (invisible), le clone volant apparaît
-          setTasks((prev) =>
-            prev.map((t) =>
-              t.id === taskId ? { ...t, isArchiving: true } : t,
-            ),
-          );
+          setTasks((prev) => prev.map((t) => (t.id === taskId ? { ...t, isArchiving: true } : t)));
           setFlyingCard({
             name: el.querySelector(".label")?.textContent || "",
             width: startRect.width,
@@ -266,9 +273,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
           const dropY =
             targetRect.top +
             12 +
-            targetColEl.querySelectorAll(".kanban-task:not(.archiving)")
-              .length *
-              6 -
+            targetColEl.querySelectorAll(".kanban-task:not(.archiving)").length * 6 -
             targetColEl.scrollTop;
           const targetCursorEndX = dropX + startRect.width - humanOffsetX;
           const targetCursorEndY = dropY + humanOffsetY;
@@ -288,9 +293,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
               setFlyingCard(null);
               setTasks((prev) =>
                 prev.map((t) =>
-                  t.id === taskId
-                    ? { ...t, status: nextStatus, isArchiving: false }
-                    : t,
+                  t.id === taskId ? { ...t, status: nextStatus, isArchiving: false } : t,
                 ),
               );
 
@@ -306,13 +309,9 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
 
     // ── Logique d'avancement automatique des tâches ──
     function archiveTask(target: { id: number }) {
-      setTasks((prev) =>
-        prev.map((t) => (t.id === target.id ? { ...t, isArchiving: true } : t)),
-      );
+      setTasks((prev) => prev.map((t) => (t.id === target.id ? { ...t, isArchiving: true } : t)));
       setTimeout(() => {
-        setTasks((prev) =>
-          prev.map((t) => (t.id === target.id ? { ...t, isFading: true } : t)),
-        );
+        setTasks((prev) => prev.map((t) => (t.id === target.id ? { ...t, isFading: true } : t)));
       }, 200);
       setTimeout(() => {
         setTasks((prev) => prev.filter((t) => t.id !== target.id));
@@ -357,9 +356,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
     // Change aléatoirement l'icône du curseur (flèche/main) entre chaque tick
     const handleMoveCheck = () => {
       if (!state.isDragging) {
-        const activeCount = tasksRef.current.filter(
-          (t) => !t.isArchiving,
-        ).length;
+        const activeCount = tasksRef.current.filter((t) => !t.isArchiving).length;
         if (activeCount > 0 && Math.random() < 0.4) {
           setCursorState("hand");
         } else {
@@ -374,9 +371,7 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
 
     // Premier mouvement : aller chercher la tâche dans "In Progress" et la déplacer vers "Done"
     setTimeout(() => {
-      const doingTask = tasksRef.current.find(
-        (t) => t.status === "doing" && !t.isArchiving,
-      );
+      const doingTask = tasksRef.current.find((t) => t.status === "doing" && !t.isArchiving);
       if (doingTask) {
         dragTaskTo(doingTask.id, "done");
       }
@@ -411,83 +406,17 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
           <span>NuxiPro</span>
         </div>
         <div className="kanban-board">
-          <div className="kanban-column" data-col="todo">
-            <div className="kanban-column-header">
-              <span className="kanban-column-title">To Do</span>
-              <span className="kanban-column-count">
-                {todoList.filter((t) => !t.isArchiving).length}
-              </span>
-            </div>
-            <div className="kanban-cards">
-              {todoList.length === 0 && (
-                <div className="kanban-empty-placeholder">Ready to start?</div>
-              )}
-              {todoList.map((task) => (
-                <div
-                  key={task.id}
-                  data-task-id={task.id}
-                  className={`kanban-task ${task.isArchiving ? (task.isFading ? "archiving-fade" : "archiving") : ""}`}
-                >
-                  <span className="label">{task.name}</span>
-                  <span className="meta">a few seconds ago</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="kanban-column" data-col="doing">
-            <div className="kanban-column-header">
-              <span className="kanban-column-title">In Progress</span>
-              <span className="kanban-column-count">
-                {doingList.filter((t) => !t.isArchiving).length}
-              </span>
-            </div>
-            <div className="kanban-cards">
-              {doingList.length === 0 && (
-                <div className="kanban-empty-placeholder">
-                  Nothing in progress
-                </div>
-              )}
-              {doingList.map((task) => (
-                <div
-                  key={task.id}
-                  data-task-id={task.id}
-                  className={`kanban-task ${task.isArchiving ? (task.isFading ? "archiving-fade" : "archiving") : ""}`}
-                >
-                  <span className="label">{task.name}</span>
-                  <span className="meta">a few seconds ago</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="kanban-column" data-col="done">
-            <div className="kanban-column-header">
-              <span className="kanban-column-title">Done</span>
-              <span className="kanban-column-count">
-                {doneList.filter((t) => !t.isArchiving).length}
-              </span>
-            </div>
-            <div className="kanban-cards">
-              {doneList.length === 0 && (
-                <div className="kanban-empty-placeholder">Drop a task here</div>
-              )}
-              {doneList.map((task) => (
-                <div
-                  key={task.id}
-                  data-task-id={task.id}
-                  className={`kanban-task ${task.isArchiving ? (task.isFading ? "archiving-fade" : "archiving") : ""}`}
-                >
-                  <span className="label">{task.name}</span>
-                  <span className="meta">a few seconds ago</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <KanbanColumn col="todo" title="To Do" emptyMessage="Ready to start?" tasks={todoList} />
+          <KanbanColumn
+            col="doing"
+            title="In Progress"
+            emptyMessage="Nothing in progress"
+            tasks={doingList}
+          />
+          <KanbanColumn col="done" title="Done" emptyMessage="Drop a task here" tasks={doneList} />
         </div>
         <div className="kanban-footer-note">
-          Completed tasks are <b>archived automatically</b>, keeping the
-          workspace clean.
+          Completed tasks are <b>archived automatically</b>, keeping the workspace clean.
         </div>
 
         {/* Carte volante rendue en absolute dans le board */}

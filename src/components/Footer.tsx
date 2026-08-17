@@ -1,6 +1,6 @@
 import { ExternalLink } from "lucide-react";
-import { useTranslation } from "../i18n/index.tsx";
 import { trackClick } from "../hooks/useSectionTracking";
+import { useTranslation } from "../i18n";
 
 export function Footer() {
   const { t } = useTranslation();
@@ -18,9 +18,7 @@ export function Footer() {
             <p className="text-[13px] text-[#F0F0F0] leading-relaxed max-w-[260px] mt-2">
               {t("footer.copyright")}
             </p>
-            <p className="text-[12px] text-[#F0F0F0]/70 mt-1">
-              {t("footer.author")}
-            </p>
+            <p className="text-[12px] text-[#F0F0F0]/70 mt-1">{t("footer.author")}</p>
           </div>
 
           {/* Links grouped right */}

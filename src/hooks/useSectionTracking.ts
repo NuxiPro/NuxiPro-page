@@ -8,10 +8,7 @@ interface UseSectionTrackingOptions {
   threshold?: number;
 }
 
-export function useSectionTracking({
-  sectionId,
-  threshold = 0.5,
-}: UseSectionTrackingOptions) {
+export function useSectionTracking({ sectionId, threshold = 0.5 }: UseSectionTrackingOptions) {
   useEffect(() => {
     if (isDev) return;
 

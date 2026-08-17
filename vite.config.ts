@@ -9,12 +9,7 @@ const config = defineConfig(({ mode }) => {
 
   return {
     resolve: { tsconfigPaths: true },
-    plugins: [
-      devtools(),
-      tailwindcss(),
-      tanstackRouter({ quoteStyle: "single" }),
-      viteReact(),
-    ],
+    plugins: [devtools(), tailwindcss(), tanstackRouter({ quoteStyle: "single" }), viteReact()],
     server: {
       port: 3000,
       proxy: {

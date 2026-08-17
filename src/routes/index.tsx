@@ -4,60 +4,62 @@ import FadeIn from "../components/FadeIn";
 import { Footer } from "../components/Footer";
 import KanbanDemo from "../components/KanbanDemo";
 import { Navbar } from "../components/Navbar";
+import {
+  BenefitsFive,
+  BenefitsFour,
+  BenefitsOne,
+  BenefitsThree,
+  BenefitsTwo,
+  ScrollChevron,
+} from "../components/svg-icon";
+import {
+  createPageHead,
+  HREFLANG_DEFAULT,
+  OG_BASE,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+  TWITTER_BASE,
+} from "../config/seo";
 import { trackClick, useSectionTracking } from "../hooks/useSectionTracking";
-import { useTranslation } from "../i18n/index.tsx";
+import { useTranslation } from "../i18n";
+
+const CTA_BASE =
+  "bg-teal text-white font-medium rounded-lg shadow-[0_2px_12px_rgba(13,148,136,0.2)] hover:shadow-[0_6px_24px_rgba(13,148,136,0.3)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-150 text-sm inline-block";
+
+function CtaButton({
+  href,
+  onClick,
+  children,
+  className = "",
+}: {
+  href: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onClick}
+      className={`${CTA_BASE} ${className}`}
+    >
+      {children}
+    </a>
+  );
+}
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NuxiPro - Your workspace cleans itself" },
-      {
-        name: "description",
-        content:
-          "Stop wasting time manually archiving your tasks. With NuxiPro, your workspace cleans itself automatically.",
-      },
-      { name: "robots", content: "index, follow" },
-      { property: "og:type", content: "website" },
-      { property: "og:title", content: "NuxiPro - Your workspace cleans itself" },
-      {
-        property: "og:description",
-        content:
-          "Stop wasting time manually archiving your tasks. With NuxiPro, your workspace cleans itself automatically.",
-      },
-      { property: "og:image", content: "https://nuxipro.com/og-image.png" },
-      { property: "og:url", content: "https://nuxipro.com/" },
-      { property: "og:site_name", content: "NuxiPro" },
-      { property: "og:locale", content: "en_US" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "NuxiPro - Your workspace cleans itself" },
-      {
-        name: "twitter:description",
-        content:
-          "Stop wasting time manually archiving your tasks. With NuxiPro, your workspace cleans itself automatically.",
-      },
-      { name: "twitter:image", content: "https://nuxipro.com/og-image.png" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://nuxipro.com/" },
-      {
-        rel: "alternate",
-        hreflang: "fr",
-        href: "https://nuxipro.com/fr",
-      },
-      {
-        rel: "alternate",
-        hreflang: "en",
-        href: "https://nuxipro.com/en",
-      },
-      {
-        rel: "alternate",
-        hreflang: "x-default",
-        href: "https://nuxipro.com/",
-      },
-    ],
-  }),
+  head: () =>
+    createPageHead({
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      url: `${SITE_URL}/`,
+      extraMeta: [...OG_BASE, ...TWITTER_BASE],
+      links: [...HREFLANG_DEFAULT],
+    }),
   component: LandingPage,
 });
 
@@ -123,15 +125,13 @@ function LandingPage() {
           </p>
 
           <div className="flex items-center gap-3 mt-2">
-            <a
+            <CtaButton
               href="https://demo.nuxipro.com"
-              target="_blank"
-              rel="noopener noreferrer"
               onClick={() => trackClick("hero")}
-              className="bg-teal text-white font-medium px-8 py-3 rounded-lg shadow-[0_2px_12px_rgba(13,148,136,0.2)] hover:shadow-[0_6px_24px_rgba(13,148,136,0.3)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-150 text-sm text-center inline-block"
+              className="px-8 py-3"
             >
               {t("hero.cta")}
-            </a>
+            </CtaButton>
           </div>
         </div>
 
@@ -189,19 +189,7 @@ function LandingPage() {
           aria-label={t("scroll.tooltip")}
           className="scroll-indicator w-10 h-10 rounded-full border border-[#e6dfd8] flex items-center justify-center text-[#8e8b82] hover:text-[#6c6a64] hover:border-[#d6cec3] transition-colors cursor-pointer"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-label={t("scroll.tooltip")}
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
+          <ScrollChevron />
         </button>
       </div>
 
@@ -239,106 +227,27 @@ function LandingPage() {
             <div className="flex flex-wrap justify-center gap-6">
               {[
                 {
-                  icon: (
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#0d9488"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-label={t("svg.workflow")}
-                    >
-                      <path d="M 2 12 C 3 8, 4 8, 5 12 C 6 16, 7 16, 8 12 C 9 10, 10 10, 11 12 C 12 13, 13 13, 14 12 L 22 12" />
-                      <path d="M 19 9 L 22 12 L 19 15" />
-                    </svg>
-                  ),
+                  icon: <BenefitsOne />,
                   titleKey: "benefits.1.title",
                   textKey: "benefits.1.text",
                 },
                 {
-                  icon: (
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#0d9488"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-label={t("svg.target")}
-                    >
-                      <path d="M 2 12 C 5 5, 19 5, 22 12 C 19 19, 5 19, 2 12 Z" />
-                      <circle cx="12" cy="12" r="4" />
-                      <circle cx="12" cy="12" r="1.5" fill="#0d9488" />
-                    </svg>
-                  ),
+                  icon: <BenefitsTwo />,
                   titleKey: "benefits.2.title",
                   textKey: "benefits.2.text",
                 },
                 {
-                  icon: (
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#0d9488"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-label={t("svg.metrics")}
-                    >
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                    </svg>
-                  ),
+                  icon: <BenefitsThree />,
                   titleKey: "benefits.3.title",
                   textKey: "benefits.3.text",
                 },
                 {
-                  icon: (
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#0d9488"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-label={t("svg.noUseless")}
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M8 12h8" />
-                      <path d="M12 8v8" />
-                    </svg>
-                  ),
+                  icon: <BenefitsFour />,
                   titleKey: "benefits.4.title",
                   textKey: "benefits.4.text",
                 },
                 {
-                  icon: (
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#0d9488"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-label={t("svg.quickStart")}
-                    >
-                      <path d="m11 17 2 2a1 1 0 1 0 3-3" />
-                      <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
-                      <path d="m21 3 1 11h-2" />
-                      <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
-                      <path d="M3 4h8" />
-                    </svg>
-                  ),
+                  icon: <BenefitsFive />,
                   titleKey: "benefits.5.title",
                   textKey: "benefits.5.text",
                 },
@@ -351,12 +260,8 @@ function LandingPage() {
                     {b.icon}
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#141413] text-[15px] mb-2">
-                      {t(b.titleKey)}
-                    </h3>
-                    <p className="text-[#6c6a64] text-[14px] leading-[1.65]">
-                      {t(b.textKey)}
-                    </p>
+                    <h3 className="font-medium text-[#141413] text-[15px] mb-2">{t(b.titleKey)}</h3>
+                    <p className="text-[#6c6a64] text-[14px] leading-[1.65]">{t(b.textKey)}</p>
                   </div>
                 </div>
               ))}
@@ -378,15 +283,13 @@ function LandingPage() {
             <p className="text-[#6c6a64] max-w-lg mx-auto mb-10 text-[17px] leading-relaxed">
               {t("cta.subtitle")}
             </p>
-            <a
+            <CtaButton
               href="https://demo.nuxipro.com"
-              target="_blank"
-              rel="noopener noreferrer"
               onClick={() => trackClick("cta-final")}
-              className="bg-teal text-white font-medium px-10 py-3.5 rounded-lg shadow-[0_2px_12px_rgba(13,148,136,0.2)] hover:shadow-[0_6px_24px_rgba(13,148,136,0.3)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-150 text-sm inline-block"
+              className="px-10 py-3.5"
             >
               {t("cta.button")}
-            </a>
+            </CtaButton>
           </div>
         </FadeIn>
       </section>

@@ -92,20 +92,14 @@ bun build
 
 ```
 NuxiPro-page/
-├── public/                    # Static assets
-│   ├── icon.svg               # NuxiPro icon
-│   ├── logo.png               # PNG logo
-│   ├── og-image.png           # Open Graph image
-│   ├── manifest.json          # PWA manifest
-│   ├── robots.txt             # Robots file (AI crawlers allowed)
-│   └── sitemap.xml            # XML Sitemap
 ├── src/
 │   ├── components/
 │   │   ├── FadeIn.tsx         # Scroll-triggered fade-in animation
 │   │   ├── Footer.tsx         # Dark footer with links
 │   │   ├── KanbanDemo.tsx     # Animated Kanban board demo
-│   │   ├── Navbar.tsx         # Sticky navigation bar
-│   │   └── ThemeProvider.tsx  # Theme provider (light)
+│   │   └── Navbar.tsx         # Sticky navigation bar
+│   ├── config/
+│   │   └── seo.ts             # SEO constants (OG, Twitter, hreflang)
 │   ├── hooks/
 │   │   └── useSectionTracking.ts  # PostHog section tracking
 │   ├── i18n/
@@ -119,10 +113,10 @@ NuxiPro-page/
 │   │   └── mentions-legales.tsx  # Legal notices
 │   ├── main.tsx               # React entry point
 │   ├── router.tsx             # TanStack Router setup
+│   ├── worker.ts              # Cloudflare Workers edge middleware (PostHog proxy)
 │   ├── styles.css             # Global styles (Tailwind v4)
 │   └── kanban.css             # Kanban demo styles
 ├── index.html                 # HTML entry (SEO, JSON-LD, meta tags)
-├── middleware.ts               # Cloudflare Pages middleware (PostHog proxy)
 ├── vite.config.ts             # Vite configuration
 ├── tsconfig.json              # TypeScript configuration
 ├── wrangler.jsonc             # Cloudflare Pages deployment config

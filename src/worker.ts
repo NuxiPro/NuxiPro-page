@@ -20,10 +20,7 @@ export default {
       const response = await fetch(target, {
         method: request.method,
         headers,
-        body:
-          request.method !== "GET" && request.method !== "HEAD"
-            ? request.body
-            : undefined,
+        body: request.method !== "GET" && request.method !== "HEAD" ? request.body : undefined,
       });
 
       const responseHeaders = new Headers(response.headers);

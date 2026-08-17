@@ -7,11 +7,7 @@ interface FadeInProps {
   delay?: number;
 }
 
-export default function FadeIn({
-  children,
-  className = "",
-  delay = 0,
-}: FadeInProps) {
+export default function FadeIn({ children, className = "", delay = 0 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

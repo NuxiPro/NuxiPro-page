@@ -1,47 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Navbar } from "../components/Navbar";
-import { useTranslation } from "../i18n/index.tsx";
+import { createPageHead, SITE_URL } from "../config/seo";
+import { useTranslation } from "../i18n";
+
+const FAQ_TITLE = "FAQ - NuxiPro";
+const FAQ_DESCRIPTION =
+  "Frequently asked questions about NuxiPro, the minimalist personal task manager with automatic archiving.";
+const FAQ_URL = `${SITE_URL}/faq`;
 
 export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FAQ - NuxiPro" },
-      {
-        name: "description",
-        content:
-          "Frequently asked questions about NuxiPro, the minimalist personal task manager with automatic archiving.",
-      },
-      { name: "robots", content: "index, follow" },
-      { name: "og:title", content: "FAQ - NuxiPro" },
-      {
-        name: "og:description",
-        content:
-          "Frequently asked questions about NuxiPro, the minimalist personal task manager with automatic archiving.",
-      },
-      { name: "og:url", content: "https://nuxipro.com/faq" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://nuxipro.com/faq" },
-      {
-        rel: "alternate",
-        hreflang: "fr",
-        href: "https://nuxipro.com/fr/faq",
-      },
-      {
-        rel: "alternate",
-        hreflang: "en",
-        href: "https://nuxipro.com/en/faq",
-      },
-      {
-        rel: "alternate",
-        hreflang: "x-default",
-        href: "https://nuxipro.com/faq",
-      },
-    ],
-  }),
+  head: () =>
+    createPageHead({
+      title: FAQ_TITLE,
+      description: FAQ_DESCRIPTION,
+      url: FAQ_URL,
+      links: [
+        { rel: "alternate", hreflang: "fr", href: `${SITE_URL}/fr/faq` },
+        { rel: "alternate", hreflang: "en", href: `${SITE_URL}/en/faq` },
+        { rel: "alternate", hreflang: "x-default", href: FAQ_URL },
+      ],
+    }),
   component: FAQPage,
 });
 
@@ -57,6 +36,7 @@ function FAQPage() {
       { q: t("faq.q4"), a: t("faq.a4") },
       { q: t("faq.q5"), a: t("faq.a5") },
       { q: t("faq.q6"), a: t("faq.a6") },
+      { q: t("faq.q7"), a: t("faq.a7") },
     ],
     [t],
   );
@@ -81,7 +61,6 @@ function FAQPage() {
     <div className="min-h-screen bg-[#fafafa] text-[#141413] font-body">
       <script
         type="application/ld+json"
-        // biome-ignore lint: JSON-LD schema is safe static content
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
@@ -96,17 +75,11 @@ function FAQPage() {
           {t("legal.back")}
         </a>
 
-        <h1 className="font-heading text-[28px] font-normal mt-[60px] mb-10">
-          {t("faq.title")}
-        </h1>
+        <h1 className="font-heading text-[28px] font-normal mt-[60px] mb-10">{t("faq.title")}</h1>
 
         <section aria-label={t("nav.faq")}>
           {faqs.map((faq, i) => (
-            <details
-              key={faq.q}
-              open={openIndex === i}
-              className="group border-b border-[#e6dfd8]"
-            >
+            <details key={faq.q} open={openIndex === i} className="group border-b border-[#e6dfd8]">
               {/* biome-ignore lint/a11y/noStaticElementInteractions: summary is inherently interactive */}
               <summary
                 onClick={(e) => {
@@ -126,11 +99,7 @@ function FAQPage() {
                   strokeWidth={2}
                   aria-hidden="true"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
               <div className="pb-5 text-[14px] leading-[1.8] text-[#6c6a64] animate-accordion-down">

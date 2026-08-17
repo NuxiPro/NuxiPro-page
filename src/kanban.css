@@ -7,8 +7,7 @@
   --text-dim: #8e8b82;
   --accent: #0d9488;
   --accent-glow: rgba(13, 148, 136, 0.12);
-  --window-shadow:
-    0 32px 64px -16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  --window-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
   --placeholder-bg: #f5f0e8;
   --cursor-stroke: #141413;
   --cursor-fill: #faf9f5;

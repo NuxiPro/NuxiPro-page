@@ -1,10 +1,4 @@
-import {
-  createContext,
-  type ReactNode,
-  useCallback,
-  useContext,
-  useState,
-} from "react";
+import { createContext, type ReactNode, useCallback, useContext, useState } from "react";
 import en from "./en.json";
 import fr from "./fr.json";
 
@@ -22,9 +16,7 @@ interface I18nContextValue {
 const I18nContext = createContext<I18nContextValue | null>(null);
 
 function detectBrowserLocale(): Locale {
-  const langs = navigator.languages?.length
-    ? navigator.languages
-    : [navigator.language];
+  const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
   for (const lang of langs) {
     const code = lang.split("-")[0].toLowerCase();
     if (code === "fr") return "fr";
@@ -52,11 +44,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     [locale],
   );
 
-  return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
-      {children}
-    </I18nContext.Provider>
-  );
+  return <I18nContext.Provider value={{ locale, setLocale, t }}>{children}</I18nContext.Provider>;
 }
 
 export function useTranslation() {
