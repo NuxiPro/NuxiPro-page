@@ -35,6 +35,7 @@ This repository contains the **landing page** for NuxiPro, built with React and 
 - **SEO optimized** — Structured data (JSON-LD), Open Graph, hreflang, sitemap
 - **AEO/GEO ready** — `llms.txt` for AI search engines
 - **Analytics** — PostHog integration via Cloudflare edge proxy
+- **Legal pages** — FAQ and mentions légales (legal notices) with bilingual support
 
 ## Tech Stack
 
@@ -44,6 +45,9 @@ This repository contains the **landing page** for NuxiPro, built with React and 
 | [Vite 8](https://vitejs.dev) | Build tool & dev server |
 | [Tailwind CSS 4](https://tailwindcss.com) | Styling |
 | [TanStack Router](https://tanstack.com/router) | File-based routing |
+| [Lucide React](https://lucide.dev) | Icons |
+| [Biome](https://biomejs.dev) | Linting & formatting |
+| [Vitest](https://vitest.dev) | Testing |
 | [Bun](https://bun.sh) | Package manager |
 | [Cloudflare Pages](https://pages.cloudflare.com) | Deployment |
 | [PostHog](https://posthog.com) | Analytics |
@@ -83,7 +87,6 @@ bun build
 | `bun dev` | Start dev server (port 3000) |
 | `bun build` | Production build |
 | `bun preview` | Preview production build |
-| `bun test` | Run tests |
 | `bun run format` | Format code with Biome |
 | `bun run lint` | Lint code with Biome |
 | `bun run check` | Run all Biome checks |
@@ -97,7 +100,9 @@ NuxiPro-page/
 │   │   ├── FadeIn.tsx         # Scroll-triggered fade-in animation
 │   │   ├── Footer.tsx         # Dark footer with links
 │   │   ├── KanbanDemo.tsx     # Animated Kanban board demo
-│   │   └── Navbar.tsx         # Sticky navigation bar
+│   │   ├── Navbar.tsx         # Sticky navigation bar
+│   │   ├── legal.tsx          # Legal page layout components
+│   │   └── svg-icon.tsx       # SVG icon components for benefits section
 │   ├── config/
 │   │   └── seo.ts             # SEO constants (OG, Twitter, hreflang)
 │   ├── hooks/
@@ -110,15 +115,30 @@ NuxiPro-page/
 │   │   ├── __root.tsx         # Root layout (SEO, fonts, providers)
 │   │   ├── index.tsx          # Main landing page
 │   │   ├── faq.tsx            # FAQ page
-│   │   └── mentions-legales.tsx  # Legal notices
+│   │   └── mentions-legales.tsx  # Legal notices (mentions légales)
 │   ├── main.tsx               # React entry point
 │   ├── router.tsx             # TanStack Router setup
 │   ├── worker.ts              # Cloudflare Workers edge middleware (PostHog proxy)
 │   ├── styles.css             # Global styles (Tailwind v4)
 │   └── kanban.css             # Kanban demo styles
+├── public/
+│   ├── icon.svg               # App icon
+│   ├── logo.png               # Logo
+│   ├── og-image.png           # Open Graph image
+│   ├── demo.gif               # Demo animation
+│   ├── llms.txt               # AI search engine metadata
+│   ├── manifest.json          # PWA manifest
+│   ├── robots.txt             # Robots file
+│   ├── sitemap.xml            # Sitemap
+│   ├── text23.svg             # Text logo (dark)
+│   └── text23-light.svg       # Text logo (light)
+├── docs/
+│   └── index.md               # Documentation
 ├── index.html                 # HTML entry (SEO, JSON-LD, meta tags)
 ├── vite.config.ts             # Vite configuration
 ├── tsconfig.json              # TypeScript configuration
+├── biome.json                 # Biome linter/formatter config
+├── tsr.config.json            # TanStack Router config
 ├── wrangler.jsonc             # Cloudflare Pages deployment config
 └── package.json
 ```
