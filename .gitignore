@@ -5,3 +5,4 @@ dist/
 posthog-setup-report.md
 .vscode
 .wrangler
+local
