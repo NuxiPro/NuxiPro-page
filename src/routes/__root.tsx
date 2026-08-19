@@ -14,13 +14,15 @@ import {
 } from "../config/seo";
 import { I18nProvider, useTranslation } from "../i18n";
 import appCss from "../styles.css?url";
+import { CookieBanner } from "#/components/Banner";
 
-const posthogKey = import.meta.env.DEV
-  ? undefined
-  : (import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined);
-const posthogHost = import.meta.env.DEV
-  ? undefined
-  : (import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined);
+const posthogKey = //import.meta.env.DEV
+  //? undefined
+
+  /*:*/ (import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined);
+const posthogHost = // import.meta.env.DEV
+// ? undefined
+  /* :*/ (import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined);
 
 export const Route = createRootRoute({
   head: () =>
@@ -63,23 +65,29 @@ function RootLayoutInner() {
 
   const content = <Outlet />;
 
-  if (!posthogKey) return content;
-
   return (
-    <PostHogProvider
-      apiKey={posthogKey}
-      options={{
-        api_host: "/nuxi-data/x",
-        ui_host: posthogHost || "https://eu.posthog.com",
-        defaults: "2026-01-30",
-        capture_exceptions: true,
-        debug: false,
-        session_recording: {
-          maskAllInputs: true,
-        },
-      }}
-    >
-      {content}
-    </PostHogProvider>
+    <>
+      {posthogKey ? (
+        <PostHogProvider
+          apiKey={posthogKey}
+          options={{
+            api_host: "/nuxi-data/x",
+            ui_host: posthogHost || "https://eu.posthog.com",
+            defaults: "2026-01-30",
+            capture_exceptions: true,
+            debug: false,
+            opt_out_capturing_by_default: true,
+            session_recording: {
+              maskAllInputs: true,
+            },
+          }}
+        >
+          {content}
+        </PostHogProvider>
+      ) : (
+        content
+      )}
+      <CookieBanner />
+    </>
   );
 }
