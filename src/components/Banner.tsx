@@ -1,75 +1,120 @@
 import { usePostHog } from "@posthog/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "../i18n";
 
+const CONSENT_VERSION = "1.0";
 const COOKIE_KEY = "nuxipro_cookie_consent";
+const COOKIE_CONSENT_VERSION = "nuxipro_cookie_consent_version";
+const COOKIE_CONSENT_DATE = "nuxipro_cookie_consent_date";
+const COOKIE_ANALYTICS_KEY = "nuxipro_cookie_analytics";
 const COOKIE_RECORDING_KEY = "nuxipro_cookie_recording";
+
+type ConsentChoice = "accepted" | "declined" | "partial" | null;
+
+function getStoredConsentVersion(): string | null {
+  return localStorage.getItem(COOKIE_CONSENT_VERSION);
+}
+
+function isConsentExpired(): boolean {
+  const date = localStorage.getItem(COOKIE_CONSENT_DATE);
+  if (!date) return true;
+  const consentDate = new Date(date);
+  const sixMonthsLater = new Date(consentDate);
+  sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 12);
+  return new Date() > sixMonthsLater;
+}
 
 export function CookieBanner() {
   const posthog = usePostHog();
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
   const [recordingEnabled, setRecordingEnabled] = useState(false);
   const [hasDecided, setHasDecided] = useState(false);
-  const [previousChoice, setPreviousChoice] = useState<"accepted" | "declined" | null>(null);
+  const [previousChoice, setPreviousChoice] = useState<ConsentChoice>(null);
+
+  const applyConsent = useCallback(
+    (analytics: boolean, recording: boolean) => {
+      if (analytics) {
+        posthog?.opt_in_capturing();
+      } else {
+        posthog?.opt_out_capturing();
+      }
+      if (recording && analytics) {
+        posthog?.startSessionRecording();
+      } else {
+        posthog?.stopSessionRecording();
+      }
+      setAnalyticsEnabled(analytics);
+      setRecordingEnabled(recording && analytics);
+    },
+    [posthog],
+  );
 
   useEffect(() => {
-    const consent = localStorage.getItem(COOKIE_KEY);
-    if (!consent) {
+    const consent = localStorage.getItem(COOKIE_KEY) as ConsentChoice;
+    const storedVersion = getStoredConsentVersion();
+
+    if (!consent || storedVersion !== CONSENT_VERSION || isConsentExpired()) {
       setVisible(true);
+      posthog?.opt_out_capturing();
+      posthog?.stopSessionRecording();
     } else {
       setHasDecided(true);
-      setPreviousChoice(consent as "accepted" | "declined");
-      const recording = localStorage.getItem(COOKIE_RECORDING_KEY);
-      setRecordingEnabled(recording === "true");
+      setPreviousChoice(consent);
+      const analytics = localStorage.getItem(COOKIE_ANALYTICS_KEY) === "true";
+      const recording = localStorage.getItem(COOKIE_RECORDING_KEY) === "true";
+      setAnalyticsEnabled(analytics);
+      setRecordingEnabled(recording);
+      applyConsent(analytics, recording);
     }
-  }, []);
+  }, [posthog, applyConsent]);
 
   useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = showModal ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [showModal]);
 
-  const handleAccept = () => {
-    localStorage.setItem(COOKIE_KEY, "accepted");
-    localStorage.setItem(COOKIE_RECORDING_KEY, "false");
-    posthog?.opt_in_capturing();
-    posthog?.stopSessionRecording();
-    setRecordingEnabled(false);
-    setPreviousChoice("accepted");
+  const saveConsent = (choice: ConsentChoice, analytics: boolean, recording: boolean) => {
+    localStorage.setItem(COOKIE_KEY, choice ?? "declined");
+    localStorage.setItem(COOKIE_CONSENT_VERSION, CONSENT_VERSION);
+    localStorage.setItem(COOKIE_CONSENT_DATE, new Date().toISOString());
+    localStorage.setItem(COOKIE_ANALYTICS_KEY, String(analytics));
+    localStorage.setItem(COOKIE_RECORDING_KEY, String(recording && analytics));
+    applyConsent(analytics, recording && analytics);
+    setPreviousChoice(choice);
     setVisible(false);
     setHasDecided(true);
   };
 
-  const handleDecline = () => {
-    localStorage.setItem(COOKIE_KEY, "declined");
-    localStorage.setItem(COOKIE_RECORDING_KEY, "false");
-    posthog?.opt_out_capturing();
-    posthog?.stopSessionRecording();
-    setRecordingEnabled(false);
-    setPreviousChoice("declined");
-    setVisible(false);
-    setHasDecided(true);
+  const handleAccept = () => saveConsent("accepted", true, recordingEnabled);
+  const handleDecline = () => saveConsent("declined", false, false);
+
+  const handleSavePreferences = () => {
+    const choice = analyticsEnabled ? "partial" : "declined";
+    saveConsent(choice, analyticsEnabled, recordingEnabled);
+  };
+
+  const toggleAnalytics = (enabled: boolean) => {
+    setAnalyticsEnabled(enabled);
+    if (!enabled) setRecordingEnabled(false);
   };
 
   const toggleRecording = () => {
-    if (recordingEnabled) {
-      posthog?.stopSessionRecording();
-      localStorage.setItem(COOKIE_RECORDING_KEY, "false");
-      setRecordingEnabled(false);
-    } else {
-      posthog?.startSessionRecording();
-      localStorage.setItem(COOKIE_RECORDING_KEY, "true");
-      setRecordingEnabled(true);
-    }
+    setRecordingEnabled((prev) => !prev);
   };
+
+  useEffect(() => {
+    const handleReopen = () => {
+      setShowModal(false);
+      setVisible(true);
+    };
+    window.addEventListener("reopen-cookie-banner", handleReopen);
+    return () => window.removeEventListener("reopen-cookie-banner", handleReopen);
+  }, []);
 
   const reopenBanner = () => {
     setShowModal(false);
@@ -154,7 +199,14 @@ export function CookieBanner() {
                 <span className="cookie-option-name">{t("banner.analytics")}</span>
                 <span className="cookie-option-desc">{t("banner.analyticsDesc")}</span>
               </div>
-              <div className="cookie-option-badge">{t("banner.analyticsBadge")}</div>
+              <button
+                type="button"
+                className={`cookie-toggle ${analyticsEnabled ? "active" : ""}`}
+                onClick={() => toggleAnalytics(!analyticsEnabled)}
+                aria-label={t("banner.analytics")}
+              >
+                <span className="cookie-toggle-knob" />
+              </button>
             </div>
 
             <div className="cookie-option">
@@ -166,7 +218,8 @@ export function CookieBanner() {
                 type="button"
                 className={`cookie-toggle ${recordingEnabled ? "active" : ""}`}
                 onClick={toggleRecording}
-                aria-label={recordingEnabled ? t("banner.recording") : t("banner.recording")}
+                disabled={!analyticsEnabled}
+                aria-label={t("banner.recording")}
               >
                 <span className="cookie-toggle-knob" />
               </button>
@@ -196,6 +249,13 @@ export function CookieBanner() {
               onClick={handleDecline}
             >
               {t("banner.decline")}
+            </button>
+            <button
+              type="button"
+              className="cookie-btn cookie-btn-secondary"
+              onClick={handleSavePreferences}
+            >
+              {t("banner.save")}
             </button>
             <button
               type="button"
@@ -295,7 +355,10 @@ export function CookieBanner() {
                 <h3>{t("banner.rights")}</h3>
                 <p>{t("banner.rightsText")}</p>
               </section>
-              <a href="/legal-center/privacy" className="cookie-explanation-link">
+              <a
+                href="https://nuxipro.com/legal-center/privacy"
+                className="cookie-explanation-link"
+              >
                 {t("banner.legalLink")}
               </a>
               <p className="cookie-modal-updated">{t("banner.lastUpdated")}</p>

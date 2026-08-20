@@ -13,13 +13,35 @@ import {
 import { I18nProvider, useTranslation } from "../i18n";
 import appCss from "../styles.css?url";
 
-const posthogKey = import.meta.env.DEV
-  ? undefined
+import posthog from "posthog-js";
 
-  : import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined;
-const posthogHost = import.meta.env.DEV
-   ? undefined
-   : import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined;
+if (typeof window !== "undefined") {
+  const token = import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined;
+  const host = import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined;
+  const consent = localStorage.getItem("nuxipro_cookie_consent");
+  const analyticsConsent = localStorage.getItem("nuxipro_cookie_analytics");
+  const hasConsent = consent === "accepted" || consent === "partial" || analyticsConsent === "true";
+
+  if (!token) {
+    if (import.meta.env.DEV) {
+      console.error(
+        "VITE_PUBLIC_POSTHOG_PROJECT_TOKEN variable required by PostHog is missing or un-configured.",
+      );
+    }
+  } else if (hasConsent) {
+    posthog.init(token, {
+      api_host: "/ingest",
+      ui_host: host || "https://eu.posthog.com",
+      defaults: "2026-06-25",
+      capture_exceptions: true,
+      disable_session_recording: true,
+      debug: false,
+      session_recording: {
+        maskAllInputs: true,
+      },
+    });
+  }
+}
 
 export const Route = createRootRoute({
   head: () =>
@@ -65,26 +87,9 @@ function RootLayoutInner() {
 
   return (
     <>
-      {posthogKey ? (
-        <PostHogProvider
-          apiKey={posthogKey}
-          options={{
-            api_host: "/nuxi-data/x",
-            ui_host: posthogHost || "https://eu.posthog.com",
-            defaults: "2026-01-30",
-            capture_exceptions: true,
-            debug: false,
-            opt_out_capturing_by_default: true,
-            session_recording: {
-              maskAllInputs: true,
-            },
-          }}
-        >
-          {content}
-        </PostHogProvider>
-      ) : (
-        content
-      )}
+      <PostHogProvider client={posthog}>
+        {content}
+      </PostHogProvider>
       <CookieBanner />
 
       {/* Global SEO meta (OG + Twitter) */}

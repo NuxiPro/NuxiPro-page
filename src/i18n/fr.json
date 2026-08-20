@@ -98,11 +98,11 @@
     },
     "privacy": {
       "title": "Politique de Confidentialité",
-      "desc": "Comment nous collectons, utilisons et protégeons vos données personnelles.",
-      "intro": "NuxiPro respecte votre vie privée. Cette politique explique comment nous gérons les données pour la landing page et la version démo.",
+      "desc": "Comment je collecte, utilise et protège vos données personnelles.",
+      "intro": "NuxiPro respecte votre vie privée. Cette politique explique comment je gère les données pour la landing page et la version démo.",
       "data": {
         "title": "Données Collectées",
-        "text": "Nous ne collectons aucune donnée personnelle. La landing page ne collecte aucune donnée. La version démo (demo.nuxipro.com) fonctionne entièrement dans votre navigateur via localStorage. Aucune donnée n'est transmise à nos serveurs."
+        "text": "Je ne collecte aucune donnée personnelle. La landing page ne collecte aucune donnée. La version démo (demo.nuxipro.com) fonctionne entièrement dans votre navigateur via localStorage. Aucune donnée n'est transmise à mes serveurs."
       },
       "storage": {
         "title": "Stockage Local",
@@ -114,18 +114,18 @@
       },
       "analytics": {
         "title": "Analytics",
-        "text": "Nous utilisons PostHog pour des statistiques anonymes afin de comprendre comment les utilisateurs interagissent avec l'interface. Cela inclut les pages visitées, les clics et la navigation. Aucun contenu texte, nom de tâche ou donnée personnelle n'est enregistré."
+        "text": "J'utilise PostHog pour des statistiques anonymes afin de comprendre comment les utilisateurs interagissent avec l'interface. Cela inclut les pages visitées, les clics et la navigation. Aucun contenu texte, nom de tâche ou donnée personnelle n'est enregistré."
       },
       "session": {
         "title": "Enregistrement de Session",
-        "text": "L'enregistrement de session est optionnel et désactivé par défaut. Lorsqu'il est activé, il capture les interactions UI pour nous aider à identifier les problèmes d'ergonomie. Tous les champs texte sont automatiquement masqués. Les enregistrements sont stockés dans l'UE et supprimés après 30 jours."
+        "text": "L'enregistrement de session est optionnel et désactivé par défaut. Lorsqu'il est activé, il capture les interactions UI pour m'aider à identifier les problèmes d'ergonomie. Tous les champs texte sont automatiquement masqués. Les enregistrements sont stockés dans l'UE et supprimés après 30 jours."
       },
       "rights": {
         "title": "Vos Droits",
         "text": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que toutes les données sont stockées localement dans votre navigateur, vous pouvez les effacer à tout moment via les paramètres de votre navigateur."
       },
       "noSell": {
-        "title": "Nous ne vendons pas vos données",
+        "title": "Je ne vends pas vos données",
         "text": "NuxiPro ne vend, ne loue ni ne partage vos données personnelles à des tiers. Les seules données collectées sont des statistiques anonymes d'utilisation du site, uniquement pour améliorer le produit."
       },
       "disclaimer": {
@@ -136,7 +136,7 @@
     "cookies": {
       "title": "Cookies & Stockage Local",
       "desc": "Politique d'utilisation des cookies, analytics et stockage local.",
-      "p1": "Cette politique explique comment nous utilisons les cookies et le stockage local sur NuxiPro.",
+      "p1": "Cette politique explique comment j'utilise les cookies et le stockage local sur NuxiPro.",
       "types": {
         "title": "Types de Stockage Utilisés"
       },
@@ -177,7 +177,7 @@
       },
       "responsability": {
         "title": "Limitation de Responsabilité",
-        "text": "NuxiPro est fourni « en l'état » sans garantie. Nous ne saurions être responsables de tout dommage, perte de données ou interruption de service. La démo peut être modifiée ou arrêtée à tout moment sans préavis."
+        "text": "NuxiPro est fourni « en l'état » sans garantie. Je ne saurais être responsable de tout dommage, perte de données ou interruption de service. La démo peut être modifiée ou arrêtée à tout moment sans préavis."
       },
       "ip": {
         "title": "Propriété Intellectuelle",
@@ -185,7 +185,7 @@
       },
       "availability": {
         "title": "Disponibilité du Service",
-        "text": "Nous nous efforçons de maintenir la démo accessible mais ne donnons aucune garantie concernant la disponibilité ou la persistance des données. Le service peut être modifié ou interrompu à tout moment."
+        "text": "Je m'efforce de maintenir la démo accessible mais ne donne aucune garantie concernant la disponibilité ou la persistance des données. Le service peut être modifié ou interrompu à tout moment."
       },
       "jurisdiction": {
         "title": "Droit Applicable",
@@ -228,7 +228,7 @@
       },
       "contact": {
         "title": "Contact",
-        "text": "Pour toute question relative à ces mentions légales, contactez-nous à contact@nuxipro.com."
+        "text": "Pour toute question relative à ces mentions légales, contactez-moi à contact@nuxipro.com."
       }
     }
   },
@@ -246,14 +246,14 @@
   "banner": {
     "title": "Cookies",
     "close": "Fermer",
-    "text": "Nous utilisons des cookies pour améliorer votre expérience et mesurer l'audience du site. Nous ne vendons jamais vos données à des tiers.",
+    "text": "J'utilise des cookies pour améliorer votre expérience et mesurer l'audience du site. Je ne vends jamais vos données à des tiers.",
     "analytics": "Mesure d'audience",
     "analyticsDesc": "Mesure du nombre de visites anonymes sur le site",
-    "analyticsBadge": "Requis",
     "recording": "Enregistrement session",
     "recordingDesc": "Capturer les interactions pour améliorer l'ergonomie",
     "learnMore": "En savoir plus",
     "decline": "Refuser",
+    "save": "Enregistrer mes choix",
     "accept": "Tout accepter",
     "modalTitle": "Politique de cookies",
     "whatIs": "Qu'est-ce qu'un cookie ?",
@@ -276,7 +276,7 @@
     "preferences": "Gestion de vos préférences",
     "preferencesText": "Vous pouvez modifier vos choix à tout moment en cliquant sur l'icône de rouage en bas à droite de l'écran. Vous pouvez activer ou désactiver l'enregistrement session indépendamment.",
     "rights": "Vos droits",
-    "rightsText": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour toute question, contactez-nous via la page de mentions légales.",
+    "rightsText": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour toute question, contactez-moi via la page de mentions légales.",
     "legalLink": "Politique de cookies",
     "understood": "Compris",
     "lastUpdated": "Dernière mise à jour : août 2026",
