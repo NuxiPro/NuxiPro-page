@@ -13,13 +13,13 @@ import {
 import { I18nProvider, useTranslation } from "../i18n";
 import appCss from "../styles.css?url";
 
-const posthogKey = //import.meta.env.DEV
-  //? undefined
+const posthogKey = import.meta.env.DEV
+  ? undefined
 
-  /*:*/ import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined;
-const posthogHost = // import.meta.env.DEV
-  // ? undefined
-  /* :*/ import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined;
+  : import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined;
+const posthogHost = import.meta.env.DEV
+   ? undefined
+   : import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined;
 
 export const Route = createRootRoute({
   head: () =>
