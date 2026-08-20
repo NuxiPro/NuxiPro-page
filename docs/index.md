@@ -8,7 +8,8 @@
 4. [Installation](#installation)
 5. [Configuration](#configuration)
 6. [Deployment](#deployment)
-7. [Contribution](#contribution)
+7. [Testing](#testing)
+8. [Contribution](#contribution)
 
 ---
 
@@ -22,7 +23,8 @@ This repository contains the **landing page** for NuxiPro. The landing page serv
 
 - **Product showcase** — Interactive animated Kanban demo
 - **Marketing site** — Features, benefits, FAQ
-- **Waitlist** — Beta access for the cloud version
+- **Legal Center** — Privacy policy, terms, legal notices
+- **Contact page** — Quick access to support
 
 **Links:**
 
@@ -30,6 +32,7 @@ This repository contains the **landing page** for NuxiPro. The landing page serv
 |---|---|
 | Live Demo | [demo.nuxipro.com](https://demo.nuxipro.com) |
 | Cloud (in dev) | [app.nuxipro.com](https://app.nuxipro.com) |
+| Blog & Docs | [center.nuxipro.com](https://center.nuxipro.com) |
 | GitHub | [github.com/NuxiPro](https://github.com/NuxiPro) |
 | Website | [nuxipro.com](https://nuxipro.com) |
 
@@ -41,17 +44,29 @@ This repository contains the **landing page** for NuxiPro. The landing page serv
 
 - **Interactive Kanban Demo** — Animated board with cursor simulation, card dragging, and auto-archiving
 - **Bilingual (FR/EN)** — Automatic browser locale detection with manual toggle
-- **SEO Optimized** — Full structured data (JSON-LD), Open Graph, Twitter Cards, hreflang
-- **AEO/GEO Ready** — `llms.txt` for AI search engines (ChatGPT, Claude, Perplexity)
+- **SEO Optimized** — Structured data (JSON-LD), Open Graph, Twitter Cards, hreflang, canonical URLs
+- **AEO/GEO Ready** — BreadcrumbList, ContactPage, WebPage schemas for answer engines
+- **Cookie Consent** — GDPR-compliant banner with analytics + session recording opt-in
 - **PWA Support** — Web App Manifest for installability
 - **Responsive Design** — Mobile-first with breakpoints at 540px, 768px, 1024px+
-- **Analytics** — PostHog integration with section view tracking and CTA click tracking
+- **Analytics** — PostHog integration (opt-in only, anonymized)
 - **Reduced Motion** — Respects `prefers-reduced-motion` system preference
+
+### Legal Center
+
+Dedicated section with 3 pages:
+
+| Page | URL | Content |
+|------|-----|---------|
+| Hub | `/legal-center` | Overview with links to all legal pages |
+| Privacy | `/legal-center/privacy` | Data collection, GDPR rights, cookies, "we never sell your data" |
+| Terms | `/legal-center/terms` | Demo usage, data risks, liability, IP |
+| Notices | `/legal-center/notices` | Publisher info, hosting (Cloudflare), contact |
 
 ### Product Features (NuxiPro SaaS)
 
-- **Auto-archiving** — Demo: tasks archive instantly when reaching "Done" (localStorage, not for real work). Cloud: you simply choose your archiving mode at sign-up — instant or after X days (persistent data, made for real work).
-- **Minimal configuration** — Demo works out of the box with instant archiving. Cloud requires one simple choice (archiving mode) at sign-up.
+- **Auto-archiving** — Demo: tasks archive instantly when reaching "Done" (localStorage, not for real work). Cloud: you choose your archiving mode at sign-up — instant or after X days.
+- **Minimal configuration** — Demo works out of the box. Cloud requires one simple choice at sign-up.
 - **No visual clutter** — Completed tasks disappear from view
 - **Simple tracking** — Quick overview of active work
 
@@ -82,62 +97,52 @@ This repository contains the **landing page** for NuxiPro. The landing page serv
    └─────────┘            └─────────┘
 ```
 
-### Project Architecture
+### Project Structure
 
 ```
 src/
-├── main.tsx                 # React entry point (creates root, renders App)
-├── router.tsx               # TanStack Router initialization
-├── routeTree.gen.ts         # Auto-generated route tree (DO NOT EDIT)
-├── styles.css               # Global styles (Tailwind v4 + custom theme)
-├── kanban.css               # Kanban demo styles (473 lines)
+├ main.tsx                 # React entry point
+├ router.tsx               # TanStack Router initialization
+├ routeTree.gen.ts         # Auto-generated route tree (DO NOT EDIT)
+├ styles.css               # Global styles (Tailwind v4 + custom theme)
+├ kanban.css               # Kanban demo styles
 │
-├── components/              # Reusable UI components
-│   ├── Navbar.tsx           # Sticky nav (logo, links, beta badge)
-│   ├── Footer.tsx           # Dark footer (brand, links, legal)
-│   ├── KanbanDemo.tsx       # Animated Kanban board (551 lines)
-│   └── FadeIn.tsx           # Scroll-triggered fade-in wrapper
+├ components/              # Reusable UI components
+│   ├── Navbar.tsx         # Sticky nav (logo, Contact, FAQ, Cloud)
+│   ├── Footer.tsx         # Dark footer (GitHub, PH, Blog, Docs, Legal)
+│   ├── Banner.tsx         # Cookie consent banner (GDPR)
+│   ├── KanbanDemo.tsx     # Animated Kanban board
+│   ├── FadeIn.tsx         # Scroll-triggered fade-in wrapper
+│   ├── legal-section.tsx  # Shared legal page section
+│   └── svg-icon.tsx       # Centralized SVG icons
 │
-├── config/                   # Configuration
-│   └── seo.ts               # SEO constants (OG, Twitter, hreflang)
+├ config/                  # Configuration
+│   └── seo.ts             # SEO constants + createPageHead()
 │
-├── hooks/                   # Custom React hooks
-│   └── useSectionTracking.ts  # PostHog IntersectionObserver tracking
+├ hooks/                   # Custom React hooks
+│   └── useSectionTracking.ts  # PostHog tracking
 │
-├── i18n/                    # Internationalization
-│   ├── index.tsx            # I18n context, provider, useTranslation()
-│   ├── en.json              # English (107 keys)
-│   └── fr.json              # French (107 keys)
+├ i18n/                    # Internationalization
+│   ├── index.tsx          # I18n context, provider, useTranslation()
+│   ├── en.json            # English translations
+│   └── fr.json            # French translations
 │
-└── routes/                  # Page components (file-based routing)
-    ├── __root.tsx           # Root layout (providers, SEO, fonts)
-    ├── index.tsx            # Home page (/, Hero + Benefits + CTA)
-    ├── faq.tsx              # FAQ page (/faq, accordion + JSON-LD)
-    └── mentions-legales.tsx # Legal page (/mentions-legales)
-```
-
-### Component Details
-
-#### KanbanDemo (551 lines)
-
-The largest and most complex component. Features:
-
-- **3 columns**: To Do, In Progress, Done
-- **Animated cursor**: SVG cursor moving along Bézier curves
-- **Flying card**: Clone card following cursor during drag
-- **Auto-advancement**: Tasks move through pipeline automatically
-- **Archiving animation**: Scale + opacity fade on completion
-- **Task pool**: 10 predefined tasks rotating
-- **Client-side only**: Prevents SSR hydration mismatch
-
-#### FadeIn
-
-Scroll-triggered animation wrapper using `IntersectionObserver`:
-
-```tsx
-<FadeIn delay={100}>
-  <div>Content fades in when scrolled into view</div>
-</FadeIn>
+├ test/                    # Unit tests
+│   ├── setup.ts           # Vitest setup (jsdom + React Testing Library)
+│   ├── seo.test.ts        # SEO validation (unique titles/descriptions)
+│   └── i18n.test.ts       # i18n validation (key parity EN/FR)
+│
+└ routes/                  # Page components (file-based routing)
+    ├── __root.tsx         # Root layout (providers, SEO, fonts)
+    ├── index.tsx          # Home page (/, Hero + Demo + Benefits + CTA)
+    ├── faq.tsx            # FAQ page (/faq, accordion + JSON-LD)
+    ├── contact.tsx        # Contact page (/contact, email + GitHub + X)
+    ├── legal-center.tsx   # Legal center layout (sidebar + Outlet)
+    └── legal-center/      # Legal center pages
+        ├── index.tsx      # Hub (/legal-center)
+        ├── privacy.tsx    # Privacy policy
+        ├── terms.tsx      # Terms of use
+        └── notices.tsx    # Legal notices
 ```
 
 ### Routing
@@ -148,9 +153,32 @@ TanStack Router with file-based routing:
 |---|---|---|
 | `/` | `routes/index.tsx` | Main landing page |
 | `/faq` | `routes/faq.tsx` | FAQ with accordion |
-| `/mentions-legales` | `routes/mentions-legales.tsx` | Legal notices |
+| `/contact` | `routes/contact.tsx` | Contact page |
+| `/legal-center` | `routes/legal-center.tsx` | Legal center layout |
+| `/legal-center/` | `routes/legal-center/index.tsx` | Legal hub |
+| `/legal-center/privacy` | `routes/legal-center/privacy.tsx` | Privacy policy |
+| `/legal-center/terms` | `routes/legal-center/terms.tsx` | Terms of use |
+| `/legal-center/notices` | `routes/legal-center/notices.tsx` | Legal notices |
 
 The route tree is auto-generated in `routeTree.gen.ts`. Do not edit manually.
+
+### SEO / AEO / GEO
+
+Simplified in `src/config/seo.ts`:
+
+- **SEO**: Title, meta description, canonical URL per page
+- **AEO**: JSON-LD schemas (BreadcrumbList, ContactPage, Organization, WebPage, FAQPage)
+- **GEO**: hreflang tags (fr, en, x-default)
+- **OG/Twitter**: Set globally in root layout
+
+### Cookie Consent
+
+GDPR-compliant banner (`src/components/Banner.tsx`):
+
+- **Analytics** (PostHog): Opt-in only, anonymized, never sold
+- **Session Recording**: Disabled by default, manual toggle
+- **Consent storage**: `localStorage` only, never sent to server
+- **Manage**: Gear icon to reopen preferences
 
 ### Middleware
 
@@ -192,7 +220,8 @@ Dev server runs at `http://localhost:3000`.
 | `dev` | `vite dev --port 3000` | Start dev server |
 | `build` | `vite build` | Production build |
 | `preview` | `vite preview` | Preview production build |
-| `test` | `vitest run` | Run tests |
+| `test` | `vitest run` | Run tests once |
+| `test:watch` | `vitest` | Run tests in watch mode |
 | `format` | `biome format` | Format code |
 | `lint` | `biome lint` | Lint code |
 | `check` | `biome check` | Run all Biome checks |
@@ -263,7 +292,32 @@ npx wrangler pages deploy dist
 
 - **Production:** `nuxipro.com`
 - **Demo:** `demo.nuxipro.com`
+- **Blog & Docs:** `center.nuxipro.com`
 - **Cloud (In development):** `app.nuxipro.com`
+
+---
+
+## Testing
+
+Unit tests with Vitest + React Testing Library.
+
+### Run Tests
+
+```bash
+bun run test        # Run once
+bun run test:watch  # Watch mode
+```
+
+### Test Files
+
+| File | Tests | What it checks |
+|------|-------|----------------|
+| `seo.test.ts` | 5 | Unique titles, unique descriptions, length 20-160 chars, "NuxiPro" in titles |
+| `i18n.test.ts` | 6 | EN/FR key parity, required legal/contact keys exist |
+
+### Adding Tests
+
+Create `*.test.ts` files in `src/test/`. Vitest is configured with jsdom environment.
 
 ---
 
@@ -275,6 +329,7 @@ npx wrangler pages deploy dist
 - **TypeScript:** Strict mode enabled
 - **Components:** Functional components with hooks
 - **Styling:** Tailwind CSS v4 utility classes
+- **i18n:** Add keys to both `en.json` and `fr.json`
 
 ### Commit Convention
 
@@ -286,6 +341,7 @@ fix: bug fix
 docs: documentation update
 style: formatting change
 refactor: code restructuring
+test: add tests
 ```
 
 ### Development Workflow
@@ -293,16 +349,18 @@ refactor: code restructuring
 1. Create a branch from `main`
 2. Make your changes
 3. Run `bun run check` to ensure code quality
-4. Run `bun test` to verify tests pass
+4. Run `bun run test` to verify tests pass
 5. Submit a pull request
 
 ### File Guidelines
 
 - **`routeTree.gen.ts`** — Auto-generated by TanStack Router. Do not edit manually.
-- **`public/`** — Static assets (images, manifest, robots.txt)
+- **`public/`** — Static assets (images, manifest, robots.txt, security.txt)
 - **`src/routes/`** — Page components (file-based routing)
 - **`src/components/`** — Reusable UI components
+- **`src/components/svg-icon.tsx`** — All SVG icons centralized here
 - **`src/i18n/`** — Translation files (add keys to both `en.json` and `fr.json`)
+- **`src/test/`** — Unit tests (Vitest)
 
 ---
 
@@ -318,11 +376,16 @@ Bun is faster for install, build, and dev. The version is pinned in `.bun-versio
 
 ### Why PostHog instead of Google Analytics?
 
-PostHog provides product analytics (session recording, feature flags) beyond basic page views. It's also GDPR-friendly with EU hosting.
+PostHog provides product analytics (session recording, feature flags) beyond basic page views. It's also GDPR-friendly with EU hosting. Analytics are opt-in only.
 
 ### How does the Kanban demo work?
 
 The `KanbanDemo` component runs a client-side animation engine using `requestAnimationFrame` and mutable refs (no React re-renders). It simulates a cursor dragging cards through columns with auto-archiving.
+
+### Where is the data stored?
+
+- **Demo:** 100% in browser `localStorage`. No server. Data lost if cache cleared.
+- **Cloud (future):** Aiven PostgreSQL + Redis Cloud (EU hosting).
 
 ---
 

@@ -10,18 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as LegalCenterRouteImport } from './routes/legal-center'
+import { Route as LegalCenterIndexRouteImport } from './routes/legal-center/index'
+import { Route as LegalCenterNoticesRouteImport } from './routes/legal-center/notices'
+import { Route as LegalCenterPrivacyRouteImport } from './routes/legal-center/privacy'
+import { Route as LegalCenterTermsRouteImport } from './routes/legal-center/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CookiesRoute = CookiesRouteImport.update({
-  id: '/cookies',
-  path: '/cookies',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -29,44 +33,99 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
-  id: '/mentions-legales',
-  path: '/mentions-legales',
+const LegalCenterRoute = LegalCenterRouteImport.update({
+  id: '/legal-center',
+  path: '/legal-center',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LegalCenterIndexRoute = LegalCenterIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LegalCenterRoute,
+} as any)
+const LegalCenterNoticesRoute = LegalCenterNoticesRouteImport.update({
+  id: '/notices',
+  path: '/notices',
+  getParentRoute: () => LegalCenterRoute,
+} as any)
+const LegalCenterPrivacyRoute = LegalCenterPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => LegalCenterRoute,
+} as any)
+const LegalCenterTermsRoute = LegalCenterTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => LegalCenterRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/cookies': typeof CookiesRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/mentions-legales': typeof MentionsLegalesRoute
+  '/legal-center': typeof LegalCenterRouteWithChildren
+  '/legal-center/notices': typeof LegalCenterNoticesRoute
+  '/legal-center/privacy': typeof LegalCenterPrivacyRoute
+  '/legal-center/terms': typeof LegalCenterTermsRoute
+  '/legal-center/': typeof LegalCenterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/cookies': typeof CookiesRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/mentions-legales': typeof MentionsLegalesRoute
+  '/legal-center/notices': typeof LegalCenterNoticesRoute
+  '/legal-center/privacy': typeof LegalCenterPrivacyRoute
+  '/legal-center/terms': typeof LegalCenterTermsRoute
+  '/legal-center': typeof LegalCenterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/cookies': typeof CookiesRoute
+  '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/mentions-legales': typeof MentionsLegalesRoute
+  '/legal-center': typeof LegalCenterRouteWithChildren
+  '/legal-center/notices': typeof LegalCenterNoticesRoute
+  '/legal-center/privacy': typeof LegalCenterPrivacyRoute
+  '/legal-center/terms': typeof LegalCenterTermsRoute
+  '/legal-center/': typeof LegalCenterIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cookies' | '/faq' | '/mentions-legales'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/legal-center'
+    | '/legal-center/notices'
+    | '/legal-center/privacy'
+    | '/legal-center/terms'
+    | '/legal-center/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cookies' | '/faq' | '/mentions-legales'
-  id: '__root__' | '/' | '/cookies' | '/faq' | '/mentions-legales'
+  to:
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/legal-center/notices'
+    | '/legal-center/privacy'
+    | '/legal-center/terms'
+    | '/legal-center'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/faq'
+    | '/legal-center'
+    | '/legal-center/notices'
+    | '/legal-center/privacy'
+    | '/legal-center/terms'
+    | '/legal-center/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CookiesRoute: typeof CookiesRoute
+  ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  MentionsLegalesRoute: typeof MentionsLegalesRoute
+  LegalCenterRoute: typeof LegalCenterRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -78,11 +137,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cookies': {
-      id: '/cookies'
-      path: '/cookies'
-      fullPath: '/cookies'
-      preLoaderRoute: typeof CookiesRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -92,21 +151,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mentions-legales': {
-      id: '/mentions-legales'
-      path: '/mentions-legales'
-      fullPath: '/mentions-legales'
-      preLoaderRoute: typeof MentionsLegalesRouteImport
+    '/legal-center': {
+      id: '/legal-center'
+      path: '/legal-center'
+      fullPath: '/legal-center'
+      preLoaderRoute: typeof LegalCenterRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/legal-center/': {
+      id: '/legal-center/'
+      path: '/'
+      fullPath: '/legal-center/'
+      preLoaderRoute: typeof LegalCenterIndexRouteImport
+      parentRoute: typeof LegalCenterRoute
+    }
+    '/legal-center/notices': {
+      id: '/legal-center/notices'
+      path: '/notices'
+      fullPath: '/legal-center/notices'
+      preLoaderRoute: typeof LegalCenterNoticesRouteImport
+      parentRoute: typeof LegalCenterRoute
+    }
+    '/legal-center/privacy': {
+      id: '/legal-center/privacy'
+      path: '/privacy'
+      fullPath: '/legal-center/privacy'
+      preLoaderRoute: typeof LegalCenterPrivacyRouteImport
+      parentRoute: typeof LegalCenterRoute
+    }
+    '/legal-center/terms': {
+      id: '/legal-center/terms'
+      path: '/terms'
+      fullPath: '/legal-center/terms'
+      preLoaderRoute: typeof LegalCenterTermsRouteImport
+      parentRoute: typeof LegalCenterRoute
     }
   }
 }
 
+interface LegalCenterRouteChildren {
+  LegalCenterNoticesRoute: typeof LegalCenterNoticesRoute
+  LegalCenterPrivacyRoute: typeof LegalCenterPrivacyRoute
+  LegalCenterTermsRoute: typeof LegalCenterTermsRoute
+  LegalCenterIndexRoute: typeof LegalCenterIndexRoute
+}
+
+const LegalCenterRouteChildren: LegalCenterRouteChildren = {
+  LegalCenterNoticesRoute: LegalCenterNoticesRoute,
+  LegalCenterPrivacyRoute: LegalCenterPrivacyRoute,
+  LegalCenterTermsRoute: LegalCenterTermsRoute,
+  LegalCenterIndexRoute: LegalCenterIndexRoute,
+}
+
+const LegalCenterRouteWithChildren = LegalCenterRoute._addFileChildren(
+  LegalCenterRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CookiesRoute: CookiesRoute,
+  ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  MentionsLegalesRoute: MentionsLegalesRoute,
+  LegalCenterRoute: LegalCenterRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

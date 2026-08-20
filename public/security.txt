@@ -1,0 +1,4 @@
+Contact: mailto:security@nuxipro.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: fr, en
+Policy: https://nuxipro.com/legal-center/privacy

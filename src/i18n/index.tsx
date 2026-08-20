@@ -3,7 +3,8 @@ import en from "./en.json";
 import fr from "./fr.json";
 
 type Locale = "en" | "fr";
-type Translations = Record<string, string>;
+type NestedValue = string | { [key: string]: NestedValue };
+type Translations = { [key: string]: NestedValue };
 
 const translations: Record<Locale, Translations> = { en, fr };
 
@@ -14,6 +15,17 @@ interface I18nContextValue {
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
+
+function resolveNested(obj: NestedValue, path: string): string | undefined {
+  const keys = path.split(".");
+  let current: NestedValue = obj;
+  for (const k of keys) {
+    if (typeof current !== "object" || current === null) return undefined;
+    current = (current as Record<string, NestedValue>)[k];
+    if (current === undefined) return undefined;
+  }
+  return typeof current === "string" ? current : undefined;
+}
 
 function detectBrowserLocale(): Locale {
   const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
@@ -39,7 +51,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const t = useCallback(
     (key: string): string => {
-      return translations[locale][key] ?? key;
+      return resolveNested(translations[locale], key) ?? key;
     },
     [locale],
   );

@@ -1,108 +1,285 @@
 {
-  "hero.title": "Libérez votre espace des tâches terminées",
-  "hero.subtitle": "Arrêtez de perdre du temps à archiver vos tâches manuellement. NuxiPro automatise tout le processus pour vous.",
-  "hero.cta": "Essayer la démo sans compte →",
-  "hero.cloud": "Accès anticipé",
-  "scroll.tooltip": "Découvrir la suite",
-  "pourquoi.label": "Pourquoi j'ai créé ce logiciel",
-  "pourquoi.p1": "Les outils actuels regorgent de fonctionnalités qu'on n'utilise jamais. Résultat : des interfaces surchargées, complexes, et aucun archivage automatique natif pour les tâches terminées.",
-  "pourquoi.p2": "Sans ce ménage, la colonne \"Terminé\" devient un cimetière de cartes. On perd un temps précieux à chercher comment archiver et à faire le ménage à la main, au lieu de faire avancer son projet.",
-  "pourquoi.p3": "J'ai créé NuxiPro pour proposer un Kanban simple, minimaliste et prêt à l'emploi. Dès qu'une tâche glisse dans la colonne \"Terminé\", elle est archivée instantanément en arrière-plan. Faible configuration, zéro usine à gaz, et ton board reste propre dès le premier jour. La démo archive les tâches instantanément par défaut — les données restent dans ton navigateur et peuvent être perdues.",
-  "benefits.title": "Ce que j'obtiens en utilisant ce logiciel",
-  "benefits.1.title": "Zéro friction",
-  "benefits.1.text": "L'archivage manuel de vos tâches disparaît complètement.",
-  "benefits.2.title": "Zéro bruit visuel",
-  "benefits.2.text": "Fini les tâches terminées qui polluent votre espace de travail, place à l'essentiel.",
-  "benefits.3.title": "Suivi simple",
-  "benefits.3.text": "Visualisez votre progression et vos réussites au quotidien, sans effort.",
-  "benefits.4.title": "Pas de fonctionnalité inutile",
-  "benefits.4.text": "Concentrez-vous sur l'essentiel sans être submergé par des fonctionnalités inutiles que vous n'allez pas utiliser.",
-  "benefits.5.title": "Prise en main rapide",
-  "benefits.5.text": "Un outil déjà prêt à l'emploi, simple au quotidien et prêt à accueillir vos tâches.",
-  "svg.noUseless": "Pas de fonctionnalité inutile",
-  "svg.quickStart": "Prise en main rapide",
-  "cta.title": "Tester la démo gratuitement aujourd'hui",
-  "cta.subtitle": "Teste la démo sans inscription et rejoins la liste d'attente à l'intérieur pour le lancement officiel.",
-  "cta.button": "Essayer la démo sans compte →",
-  "footer.copyright": "© 2026 NuxiPro. Conçu pour une clarté mentale absolue.",
-  "footer.author": "Conçu par S. Babas",
-  "footer.legal": "Mentions légales",
-  "footer.terms": "Conditions d'utilisation (démo)",
-  "legal.title": "Mentions Légales & Conditions de la Version Démo",
-  "legal.important": "Important : En utilisant cette version Démo, vous acceptez automatiquement les présentes conditions. En cas d'opposition ou de refus de ces clauses, veuillez ne pas utiliser cette version de démonstration.",
-  "legal.editor.title": "1. Édition du site",
-  "legal.editor.p1": "Le présent site internet est une version de démonstration technique (Proof of Concept / MVP) éditée à des fins non professionnelles par :",
-  "legal.editor.name": "Éditeur :",
-  "legal.editor.nameValue": "Sébastien Babas",
-  "legal.editor.contact": "Contact :",
-  "legal.editor.contactValue": "contact@nuxipro.com",
-  "legal.editor.note": "Conformément à l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), l'éditeur a choisi de ne pas divulguer son adresse personnelle, celle-ci ayant été transmise de manière sécurisée à l'hébergeur du site.",
-  "legal.host.title": "2. Hébergement",
-  "legal.host.p1": "Le site est hébergé par :",
-  "legal.host.name": "Hébergeur :",
-  "legal.host.nameValue": "Vercel Inc.",
-  "legal.host.address": "Adresse :",
-  "legal.host.addressValue": "340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis",
-  "legal.host.contact": "Contact :",
-  "legal.host.contactValue": "https://vercel.com/contact",
-  "legal.ip.title": "3. Propriété Intellectuelle",
-  "legal.ip.text": "Le code source, l'interface graphique, le design et les visuels de cette application et de sa landing page sont la propriété exclusive de l'éditeur. Toute reproduction ou rétro-ingénierie à des fins commerciales sans accord préalable est strictement interdite.",
-  "legal.responsability.title": "4. Exclusion de Responsabilité & Perte de Données",
-  "legal.responsability.intro": "Ce site est fourni en l'état (\"as is\"), à des fins exclusives de test et de démonstration technique. Il ne constitue en aucun cas un service commercial, un produit fini ou un engagement contractuel.",
-  "legal.responsability.storage.title": "Stockage 100% Local (LocalStorage) :",
-  "legal.responsability.storage.text": "L'application fonctionne intégralement dans votre propre navigateur internet. Aucune donnée saisie n'est transmise, sauvegardée ou synchronisée sur un serveur distant géré par l'éditeur. Toutes vos données résident uniquement dans le stockage local (localStorage) de votre propre machine.",
-  "legal.responsability.guarantee.title": "Absence totale de garantie :",
-  "legal.responsability.guarantee.text": "L'éditeur ne fournit aucune garantie quant à la stabilité, la sécurité ou la persistance des données stockées. En aucun cas l'éditeur ne pourra être tenu responsable de la perte, de l'altération, de la corruption ou de la suppression de vos données, que ce soit à la suite d'un bug du code, d'une mise à jour de la démo, d'un nettoyage automatique des caches par votre navigateur ou d'une mauvaise manipulation de votre part.",
-  "legal.responsability.usage.title": "Usage interdit pour données critiques :",
-  "legal.responsability.usage.text": "Il est explicitement demandé à l'utilisateur de ne pas stocker de données réelles, critiques, confidentielles ou uniques sur cette version de démonstration. L'utilisateur assume l'entière responsabilité des risques liés à l'utilisation de cet outil expérimental.",
-  "legal.privacy.title": "5. Données Personnelles & Traçage",
-  "legal.privacy.intro": "Ce site respecte la vie privée de ses utilisateurs :",
-  "legal.privacy.tracking": "Aucun cookie publicitaire ou de traçage tiers n'est utilisé. Seules des données analytiques anonymes sont collectées dans le seul but d'améliorer le produit.",
-  "legal.privacy.data": "Aucune donnée personnelle n'est collectée, traitée ou revendue.",
-  "legal.privacy.local": "L'utilisation du localStorage est strictement technique, temporaire et indispensable au fonctionnement de l'interface de démonstration.",
-  "legal.dataProtection.title": "6. Protection des données personnelles & Analytics",
-  "legal.dataProtection.analytics.title": "Gestion des données d'analyse (Analytics)",
-  "legal.dataProtection.analytics.intro": "Dans le cadre de la démo, nous mesurons l'interaction des utilisateurs avec l'interface dans un but strictement non commercial, unique de diagnostic UX et d'amélioration du produit.",
-  "legal.dataProtection.analytics.privacy": "Respect de la vie privée : Aucun texte, contenu de tâche ou donnée confidentielle saisie par l'utilisateur n'est consulté ni enregistré. Seuls les comportements d'interaction globaux (clics, navigation, parcours) sont analysés.",
-  "legal.dataProtection.analytics.retention": "Rétention des données : Toutes les données d'analyse d'interaction sont automatiquement supprimées au bout de 30 jours.",
-  "legal.dataProtection.session.title": "Enregistrement de session et analyse comportementale",
-  "legal.dataProtection.session.intro": "Nous utilisons un outil d'analyse (PostHog) incluant l'enregistrement de sessions (Session Replay) afin de comprendre comment les utilisateurs interagissent avec l'interface et corriger les bugs de navigation.",
-  "legal.dataProtection.session.masking": "Masquage et anonymisation : Tous les champs de texte saisissables (formulaires, inputs) et les éléments sensibles sont automatiquement masqués et floutés à la source avant transmission. Aucune frappe de clavier ni donnée saisie par l'utilisateur n'est enregistrable ou consultable.",
-  "legal.dataProtection.session.retention": "Rétention : Les enregistrements de session sont automatiquement détruits au bout de 30 jours.",
-  "legal.dataProtection.newsletter.title": "Newsletter & Suivi du projet",
-  "legal.dataProtection.newsletter.intro": "Les adresses email et noms collectés servent uniquement à vous informer des avancées et du développement de la version complète de NuxiPro.",
-  "legal.dataProtection.newsletter.tool": "Outil d'envoi : La gestion des e-mails est assurée via la plateforme sécurisée Loops.",
-  "legal.dataProtection.newsletter.noresale": "Non-revente : Vos données ne sont jamais vendues, louées ni transmises à des tiers.",
-  "legal.dataProtection.newsletter.unsubscribe": "Désinscription & Suppression : Vous pouvez vous désabonner à tout moment via le lien au bas de chaque email. En cas de demande de suppression explicite à",
-  "legal.dataProtection.newsletter.unsubscribe.email": "contact@nuxipro.com",
-  "legal.dataProtection.newsletter.unsubscribe.end": ", votre email sera définitivement effacé de nos bases de données.",
-  "legal.dataProtection.rights.title": "Vos droits",
-  "legal.dataProtection.rights.text": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression définitive de vos données sur simple demande.",
-  "legal.back": "Retour",
-  "nav.faq": "FAQ",
-  "nav.cloud": "Cloud",
-  "nav.cloud.dev": "(en dev)",
-  "nav.beta": "Bêta",
-  "footer.project": "Projet",
-  "footer.legal.title": "Mentions légales",
-  "faq.title": "Questions fréquentes",
-  "svg.workflow": "Flux de travail",
-  "svg.target": "Ciblage",
-  "svg.metrics": "Métriques",
-  "svg.cursor": "Curseur",
-  "svg.hand": "Main",
-  "faq.q1": "Qu'est-ce que NuxiPro ?",
-  "faq.a1": "NuxiPro est un gestionnaire de tâches personnel minimaliste qui nettoie automatiquement votre Kanban en archivant les tâches terminées.",
-  "faq.q2": "NuxiPro est-il conçu pour la collaboration en équipe ?",
-  "faq.a2": "Non. NuxiPro est intentionnellement conçu pour la productivité personnelle et individuelle, en éliminant les fonctionnalités d'équipe, les notifications et le superflu.",
-  "faq.q3": "Comment fonctionne l'archivage automatique des tâches ?",
-  "faq.a3": "La démo archive les tâches instantanément quand elles passent en Done — les données restent dans votre navigateur. Dans la version cloud, vous choisissez simplement votre mode d'archivage au moment de l'inscription : archivage instantané ou archivage après X jours.",
-  "faq.q4": "Puis-je tester NuxiPro dès maintenant ?",
-  "faq.a4": "Oui, vous pouvez essayer la démo interactive gratuitement sur demo.nuxipro.com sans créer de compte.",
-  "faq.q5": "Comment accéder à la version complète de NuxiPro ?",
-  "faq.a5": "La version complète (app.nuxipro.com) est actuellement en développement et n'est pas encore accessible. Vous pouvez rejoindre la liste d'attente pour un accès anticipé au lancement.",
-  "faq.q6": "Puis-je retrouver mes tâches une fois qu'elles sont archivées ?",
-  "faq.a6": "Oui, toutes les tâches archivées sont stockées en toute sécurité et restent accessibles à tout moment dans votre zone d'archives dédiée.",
-  "faq.q7": "La version cloud est-elle minimaliste ?",
-  "faq.a7": "Oui, NuxiPro cloud sera minimaliste et simple pour un usage quotidien."
+  "hero": {
+    "title": "Libérez votre espace des tâches terminées",
+    "subtitle": "Arrêtez de perdre du temps à archiver vos tâches manuellement. NuxiPro automatise tout le processus pour vous.",
+    "cta": "Essayer la démo sans compte →",
+    "cloud": "Accès anticipé"
+  },
+  "scroll": {
+    "tooltip": "Découvrir la suite"
+  },
+  "pourquoi": {
+    "label": "Pourquoi j'ai créé ce logiciel",
+    "p1": "Les outils actuels regorgent de fonctionnalités qu'on n'utilise jamais. Résultat : des interfaces surchargées, complexes, et aucun archivage automatique natif pour les tâches terminées.",
+    "p2": "Sans ce ménage, la colonne \"Terminé\" devient un cimetière de cartes. On perd un temps précieux à chercher comment archiver et à faire le ménage à la main, au lieu de faire avancer son projet.",
+    "p3": "J'ai créé NuxiPro pour proposer un Kanban simple, minimaliste et prêt à l'emploi. Dès qu'une tâche glisse dans la colonne \"Terminé\", elle est archivée instantanément en arrière-plan. Faible configuration, zéro usine à gaz, et ton board reste propre dès le premier jour. La démo archive les tâches instantanément par défaut — les données restent dans ton navigateur et peuvent être perdues."
+  },
+  "benefits": {
+    "title": "Ce que j'obtiens en utilisant ce logiciel",
+    "1": {
+      "title": "Zéro friction",
+      "text": "L'archivage manuel de vos tâches disparaît complètement."
+    },
+    "2": {
+      "title": "Zéro bruit visuel",
+      "text": "Fini les tâches terminées qui polluent votre espace de travail, place à l'essentiel."
+    },
+    "3": {
+      "title": "Suivi simple",
+      "text": "Visualisez votre progression et vos réussites au quotidien, sans effort."
+    },
+    "4": {
+      "title": "Pas de fonctionnalité inutile",
+      "text": "Concentrez-vous sur l'essentiel sans être submergé par des fonctionnalités inutiles que vous n'allez pas utiliser."
+    },
+    "5": {
+      "title": "Prise en main rapide",
+      "text": "Un outil déjà prêt à l'emploi, simple au quotidien et prêt à accueillir vos tâches."
+    }
+  },
+  "svg": {
+    "noUseless": "Pas de fonctionnalité inutile",
+    "quickStart": "Prise en main rapide",
+    "workflow": "Flux de travail",
+    "target": "Ciblage",
+    "metrics": "Métriques",
+    "cursor": "Curseur",
+    "hand": "Main"
+  },
+  "cta": {
+    "title": "Tester la démo gratuitement aujourd'hui",
+    "subtitle": "Teste la démo sans inscription et rejoins la liste d'attente à l'intérieur pour le lancement officiel.",
+    "button": "Essayer la démo sans compte →"
+  },
+  "nav": {
+    "faq": "FAQ",
+    "cloud": "Cloud",
+    "dev": "(en dev)",
+    "beta": "Bêta",
+    "contact": "Contact"
+  },
+  "footer": {
+    "copyright": "© 2026 NuxiPro. Conçu pour une clarté mentale absolue.",
+    "author": "Conçu par S. Babas",
+    "project": "Projet",
+    "legal": {
+      "title": "Mentions légales"
+    },
+    "legalCenter": "Centre Juridique",
+    "terms": "Conditions d'utilisation (démo)",
+    "cookies": "Cookies",
+    "blog": "Blog",
+    "docs": "Documentation"
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": "Qu'est-ce que NuxiPro ?",
+    "a1": "NuxiPro est un gestionnaire de tâches personnel minimaliste qui nettoie automatiquement votre Kanban en archivant les tâches terminées.",
+    "q2": "NuxiPro est-il conçu pour la collaboration en équipe ?",
+    "a2": "Non. NuxiPro est intentionnellement conçu pour la productivité personnelle et individuelle, en éliminant les fonctionnalités d'équipe, les notifications et le superflu.",
+    "q3": "Comment fonctionne l'archivage automatique des tâches ?",
+    "a3": "La démo archive les tâches instantanément quand elles passent en Done — les données restent dans votre navigateur. Dans la version cloud, vous choisissez simplement votre mode d'archivage au moment de l'inscription : archivage instantané ou archivage après X jours.",
+    "q4": "Puis-je tester NuxiPro dès maintenant ?",
+    "a4": "Oui, vous pouvez essayer la démo interactive gratuitement sur demo.nuxipro.com sans créer de compte.",
+    "q5": "Comment accéder à la version complète de NuxiPro ?",
+    "a5": "La version complète (app.nuxipro.com) est actuellement en développement et n'est pas encore accessible. Vous pouvez rejoindre la liste d'attente pour un accès anticipé au lancement.",
+    "q6": "Puis-je retrouver mes tâches une fois qu'elles sont archivées ?",
+    "a6": "Oui, toutes les tâches archivées sont stockées en toute sécurité et restent accessibles à tout moment dans votre zone d'archives dédiée.",
+    "q7": "La version cloud est-elle minimaliste ?",
+    "a7": "Oui, NuxiPro cloud sera minimaliste et simple pour un usage quotidien."
+  },
+  "legal": {
+    "back": "Retour",
+    "center": {
+      "title": "Centre Juridique",
+      "subtitle": "Tous les documents et politiques juridiques de NuxiPro au même endroit.",
+      "back": "Retour au site",
+      "lastUpdated": "Dernière mise à jour"
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "desc": "Comment nous collectons, utilisons et protégeons vos données personnelles.",
+      "intro": "NuxiPro respecte votre vie privée. Cette politique explique comment nous gérons les données pour la landing page et la version démo.",
+      "data": {
+        "title": "Données Collectées",
+        "text": "Nous ne collectons aucune donnée personnelle. La landing page ne collecte aucune donnée. La version démo (demo.nuxipro.com) fonctionne entièrement dans votre navigateur via localStorage. Aucune donnée n'est transmise à nos serveurs."
+      },
+      "storage": {
+        "title": "Stockage Local",
+        "text": "Vos tâches et préférences sont stockées localement dans le localStorage de votre navigateur. Ces données ne quittent jamais votre appareil et sont automatiquement supprimées lorsque vous effacez les données de votre navigateur."
+      },
+      "cookies": {
+        "title": "Cookies & Consentement",
+        "text": "Un bandeau de consentement s'affiche lors de votre première visite. Les cookies essentiels (préférence de consentement) sont stockés sans consentement. Les cookies analytics (PostHog) et l'enregistrement de session nécessitent votre consentement explicite."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "text": "Nous utilisons PostHog pour des statistiques anonymes afin de comprendre comment les utilisateurs interagissent avec l'interface. Cela inclut les pages visitées, les clics et la navigation. Aucun contenu texte, nom de tâche ou donnée personnelle n'est enregistré."
+      },
+      "session": {
+        "title": "Enregistrement de Session",
+        "text": "L'enregistrement de session est optionnel et désactivé par défaut. Lorsqu'il est activé, il capture les interactions UI pour nous aider à identifier les problèmes d'ergonomie. Tous les champs texte sont automatiquement masqués. Les enregistrements sont stockés dans l'UE et supprimés après 30 jours."
+      },
+      "rights": {
+        "title": "Vos Droits",
+        "text": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que toutes les données sont stockées localement dans votre navigateur, vous pouvez les effacer à tout moment via les paramètres de votre navigateur."
+      },
+      "noSell": {
+        "title": "Nous ne vendons pas vos données",
+        "text": "NuxiPro ne vend, ne loue ni ne partage vos données personnelles à des tiers. Les seules données collectées sont des statistiques anonymes d'utilisation du site, uniquement pour améliorer le produit."
+      },
+      "disclaimer": {
+        "title": "Avertissement",
+        "text": "La version démo est un outil expérimental. N'y saisissez pas de données critiques, confidentielles ou irremplaçables. Les données stockées dans votre navigateur peuvent être perdues si vous videz le cache."
+      }
+    },
+    "cookies": {
+      "title": "Cookies & Stockage Local",
+      "desc": "Politique d'utilisation des cookies, analytics et stockage local.",
+      "p1": "Cette politique explique comment nous utilisons les cookies et le stockage local sur NuxiPro.",
+      "types": {
+        "title": "Types de Stockage Utilisés"
+      },
+      "storage": {
+        "localStorage": {
+          "title": "localStorage",
+          "desc": "Stocke vos tâches, préférences et choix de consentement directement dans votre navigateur. Essentiel au fonctionnement de l'application. Les données persistent jusqu'à leur suppression."
+        },
+        "analytics": {
+          "title": "Analytics (PostHog)",
+          "desc": "Données d'utilisation anonymes pour améliorer le produit. Actif uniquement si vous consentez. Aucune donnée personnelle collectée."
+        },
+        "consent": {
+          "title": "Stockage du Consentement",
+          "desc": "Mémorise vos préférences cookies (accepté/refusé) et l'état du toggle d'enregistrement de session."
+        }
+      },
+      "manage": {
+        "title": "Gestion de Vos Préférences",
+        "text": "Vous pouvez modifier vos préférences de cookies à tout moment en cliquant sur l'icône de paramètres (rouage) en bas à droite de l'écran."
+      },
+      "demo": {
+        "title": "Avis Version Démo",
+        "text": "La version démo (demo.nuxipro.com) utilise uniquement le localStorage pour le stockage. Aucun cookie côté serveur n'est utilisé. Vos données restent uniquement dans votre navigateur."
+      }
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "desc": "Termes et conditions d'utilisation de NuxiPro.",
+      "intro": "En utilisant NuxiPro (landing page ou démo), vous acceptez ces conditions.",
+      "demo": {
+        "title": "Version Démo",
+        "text": "La version démo (demo.nuxipro.com) est fournie en l'état à des fins de test et d'évaluation. Ce n'est pas un service de production et ne doit pas être utilisé pour des données critiques."
+      },
+      "storage": {
+        "title": "Stockage des Données & Risques",
+        "text": "Toutes les données sont stockées localement dans le localStorage de votre navigateur. Les données peuvent être perdues si vous videz le cache, utilisez un autre navigateur ou accédez depuis un autre appareil. Vous assumez l'entière responsabilité des données saisies."
+      },
+      "responsability": {
+        "title": "Limitation de Responsabilité",
+        "text": "NuxiPro est fourni « en l'état » sans garantie. Nous ne saurions être responsables de tout dommage, perte de données ou interruption de service. La démo peut être modifiée ou arrêtée à tout moment sans préavis."
+      },
+      "ip": {
+        "title": "Propriété Intellectuelle",
+        "text": "Tout le code source, le design et le contenu de NuxiPro sont la propriété exclusive de l'éditeur. La rétro-ingénierie, la reproduction ou l'utilisation commerciale est interdite."
+      },
+      "availability": {
+        "title": "Disponibilité du Service",
+        "text": "Nous nous efforçons de maintenir la démo accessible mais ne donnons aucune garantie concernant la disponibilité ou la persistance des données. Le service peut être modifié ou interrompu à tout moment."
+      },
+      "jurisdiction": {
+        "title": "Droit Applicable",
+        "text": "Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents."
+      }
+    },
+    "notices": {
+      "title": "Mentions Légales",
+      "desc": "Informations sur l'éditeur, l'hébergement et la propriété intellectuelle.",
+      "intro": "Informations légales sur l'éditeur et l'hébergement de NuxiPro.",
+      "publisher": {
+        "title": "Éditeur",
+        "name": {
+          "label": "Nom",
+          "value": "Sébastien Babas"
+        },
+        "contact": {
+          "label": "Contact",
+          "value": "contact@nuxipro.com"
+        }
+      },
+      "hosting": {
+        "title": "Hébergement",
+        "provider": {
+          "label": "Fournisseur",
+          "value": "Cloudflare Pages / Cloudflare Workers"
+        },
+        "address": {
+          "label": "Adresse",
+          "value": "101 Townsend Street, San Francisco, CA 94107, États-Unis"
+        },
+        "contact": {
+          "label": "Contact",
+          "value": "https://www.cloudflare.com/contact"
+        }
+      },
+      "ip": {
+        "title": "Propriété Intellectuelle",
+        "text": "Tout le code source, le design et le contenu de NuxiPro sont la propriété exclusive de l'éditeur. La rétro-ingénierie, la reproduction ou l'utilisation commerciale est interdite."
+      },
+      "contact": {
+        "title": "Contact",
+        "text": "Pour toute question relative à ces mentions légales, contactez-nous à contact@nuxipro.com."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Une question, un retour, une suggestion ?",
+    "email": "Email",
+    "emailValue": "contact@nuxipro.com",
+    "github": "GitHub",
+    "githubValue": "github.com/nuxipro",
+    "twitter": "X (Twitter)",
+    "twitterValue": "@nuxipro",
+    "back": "← Retour à l'accueil"
+  },
+  "banner": {
+    "title": "Cookies",
+    "close": "Fermer",
+    "text": "Nous utilisons des cookies pour améliorer votre expérience et mesurer l'audience du site. Nous ne vendons jamais vos données à des tiers.",
+    "analytics": "Mesure d'audience",
+    "analyticsDesc": "Mesure du nombre de visites anonymes sur le site",
+    "analyticsBadge": "Requis",
+    "recording": "Enregistrement session",
+    "recordingDesc": "Capturer les interactions pour améliorer l'ergonomie",
+    "learnMore": "En savoir plus",
+    "decline": "Refuser",
+    "accept": "Tout accepter",
+    "modalTitle": "Politique de cookies",
+    "whatIs": "Qu'est-ce qu'un cookie ?",
+    "whatIsText": "Un cookie est un petit fichier texte déposé sur votre appareil lorsque vous visitez un site web. Il permet au site de mémoriser vos actions et préférences.",
+    "cookiesUsed": "Cookies utilisés",
+    "cookieCol": "Cookie",
+    "purposeCol": "Finalité",
+    "durationCol": "Durée",
+    "posthog": "PostHog Analytics",
+    "posthogPurpose": "Mesure d'audience",
+    "posthogDuration": "12 mois",
+    "sessionRec": "Session Recording",
+    "sessionRecPurpose": "Enregistrement des interactions",
+    "sessionRecDuration": "30 jours",
+    "consent": "Consentement",
+    "consentPurpose": "Mémoriser votre choix",
+    "consentDuration": "12 mois",
+    "dataCollected": "Données collectées",
+    "dataCollectedText": "Les données collectées incluent les pages visitées et les clics. Aucune donnée personnelle n'est collectée. Tout le stockage est local dans votre navigateur.",
+    "preferences": "Gestion de vos préférences",
+    "preferencesText": "Vous pouvez modifier vos choix à tout moment en cliquant sur l'icône de rouage en bas à droite de l'écran. Vous pouvez activer ou désactiver l'enregistrement session indépendamment.",
+    "rights": "Vos droits",
+    "rightsText": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour toute question, contactez-nous via la page de mentions légales.",
+    "legalLink": "Politique de cookies",
+    "understood": "Compris",
+    "lastUpdated": "Dernière mise à jour : août 2026",
+    "manageCookies": "Gérer les cookies"
+  }
 }

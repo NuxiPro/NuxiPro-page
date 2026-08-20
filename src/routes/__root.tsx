@@ -1,28 +1,25 @@
 import { PostHogProvider } from "@posthog/react";
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { CookieBanner } from "#/components/Banner";
 import {
   createPageHead,
-  FONTS_LINKS,
-  HREFLANG_DEFAULT,
-  OG_BASE,
   SITE_DESCRIPTION,
+  SITE_IMAGE,
   SITE_NAME,
   SITE_TITLE,
   SITE_URL,
-  TWITTER_BASE,
 } from "../config/seo";
 import { I18nProvider, useTranslation } from "../i18n";
 import appCss from "../styles.css?url";
-import { CookieBanner } from "#/components/Banner";
 
 const posthogKey = //import.meta.env.DEV
   //? undefined
 
-  /*:*/ (import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined);
+  /*:*/ import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN as string | undefined;
 const posthogHost = // import.meta.env.DEV
-// ? undefined
-  /* :*/ (import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined);
+  // ? undefined
+  /* :*/ import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined;
 
 export const Route = createRootRoute({
   head: () =>
@@ -30,16 +27,17 @@ export const Route = createRootRoute({
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,
       url: `${SITE_URL}/`,
-      extraMeta: [
-        { name: "theme-color", content: "#000000" },
-        { name: "application-name", content: SITE_NAME },
-        ...OG_BASE,
-        ...TWITTER_BASE,
-      ],
       links: [
         { rel: "manifest", href: "/manifest.json" },
-        ...HREFLANG_DEFAULT,
-        ...FONTS_LINKS,
+        { rel: "alternate", hreflang: "fr", href: `${SITE_URL}/fr` },
+        { rel: "alternate", hreflang: "en", href: `${SITE_URL}/en` },
+        { rel: "alternate", hreflang: "x-default", href: `${SITE_URL}/` },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&display=swap",
+        },
         { rel: "stylesheet", href: appCss },
         { rel: "icon", type: "image/svg+xml", href: "/icon.svg" },
       ],
@@ -88,6 +86,21 @@ function RootLayoutInner() {
         content
       )}
       <CookieBanner />
+
+      {/* Global SEO meta (OG + Twitter) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: SITE_NAME,
+            url: SITE_URL,
+            description: SITE_DESCRIPTION,
+            image: SITE_IMAGE,
+          }),
+        }}
+      />
     </>
   );
 }

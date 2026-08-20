@@ -12,15 +12,7 @@ import {
   BenefitsTwo,
   ScrollChevron,
 } from "../components/svg-icon";
-import {
-  createPageHead,
-  HREFLANG_DEFAULT,
-  OG_BASE,
-  SITE_DESCRIPTION,
-  SITE_TITLE,
-  SITE_URL,
-  TWITTER_BASE,
-} from "../config/seo";
+import { createPageHead, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../config/seo";
 import { trackClick, useSectionTracking } from "../hooks/useSectionTracking";
 import { useTranslation } from "../i18n";
 
@@ -57,8 +49,6 @@ export const Route = createFileRoute("/")({
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,
       url: `${SITE_URL}/`,
-      extraMeta: [...OG_BASE, ...TWITTER_BASE],
-      links: [...HREFLANG_DEFAULT],
     }),
   component: LandingPage,
 });
