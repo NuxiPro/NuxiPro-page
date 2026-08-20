@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nuxipro.com</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en" />
@@ -11,21 +11,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com" />
   </url>
   <url>
-    <loc>https://nuxipro.com/mentions-legales</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/mentions-legales" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/mentions-legales" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/mentions-legales" />
-  </url>
-  <url>
     <loc>https://nuxipro.com/faq</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/faq" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/faq" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/faq" />
+  </url>
+  <url>
+    <loc>https://nuxipro.com/legal-center</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/legal-center" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/legal-center" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/legal-center" />
+  </url>
+  <url>
+    <loc>https://nuxipro.com/contact</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/contact" />
   </url>
 </urlset>
