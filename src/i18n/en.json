@@ -100,37 +100,71 @@
       "title": "Privacy Policy",
       "desc": "How I collect, use, and protect your personal data.",
       "intro": "NuxiPro respects your privacy. This policy explains how I handle data for both the landing page and the demo version.",
-      "data": {
-        "title": "Data I Collect",
-        "text": "I do not collect any personal data. The landing page collects no data. The demo version (demo.nuxipro.com) runs entirely in your browser using localStorage. No data is transmitted to my servers."
+      "landingPage": {
+        "title": "1. Landing Page",
+        "intro": "I do not collect any direct personal data. Only strictly necessary analytics data is collected to improve the service, provide a better user experience and understand friction or drop-off points.",
+        "tools": {
+          "title": "Tools and data collected",
+          "text": "I use PostHog, an analytics tool to analyze visitor journey on the landing page.",
+          "survol": {
+            "title": "Hover and interactions",
+            "text": "Page sections viewed by the user."
+          },
+          "conversion": {
+            "title": "Conversion",
+            "text": "Clicks on call-to-action (CTA) buttons to measure page effectiveness."
+          },
+          "recording": {
+            "title": "Session Recording",
+            "text": "Subject to your explicit consent. All captured data is fully anonymized and configured in maximum privacy mode in PostHog. Displayed or entered texts are automatically masked (replaced with “****”). Stored 30 days max by PostHog, I can delete them beforehand to keep only useful sessions for project improvement. No data is ever sold or shared with third parties."
+          }
+        },
+        "protection": {
+          "title": "Protection and control of session recordings",
+          "text": "Session recording is strictly framed at application level and in PostHog settings. It is disabled by default to leave you the ultimate choice. You can change or withdraw your consent at any time."
+        },
+        "cookies": {
+          "title": "Cookie usage",
+          "text": "I use analytics cookies only to measure audience and improve NuxiPro. Without your explicit consent, no tracking or data is collected."
+        }
       },
-      "storage": {
-        "title": "Local Storage",
-        "text": "Your tasks and preferences are stored locally in your browser's localStorage. This data never leaves your device and is automatically deleted when you clear your browser data."
-      },
-      "cookies": {
-        "title": "Cookies & Consent",
-        "text": "A cookie consent banner is displayed on your first visit. Essential cookies (consent preference) are stored without consent. Analytics cookies (PostHog) and session recording require your explicit consent."
-      },
-      "analytics": {
-        "title": "Analytics",
-        "text": "I use PostHog for anonymous analytics to understand how users interact with the interface. This includes page views, clicks, and navigation patterns. No text content, task names, or personal information is recorded."
-      },
-      "session": {
-        "title": "Session Recording",
-        "text": "Session recording is optional and disabled by default. When enabled, it captures UI interactions to help us identify usability issues. All text fields are automatically masked. Recordings are stored in the EU and deleted after 30 days."
-      },
-      "rights": {
-        "title": "Your Rights",
-        "text": "Under GDPR, you have the right to access, rectify, and delete your data. Since all data is stored locally in your browser, you can clear it at any time through your browser settings."
+      "demo": {
+        "title": "2. Interactive Demo of NuxiPro",
+        "intro": "The demo version of NuxiPro runs entirely client-side (local) within your browser.",
+        "storage": {
+          "title": "Data storage",
+          "local": {
+            "title": "Exclusively local storage",
+            "text": "All data generated in the demo is stored exclusively in your device's local storage (LocalStorage). No data is transmitted, processed or saved on a remote server."
+          },
+          "loss": {
+            "title": "Permanent loss upon clearing",
+            "text": "If you clear your browsing data (cache clear or LocalStorage deletion), all demo data will be permanently and irreversibly lost, with no possibility of recovery."
+          }
+        },
+        "warning": {
+          "title": "Warning and usage restrictions",
+          "experimental": {
+            "title": "Experimental use",
+            "text": "The demo is an experimental tool designed solely to let you discover the concept and basic features of NuxiPro."
+          },
+          "professional": {
+            "title": "Professional use discouraged",
+            "text": "Using this demo in a professional or daily context is strictly discouraged. As browser-side storage is inherently volatile, never enter critical, confidential or irreplaceable data."
+          }
+        },
+        "clause": {
+          "title": "Disclaimer clause",
+          "text": "The demo is provided “as is” for trial purposes. Under no circumstances can the publisher be held liable for any data loss, access interruption or direct or indirect damage related to the use of the demo or non-compliance with the above usage warnings."
+        }
       },
       "noSell": {
         "title": "I never sell your data",
         "text": "NuxiPro does not sell, rent, or share your personal data with third parties. The only data collected is anonymous site usage statistics, solely to improve the product."
       },
-      "disclaimer": {
-        "title": "Disclaimer",
-        "text": "The demo version is an experimental tool. Do not enter critical, confidential, or irreplaceable data. Data stored in your browser may be lost if you clear your cache."
+      "rights": {
+        "title": "Your Rights",
+        "text": "Under GDPR, you have the right to access, rectify, and delete your data. Since all data is stored locally in your browser, you can clear it at any time through your browser settings."
       }
     },
     "cookies": {

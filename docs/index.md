@@ -1,391 +1,335 @@
 # NuxiPro — Documentation
 
 ## Table of Contents
-
 1. [Presentation](#presentation)
 2. [Features](#features)
 3. [Architecture](#architecture)
-4. [Installation](#installation)
-5. [Configuration](#configuration)
-6. [Deployment](#deployment)
-7. [Testing](#testing)
-8. [Contribution](#contribution)
+4. [Project Structure](#project-structure)
+5. [Routing](#routing)
+6. [Legal Center — Maintenance](#legal-center--maintenance)
+7. [SEO / AEO / GEO](#seo--aeo--geo)
+8. [i18n](#i18n)
+9. [Cookie Consent](#cookie-consent)
+10. [Worker & Analytics Proxy](#worker--analytics-proxy)
+11. [Public Assets](#public-assets)
+12. [Installation](#installation)
+13. [Configuration](#configuration)
+14. [Deployment](#deployment)
+15. [Testing](#testing)
+16. [Maintenance Guide](#maintenance-guide)
+17. [Contribution](#contribution)
 
 ---
 
 ## Presentation
 
-NuxiPro is a minimalist personal Kanban task manager. The core principle is simple: **completed tasks should disappear automatically**.
+Minimalist personal Kanban. Principle: **completed tasks auto-archive**. Demo archives instantly (`localStorage`); Cloud (future) = instant or after X days (choice at sign-up).
 
-Instead of manually cleaning up your "Done" column, NuxiPro archives tasks after they reach completion. No clutter, no wasted time. Just focus on what matters.
-
-This repository contains the **landing page** for NuxiPro. The landing page serves as:
-
-- **Product showcase** — Interactive animated Kanban demo
-- **Marketing site** — Features, benefits, FAQ
-- **Legal Center** — Privacy policy, terms, legal notices
-- **Contact page** — Quick access to support
-
-**Links:**
+This repo = **landing page** only: showcase + marketing + legal + contact.
 
 | Resource | URL |
 |---|---|
-| Live Demo | [demo.nuxipro.com](https://demo.nuxipro.com) |
-| Cloud (in dev) | [app.nuxipro.com](https://app.nuxipro.com) |
-| Blog & Docs | [center.nuxipro.com](https://center.nuxipro.com) |
-| GitHub | [github.com/NuxiPro](https://github.com/NuxiPro) |
-| Website | [nuxipro.com](https://nuxipro.com) |
+| Website | https://nuxipro.com |
+| Demo | https://demo.nuxipro.com |
+| Cloud (dev) | https://app.nuxipro.com |
+| Blog & Docs | https://center.nuxipro.com |
+| GitHub | https://github.com/NuxiPro |
 
 ---
 
 ## Features
 
-### Landing Page Features
-
-- **Interactive Kanban Demo** — Animated board with cursor simulation, card dragging, and auto-archiving
-- **Bilingual (FR/EN)** — Automatic browser locale detection with manual toggle
-- **SEO Optimized** — Structured data (JSON-LD), Open Graph, Twitter Cards, hreflang, canonical URLs
-- **AEO/GEO Ready** — BreadcrumbList, ContactPage, WebPage schemas for answer engines
-- **Cookie Consent** — GDPR-compliant banner with analytics + session recording opt-in
-- **PWA Support** — Web App Manifest for installability
-- **Responsive Design** — Mobile-first with breakpoints at 540px, 768px, 1024px+
-- **Analytics** — PostHog integration (opt-in only, anonymized)
-- **Reduced Motion** — Respects `prefers-reduced-motion` system preference
-
-### Legal Center
-
-Dedicated section with 3 pages:
-
-| Page | URL | Content |
-|------|-----|---------|
-| Hub | `/legal-center` | Overview with links to all legal pages |
-| Privacy | `/legal-center/privacy` | Data collection, GDPR rights, cookies, "we never sell your data" |
-| Terms | `/legal-center/terms` | Demo usage, data risks, liability, IP |
-| Notices | `/legal-center/notices` | Publisher info, hosting (Cloudflare), contact |
-
-### Product Features (NuxiPro SaaS)
-
-- **Auto-archiving** — Demo: tasks archive instantly when reaching "Done" (localStorage, not for real work). Cloud: you choose your archiving mode at sign-up — instant or after X days.
-- **Minimal configuration** — Demo works out of the box. Cloud requires one simple choice at sign-up.
-- **No visual clutter** — Completed tasks disappear from view
-- **Simple tracking** — Quick overview of active work
+- **Kanban Demo** `src/components/KanbanDemo.tsx:1` — `requestAnimationFrame` + refs, Bezier drag, auto-archive, respects `prefers-reduced-motion`
+- **Bilingual FR/EN** — `navigator.languages` + `localStorage nuxipro-locale` + manual toggle, no `/fr` routing (SPA fallback)
+- **SEO/AEO** — `createPageHead()` + JSON-LD per route, hreflang `en/fr/x-default`
+- **Cookie GDPR** — `src/components/Banner.tsx:1` opt-in analytics + session recording, 12-month expiry
+- **PWA** — `public/manifest.json`
+- **Analytics** — PostHog EU, opt-in only, anonymized, via Worker proxy
+- **Responsive** — 540/768/1024px, mobile-first
 
 ---
 
 ## Architecture
 
-### Tech Stack Overview
-
 ```
-┌─────────────────────────────────────────┐
-│              Cloudflare Pages            │
-│  ┌─────────────────────────────────┐    │
-│  │         Middleware               │    │
-│  │    (PostHog proxy /edge)        │    │
-│  └─────────────────────────────────┘    │
-│  ┌─────────────────────────────────┐    │
-│  │         Static Assets           │    │
-│  │    (index.html, JS, CSS)        │    │
-│  └─────────────────────────────────┘    │
-└─────────────────────────────────────────┘
-                    │
-        ┌───────────┴───────────┐
-        │                       │
-   ┌────▼────┐            ┌────▼────┐
-   │  React  │            │ PostHog │
-   │   SPA   │            │(EU host)│
-   └─────────┘            └─────────┘
+┌─────────────────────────────────────┐
+│      Cloudflare Workers Assets      │  wrangler.jsonc: assets ./dist
+│  ┌─────────────────────────────┐    │  not_found_handling: single-page-application
+│  │  Worker src/worker.ts       │    │  → /nuxi-data/x/* → PostHog EU
+│  └─────────────────────────────┘    │  → else → ASSETS.fetch (SPA)
+│  ┌─────────────────────────────┐    │
+│  │  Static Assets (dist/)      │    │
+│  └─────────────────────────────┘    │
+└─────────────────────────────────────┘
+           │              │
+     ┌─────▼────┐   ┌────▼────┐
+     │ React 19 │   │ PostHog │
+     │ SPA Vite │   │ EU host │
+     └──────────┘   └─────────┘
 ```
 
-### Project Structure
+Stack: `Bun 1.3.13` (`.bun-version`), `React 19.2`, `Vite 8.2`, `TanStack Router 1.17` file-based, `Tailwind v4` (`@theme` in `styles.css`), `Biome 2.5`, `Vitest 4.1 + jsdom`.
+
+---
+
+## Project Structure
 
 ```
 src/
-├ main.tsx                 # React entry point
-├ router.tsx               # TanStack Router initialization
-├ routeTree.gen.ts         # Auto-generated route tree (DO NOT EDIT)
-├ styles.css               # Global styles (Tailwind v4 + custom theme)
-├ kanban.css               # Kanban demo styles
-│
-├ components/              # Reusable UI components
-│   ├── Navbar.tsx         # Sticky nav (logo, Contact, FAQ, Cloud)
-│   ├── Footer.tsx         # Dark footer (GitHub, PH, Blog, Docs, Legal)
-│   ├── Banner.tsx         # Cookie consent banner (GDPR)
-│   ├── KanbanDemo.tsx     # Animated Kanban board
-│   ├── FadeIn.tsx         # Scroll-triggered fade-in wrapper
-│   ├── legal-section.tsx  # Shared legal page section
-│   └── svg-icon.tsx       # Centralized SVG icons
-│
-├ config/                  # Configuration
-│   └── seo.ts             # SEO constants + createPageHead()
-│
-├ hooks/                   # Custom React hooks
-│   └── useSectionTracking.ts  # PostHog tracking
-│
-├ i18n/                    # Internationalization
-│   ├── index.tsx          # I18n context, provider, useTranslation()
-│   ├── en.json            # English translations
-│   └── fr.json            # French translations
-│
-├ test/                    # Unit tests
-│   ├── setup.ts           # Vitest setup (jsdom + React Testing Library)
-│   ├── seo.test.ts        # SEO validation (unique titles/descriptions)
-│   └── i18n.test.ts       # i18n validation (key parity EN/FR)
-│
-└ routes/                  # Page components (file-based routing)
-    ├── __root.tsx         # Root layout (providers, SEO, fonts)
-    ├── index.tsx          # Home page (/, Hero + Demo + Benefits + CTA)
-    ├── faq.tsx            # FAQ page (/faq, accordion + JSON-LD)
-    ├── contact.tsx        # Contact page (/contact, email + GitHub + X)
-    ├── legal-center.tsx   # Legal center layout (sidebar + Outlet)
-    └── legal-center/      # Legal center pages
-        ├── index.tsx      # Hub (/legal-center)
-        ├── privacy.tsx    # Privacy policy
-        ├── terms.tsx      # Terms of use
-        └── notices.tsx    # Legal notices
+├ main.tsx               # createRoot → RouterProvider
+├ router.tsx             # createTanStackRouter({routeTree, scrollRestoration, preload:intent})
+├ routeTree.gen.ts       # AUTO-GENERATED — DO NOT EDIT
+├ styles.css             # Tailwind @theme (teal #0d9488, canvas, hairline) + global
+├ kanban.css             # Kanban window/board/cursor
+├ cookie.css             # Banner modal/FAB
+├ worker.ts              # Edge proxy /nuxi-data/x/*
+├ config/seo.ts          # SITE_URL, SITE_TITLE, createPageHead()
+├ hooks/useSectionTracking.ts # IntersectionObserver → posthog.capture(section_view/cta_click)
+├ i18n/index.tsx         # Locale en|fr, detectBrowserLocale, localStorage
+├ i18n/en.json + fr.json # 285L each, strict parity (tested)
+├ components/
+│  ├── Navbar.tsx        # sticky: logo icon.svg+text23.svg, FAQ/Contact, Cloud→app.nuxipro.com
+│  ├── Footer.tsx        # dark #0c0c0c, Project + Legal Center
+│  ├── Banner.tsx        # GDPR consent, CONSENT_VERSION 1.0, keys nuxipro_cookie_*
+│  ├── KanbanDemo.tsx    # 482L anim engine
+│  ├── FadeIn.tsx        # threshold 0.15
+│  ├── legal-section.tsx # USED — section + dot teal + border-hairline
+│  ├── legal.tsx         # UNUSED — dead code, prefer legal-section.tsx
+│  └── svg-icon.tsx      # all SVGs centralized (287L)
+├ routes/
+│  ├── __root.tsx        # I18nProvider, PostHog init (opt-in), <html lang>, head global
+│  ├── index.tsx         # / Hero + Pourquoi + Benefits(5) + CTA
+│  ├── faq.tsx           # /faq accordion + FAQPage JSON-LD
+│  ├── contact.tsx       # /contact ContactPage+Organization+BreadcrumbList
+│  ├── legal-center.tsx  # /legal-center layout (header+sidebar+Outlet)
+│  └── legal-center/
+│     ├── index.tsx      # /legal-center/ hub 3 cards
+│     ├── privacy.tsx    # /legal-center/privacy 8 sections
+│     ├── terms.tsx      # /legal-center/terms 6 sections
+│     └── notices.tsx    # /legal-center/notices publisher/hosting (InfoRow)
+└ test/
+   ├── setup.ts
+   ├── seo.test.ts       # unique titles/descriptions, length 20-160
+   └── i18n.test.ts      # EN/FR parity
 ```
 
-### Routing
+---
 
-TanStack Router with file-based routing:
+## Routing
 
-| Route | File | Description |
+File-based, `routeTree.gen.ts` auto-generated.
+
+| URL | File | Head |
 |---|---|---|
-| `/` | `routes/index.tsx` | Main landing page |
-| `/faq` | `routes/faq.tsx` | FAQ with accordion |
-| `/contact` | `routes/contact.tsx` | Contact page |
-| `/legal-center` | `routes/legal-center.tsx` | Legal center layout |
-| `/legal-center/` | `routes/legal-center/index.tsx` | Legal hub |
-| `/legal-center/privacy` | `routes/legal-center/privacy.tsx` | Privacy policy |
-| `/legal-center/terms` | `routes/legal-center/terms.tsx` | Terms of use |
-| `/legal-center/notices` | `routes/legal-center/notices.tsx` | Legal notices |
+| `/` | `routes/index.tsx` | `SITE_TITLE` |
+| `/faq` | `routes/faq.tsx` | FAQ + FAQPage |
+| `/contact` | `routes/contact.tsx` | ContactPage+Organization+Breadcrumb |
+| `/legal-center` | `routes/legal-center.tsx` | Layout Breadcrumb+WebPage + `Outlet` |
+| `/legal-center/` | `routes/legal-center/index.tsx` | Hub |
+| `/legal-center/privacy` | `routes/legal-center/privacy.tsx` | Privacy |
+| `/legal-center/terms` | `routes/legal-center/terms.tsx` | Terms |
+| `/legal-center/notices` | `routes/legal-center/notices.tsx` | Notices |
 
-The route tree is auto-generated in `routeTree.gen.ts`. Do not edit manually.
+Add route = create file in `src/routes/` + `bun run build` regenerates `routeTree.gen.ts`.
 
-### SEO / AEO / GEO
+---
 
-Simplified in `src/config/seo.ts`:
+## Legal Center — Maintenance
 
-- **SEO**: Title, meta description, canonical URL per page
-- **AEO**: JSON-LD schemas (BreadcrumbList, ContactPage, Organization, WebPage, FAQPage)
-- **GEO**: hreflang tags (fr, en, x-default)
-- **OG/Twitter**: Set globally in root layout
+**Layout** `legal-center.tsx:11` = header `99-113` + sidebar `117-137` (`sections:30-34`) + `Outlet:140`. No legal text.
 
-### Cookie Consent
+**Hub** `legal-center/index.tsx:16` = 3 cards `26-30` → privacy/terms/notices.
 
-GDPR-compliant banner (`src/components/Banner.tsx`):
+| File | Role | Sections | When to edit |
+|---|---|---|---|
+| `privacy.tsx:7` | **RGPD** privacy policy | 8× `LegalSection` `privacy.tsx:43-73` : data/noSell/storage/cookies/analytics/session/rights/disclaimer | tracker/cookie/storage change |
+| `terms.tsx:7` | **CGU** terms of use | 6× `LegalSection` `terms.tsx:43-65` : demo/storage/responsability/ip/availability/jurisdiction | feature/liability change |
+| `notices.tsx:7` | **Mentions légales** LCEN | 4× `LegalSection` + `InfoRow:87` publisher/hosting/ip/contact | publisher `S. Babas` / email / hosting `Cloudflare` change |
 
-- **Analytics** (PostHog): Opt-in only, anonymized, never sold
-- **Session Recording**: Disabled by default, manual toggle
-- **Consent storage**: `localStorage` only, never sent to server
-- **Manage**: Gear icon to reopen preferences
+Template identique: `TITLE/DESCRIPTION/URL:7-9` (SEO) → `createFileRoute:11` → `PrivacyPage:21` → `max-w-2xl:25` → header back `27-33` + `h1 t("legal.*.title"):35` + `lastUpdated:37` (hardcoded `août 2026` — centralize) → `intro:40` → `space-y-10:42` + `LegalSection`.
 
-### Middleware
+Text visible = `src/i18n/en.json` + `fr.json` (`legal.*`), not `.tsx`. Add section = duplicate `LegalSection` + add i18n keys.
 
-Cloudflare Workers edge middleware (`src/worker.ts`) proxies PostHog analytics:
+Source légale vérité = `docs/legal-actuel.md` (demo `localStorage`, PostHog anon). `docs/legal.md` = aspirational Cloud future (Aiven PG/Redis/Sentry/Better Auth) — not implemented.
 
-- Intercepts `/nuxi-data/:path*` requests
-- Routes to PostHog EU hosts
-- Strips CORS/CSP headers
-- Hides analytics endpoint behind site domain
+---
+
+## SEO / AEO / GEO
+
+`src/config/seo.ts` : `SITE_URL=https://nuxipro.com`, `SITE_TITLE`, `createPageHead()` → canonical + og.
+
+Per route `head: () => createPageHead({title, description, url, links})` + JSON-LD:
+- `__root.tsx` : WebSite
+- `legal-center.tsx:39-86` : BreadcrumbList + WebPage
+- `contact.tsx` : ContactPage + Organization + Breadcrumb
+- `faq.tsx` : FAQPage
+- `index.html` : fallback `@graph` (WebSite/Organization/Breadcrumb/SoftwareApplication/FAQPage)
+
+`hreflang` `en/fr/x-default` set but `/en` `/fr` are SPA fallback (200, not real routes) — GEO imperfect.
+
+OG/Twitter + fonts `Fraunces/Inter` in `__root.tsx` + `index.html` `noscript` fallback.
+
+---
+
+## i18n
+
+`src/i18n/index.tsx`: `detectBrowserLocale()` → `navigator.languages`, store `nuxipro-locale`, `t(key)` via `resolveNested`. No URL routing. Dynamic `<html lang>` in `__root.tsx`, but `index.html lang="en"` + `manifest.json lang:"fr"` — triple source.
+
+Add key = add to **both** `en.json` and `fr.json` (tested `i18n.test.ts:78` parity).
+
+---
+
+## Cookie Consent
+
+`src/components/Banner.tsx`: `CONSENT_VERSION 1.0`, keys `nuxipro_cookie_analytics/recording/consent`, expiry 12 months (`isConsentExpired` — var `sixMonthsLater` misnamed), modal `30j` vs `12mois` incoherence. Toggles 3, FAB gear emits `reopen-cookie-banner`. Opt-in only, `localStorage` only.
+
+---
+
+## Worker & Analytics Proxy
+
+`src/worker.ts:1` (prod) vs `vite.config.ts` (dev) — **divergent paths** (P0):
+
+| Env | Request | Target |
+|---|---|---|
+| Dev | `/ingest/*`, `/ingest/static/*`, `/ingest/array/*` | Vite proxy → `eu-assets.i.posthog.com` / `VITE_PUBLIC_POSTHOG_HOST\|\|eu.i.posthog.com` |
+| Prod | `/nuxi-data/x/*` | Worker → `eu.i.posthog.com` / `eu-assets.i.posthog.com` (if `static/`) + strip CSP/X-Frame |
+
+`__root.tsx` `posthog.init({api_host:"/ingest"})` — broken in prod if not rewritten. Keep both proxies aligned or unify to `/ingest`.
+
+---
+
+## Public Assets
+
+| File | Notes |
+|---|---|
+| `public/sitemap.xml` | **TODO P0**: currently 4 URLs (`/`, `/faq`, `/legal-center`, `/contact`) — must be 7 (+ `/privacy`, `/terms`, `/notices`). `lastmod` update on legal change. hreflang `en/fr/x-default` per URL. |
+| `public/robots.txt` | Allow all + 11 bots, `Sitemap: /sitemap.xml` OK but `Sitemap: /llms.txt` invalid (not XML) |
+| `public/llms.txt` | 94L summary, contains dead link `/mentions-legales` → `/legal-center` |
+| `public/manifest.json` | `name NuxiPro`, icons `logo.png 192/512`, `lang fr`, `start_url .` |
+| `public/security.txt` | `Contact security@nuxipro.com`, `Expires 2027-12-31` |
+| `public/icon.svg`, `logo.png`, `text23.svg`, `text23-light.svg` | Navbar/Footer logos |
+| `public/og-image.png` | OG image |
+| `public/demo.gif` | Unreferenced (docs only) |
 
 ---
 
 ## Installation
 
-### Prerequisites
-
-- [Bun](https://bun.sh) >= 1.3.13 (pinned in `.bun-version`)
-
-### Setup
+Prereq: `Bun >=1.3.13` (`.bun-version`)
 
 ```bash
-# Clone the repository
 git clone https://github.com/NuxiPro/NuxiPro-page.git
 cd NuxiPro-page
-
-# Install dependencies
 bun install
-
-# Start development server
-bun dev
+bun dev # http://localhost:3000
 ```
 
-Dev server runs at `http://localhost:3000`.
+Scripts:
 
-### Available Scripts
-
-| Script | Command | Description |
+| Script | Command | Desc |
 |---|---|---|
-| `dev` | `vite dev --port 3000` | Start dev server |
-| `build` | `vite build` | Production build |
-| `preview` | `vite preview` | Preview production build |
-| `test` | `vitest run` | Run tests once |
-| `test:watch` | `vitest` | Run tests in watch mode |
-| `format` | `biome format` | Format code |
-| `lint` | `biome lint` | Lint code |
-| `check` | `biome check` | Run all Biome checks |
+| `dev` | `vite dev --port 3000` | dev |
+| `build` | `vite build` | prod → `dist/` |
+| `preview` | `vite preview` | preview |
+| `test` | `vitest run` | once |
+| `test:watch` | `vitest` | watch |
+| `format/lint/check` | `biome ...` | code quality |
 
 ---
 
 ## Configuration
 
-### Environment Variables
-
-Create a `.env` file at the project root:
+`.env` (not committed, gitignored):
 
 ```env
-VITE_PUBLIC_POSTHOG_PROJECT_TOKEN=your_posthog_token
-VITE_PUBLIC_POSTHOG_HOST=https://eu.i.posthog.com
+VITE_PUBLIC_POSTHOG_PROJECT_TOKEN=phc_...
+VITE_PUBLIC_POSTHOG_HOST=https://eu.i.posthog.com # optional, fallback eu.i.posthog.com
 ```
 
-| Variable | Description | Required |
-|---|---|---|
-| `VITE_PUBLIC_POSTHOG_PROJECT_TOKEN` | PostHog project API key | Yes (analytics) |
-| `VITE_PUBLIC_POSTHOG_HOST` | PostHog host URL | Yes (analytics) |
-
-### TypeScript
-
-Path aliases are configured in `tsconfig.json`:
-
-```typescript
-// Both resolve to ./src/
-import something from "#/*"
-import something from "@/*"
-```
-
-### Tailwind CSS
-
-Uses Tailwind CSS v4 with `@theme` directive in `styles.css`. No `tailwind.config.js` needed.
-
-### Biome
-
-Linting and formatting via Biome (replaces ESLint + Prettier). Configured in `.vscode/settings.json` for VS Code integration.
+`tsconfig.json` aliases `#/*` + `@/*` → `./src/*` (strict, `ES2022`).
+`biome.json` includes `src/** public/**`, ignores `kanban.css/styles.css/cookie.css` + `routeTree.gen.ts` disabled.
+Tailwind v4 `@theme` in `styles.css` — no `tailwind.config.js`.
 
 ---
 
 ## Deployment
 
-### Cloudflare Pages
-
-The project deploys to Cloudflare Pages via Wrangler.
-
-**Configuration** (`wrangler.jsonc`):
+**Cloudflare Workers Assets** (not Pages). `wrangler.jsonc`:
 
 ```jsonc
-{
-  "name": "nuxipro-page",
-  "compatibility_date": "2026-08-01",
-  "assets": { "directory": "./dist" },
-  "routes": [{ "type": "single_page_application" }]
-}
+{ "name":"nuxipro-page", "compatibility_date":"2026-08-01", "main":"src/worker.ts", "assets":{"directory":"./dist","not_found_handling":"single-page-application"} }
 ```
-
-**Deploy:**
 
 ```bash
-bun build
-npx wrangler pages deploy dist
+bun run build
+npx wrangler deploy # not `wrangler pages deploy`
 ```
 
-### Domain
-
-- **Production:** `nuxipro.com`
-- **Demo:** `demo.nuxipro.com`
-- **Blog & Docs:** `center.nuxipro.com`
-- **Cloud (In development):** `app.nuxipro.com`
+Domains: `nuxipro.com` (prod), `demo.nuxipro.com`, `center.nuxipro.com`, `app.nuxipro.com` (dev).
 
 ---
 
 ## Testing
 
-Unit tests with Vitest + React Testing Library.
-
-### Run Tests
-
 ```bash
-bun run test        # Run once
-bun run test:watch  # Watch mode
+bun run test       # 11 tests
+bun run test:watch
 ```
 
-### Test Files
+| File | Tests | Checks |
+|---|---|---|
+| `seo.test.ts` | 5 | 7 pages unique titles/descriptions, 20-160 chars, "NuxiPro" in titles |
+| `i18n.test.ts` | 6 | EN/FR parity, required legal/contact keys |
 
-| File | Tests | What it checks |
-|------|-------|----------------|
-| `seo.test.ts` | 5 | Unique titles, unique descriptions, length 20-160 chars, "NuxiPro" in titles |
-| `i18n.test.ts` | 6 | EN/FR key parity, required legal/contact keys exist |
+Add test = `src/test/*.test.ts` (jsdom, `setup.ts`).
 
-### Adding Tests
+---
 
-Create `*.test.ts` files in `src/test/`. Vitest is configured with jsdom environment.
+## Maintenance Guide
+
+**Where to edit what:**
+
+| Change | File(s) |
+|---|---|
+| Legal text | `src/i18n/en.json` + `fr.json` |
+| Legal SEO title/desc | `src/routes/legal-center/*.tsx:7-9` + `seo.ts` |
+| New legal section | duplicate `LegalSection` in `privacy/terms/notices.tsx` + add i18n keys |
+| Update `lastUpdated` | `privacy/terms/notices.tsx:37` (3 files) — centralize to constant |
+| Add page/route | new file `src/routes/*.tsx` → auto `routeTree.gen.ts` + update `sitemap.xml` + `llms.txt` + `seo.test.ts` |
+| Translate | add key to both `en.json`+`fr.json` then `t("key")` |
+| Icons | `src/components/svg-icon.tsx` |
+| Styles section | `src/components/legal-section.tsx` |
+| Analytics | `src/worker.ts` + `vite.config.ts` + `__root.tsx` (keep `/ingest` ≡ `/nuxi-data/x` in sync) |
+| Sitemap | `public/sitemap.xml` — add URL + hreflang + bump `lastmod` |
+| Check before PR | `bun run check && bun run test` |
+
+**Critical TODOs:**
+- P0: sitemap 4→7 URLs, unify analytics proxy paths
+- P1: fix `llms.txt` `/mentions-legales` → `/legal-center`, remove `Sitemap: /llms.txt` from `robots.txt`, rename `sixMonthsLater`→`twelveMonthsLater`
+- P2: remove dead `src/components/legal.tsx`, fix `manifest.json`/`index.html`/`__root.tsx` lang triple source, `localStorage` SSR guard in `i18n/index.tsx`
 
 ---
 
 ## Contribution
 
-### Code Style
-
-- **Formatter/Linter:** Biome (run `bun run check` before committing)
-- **TypeScript:** Strict mode enabled
-- **Components:** Functional components with hooks
-- **Styling:** Tailwind CSS v4 utility classes
-- **i18n:** Add keys to both `en.json` and `fr.json`
-
-### Commit Convention
-
-Follow conventional commits:
-
-```
-feat: add new feature
-fix: bug fix
-docs: documentation update
-style: formatting change
-refactor: code restructuring
-test: add tests
-```
-
-### Development Workflow
-
-1. Create a branch from `main`
-2. Make your changes
-3. Run `bun run check` to ensure code quality
-4. Run `bun run test` to verify tests pass
-5. Submit a pull request
-
-### File Guidelines
-
-- **`routeTree.gen.ts`** — Auto-generated by TanStack Router. Do not edit manually.
-- **`public/`** — Static assets (images, manifest, robots.txt, security.txt)
-- **`src/routes/`** — Page components (file-based routing)
-- **`src/components/`** — Reusable UI components
-- **`src/components/svg-icon.tsx`** — All SVG icons centralized here
-- **`src/i18n/`** — Translation files (add keys to both `en.json` and `fr.json`)
-- **`src/test/`** — Unit tests (Vitest)
+- Biome: `bun run check` before commit, TS strict, functional components + hooks
+- Commits: `feat:|fix:|docs:|style:|refactor:|test:`
+- Workflow: branch `main` → change → `check` + `test` → PR
+- Do not edit: `routeTree.gen.ts`, `dist/`, `public/sitemap.xml` lastmod without reason
 
 ---
 
 ## FAQ
 
-### Why is there no dark mode?
+**No dark mode?** Light-only by design, hardcoded `light`.
 
-NuxiPro uses a light-only theme by design. The theme is hardcoded to `"light"` in the root layout.
+**Bun vs npm?** Faster, pinned `1.3.13`.
 
-### Why Bun instead of npm/yarn?
+**PostHog vs GA?** EU host, GDPR opt-in, session recording + feature flags.
 
-Bun is faster for install, build, and dev. The version is pinned in `.bun-version` for consistency.
+**KanbanDemo?** `KanbanDemo.tsx` `requestAnimationFrame` + refs, no React re-renders.
 
-### Why PostHog instead of Google Analytics?
-
-PostHog provides product analytics (session recording, feature flags) beyond basic page views. It's also GDPR-friendly with EU hosting. Analytics are opt-in only.
-
-### How does the Kanban demo work?
-
-The `KanbanDemo` component runs a client-side animation engine using `requestAnimationFrame` and mutable refs (no React re-renders). It simulates a cursor dragging cards through columns with auto-archiving.
-
-### Where is the data stored?
-
-- **Demo:** 100% in browser `localStorage`. No server. Data lost if cache cleared.
-- **Cloud (future):** Aiven PostgreSQL + Redis Cloud (EU hosting).
+**Data where?** Demo `localStorage` only. Cloud future `Aiven PG + Redis` (see `docs/legal.md` aspirational).
 
 ---
 
@@ -395,4 +339,4 @@ The `KanbanDemo` component runs a client-side animation engine using `requestAni
 
 ## License
 
-This project is licensed under the [BSD 2-Clause "Simplified" License](../LICENSE).
+BSD 2-Clause — [LICENSE](../LICENSE)

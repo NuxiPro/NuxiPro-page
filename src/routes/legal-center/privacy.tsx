@@ -39,38 +39,85 @@ function PrivacyPage() {
 
       <p className="text-[15px] text-body leading-relaxed mb-10">{t("legal.privacy.intro")}</p>
 
-      <div className="space-y-10">
-        <LegalSection title={t("legal.privacy.data.title")}>
-          <p>{t("legal.privacy.data.text")}</p>
-        </LegalSection>
+      <div className="space-y-12">
+        {/* Module 1 — Landing Page */}
+        <section className="space-y-8">
+          <h2 className="text-xl font-heading font-semibold tracking-tight">
+            {t("legal.privacy.landingPage.title")}
+          </h2>
+          <p className="text-[14px] text-body leading-relaxed">{t("legal.privacy.landingPage.intro")}</p>
 
-        <LegalSection title={t("legal.privacy.noSell.title")}>
-          <p>{t("legal.privacy.noSell.text")}</p>
-        </LegalSection>
+          <LegalSection title={t("legal.privacy.landingPage.tools.title")}>
+            <div className="space-y-2">
+              <p>{t("legal.privacy.landingPage.tools.text")}</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>
+                  <strong>{t("legal.privacy.landingPage.tools.survol.title")} :</strong>{" "}
+                  {t("legal.privacy.landingPage.tools.survol.text")}
+                </li>
+                <li>
+                  <strong>{t("legal.privacy.landingPage.tools.conversion.title")} :</strong>{" "}
+                  {t("legal.privacy.landingPage.tools.conversion.text")}
+                </li>
+                <li>
+                  <strong>{t("legal.privacy.landingPage.tools.recording.title")} :</strong>{" "}
+                  {t("legal.privacy.landingPage.tools.recording.text")}
+                </li>
+              </ul>
+            </div>
+          </LegalSection>
 
-        <LegalSection title={t("legal.privacy.storage.title")}>
-          <p>{t("legal.privacy.storage.text")}</p>
-        </LegalSection>
+          <LegalSection title={t("legal.privacy.landingPage.protection.title")}>
+            <p>{t("legal.privacy.landingPage.protection.text")}</p>
+          </LegalSection>
 
-        <LegalSection title={t("legal.privacy.cookies.title")}>
-          <p>{t("legal.privacy.cookies.text")}</p>
-        </LegalSection>
+          <LegalSection title={t("legal.privacy.landingPage.cookies.title")}>
+            <p>{t("legal.privacy.landingPage.cookies.text")}</p>
+          </LegalSection>
+        </section>
 
-        <LegalSection title={t("legal.privacy.analytics.title")}>
-          <p>{t("legal.privacy.analytics.text")}</p>
-        </LegalSection>
+        {/* Module 2 — Démo Interactive */}
+        <section className="space-y-8">
+          <h2 className="text-xl font-heading font-semibold tracking-tight">
+            {t("legal.privacy.demo.title")}
+          </h2>
+          <p className="text-[14px] text-body leading-relaxed">{t("legal.privacy.demo.intro")}</p>
 
-        <LegalSection title={t("legal.privacy.session.title")}>
-          <p>{t("legal.privacy.session.text")}</p>
-        </LegalSection>
+          <div className="space-y-6">
+            <h3 className="text-[14px] font-medium text-ink">{t("legal.privacy.demo.storage.title")}</h3>
+            <LegalSection title={t("legal.privacy.demo.storage.local.title")}>
+              <p>{t("legal.privacy.demo.storage.local.text")}</p>
+            </LegalSection>
+            <LegalSection title={t("legal.privacy.demo.storage.loss.title")}>
+              <p>{t("legal.privacy.demo.storage.loss.text")}</p>
+            </LegalSection>
+          </div>
 
-        <LegalSection title={t("legal.privacy.rights.title")}>
-          <p>{t("legal.privacy.rights.text")}</p>
-        </LegalSection>
+          <div className="space-y-6">
+            <h3 className="text-[14px] font-medium text-ink">{t("legal.privacy.demo.warning.title")}</h3>
+            <LegalSection title={t("legal.privacy.demo.warning.experimental.title")}>
+              <p>{t("legal.privacy.demo.warning.experimental.text")}</p>
+            </LegalSection>
+            <LegalSection title={t("legal.privacy.demo.warning.professional.title")}>
+              <p>{t("legal.privacy.demo.warning.professional.text")}</p>
+            </LegalSection>
+          </div>
 
-        <LegalSection title={t("legal.privacy.disclaimer.title")}>
-          <p>{t("legal.privacy.disclaimer.text")}</p>
-        </LegalSection>
+          <LegalSection title={t("legal.privacy.demo.clause.title")}>
+            <p>{t("legal.privacy.demo.clause.text")}</p>
+          </LegalSection>
+        </section>
+
+        {/* Hors modules — éléments duplicables */}
+        <section className="space-y-8 pt-8 border-t border-hairline">
+          <LegalSection title={t("legal.privacy.noSell.title")}>
+            <p>{t("legal.privacy.noSell.text")}</p>
+          </LegalSection>
+
+          <LegalSection title={t("legal.privacy.rights.title")}>
+            <p>{t("legal.privacy.rights.text")}</p>
+          </LegalSection>
+        </section>
       </div>
     </div>
   );

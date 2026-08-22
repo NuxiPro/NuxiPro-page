@@ -100,37 +100,71 @@
       "title": "Politique de Confidentialité",
       "desc": "Comment je collecte, utilise et protège vos données personnelles.",
       "intro": "NuxiPro respecte votre vie privée. Cette politique explique comment je gère les données pour la landing page et la version démo.",
-      "data": {
-        "title": "Données Collectées",
-        "text": "Je ne collecte aucune donnée personnelle. La landing page ne collecte aucune donnée. La version démo (demo.nuxipro.com) fonctionne entièrement dans votre navigateur via localStorage. Aucune donnée n'est transmise à mes serveurs."
+      "landingPage": {
+        "title": "1. Landing Page",
+        "intro": "Je ne collecte aucune donnée personnelle directe. Seules les données d'analytics strictement nécessaires sont recueillies afin d'améliorer le service, d'offrir une meilleure expérience utilisateur et de comprendre les points de friction ou d'abandon dans le parcours.",
+        "tools": {
+          "title": "Outils et données collectées",
+          "text": "J'utilise PostHog, un outil d'analytics qui m'aide à analyser le parcours des visiteurs sur la landing page.",
+          "survol": {
+            "title": "Survol et interactions",
+            "text": "Les sections de la page consultées par l'utilisateur."
+          },
+          "conversion": {
+            "title": "Conversion",
+            "text": "Les clics sur les boutons d'appel à l'action (CTA) pour mesurer l'efficacité de la page."
+          },
+          "recording": {
+            "title": "Enregistrement de session (Session Recording)",
+            "text": "Soumis à votre consentement explicite. Toutes les données capturées sont totalement anonymisées et configurées en mode confidentialité maximale dans PostHog. Les textes affichés ou saisis sont automatiquement masqués (remplacés par des « **** »). Conservées 30 jours max par PostHog, je peux les supprimer avant pour ne garder que les sessions utiles à l'amélioration du projet. Aucune donnée n'est jamais vendue ni partagée à un tiers."
+          }
+        },
+        "protection": {
+          "title": "Protection et contrôle des enregistrements de session",
+          "text": "La fonctionnalité de session recording est strictement encadrée au niveau applicatif et dans les paramètres de PostHog. Elle est désactivée par défaut pour vous laisser le choix ultime. Vous pouvez modifier ou retirer votre consentement à tout moment."
+        },
+        "cookies": {
+          "title": "Utilisation des cookies",
+          "text": "J'utilise des cookies d'analytics uniquement pour mesurer l'audience et améliorer NuxiPro. Sans votre accord explicite, aucun suivi ni aucune donnée ne sont collectés."
+        }
       },
-      "storage": {
-        "title": "Stockage Local",
-        "text": "Vos tâches et préférences sont stockées localement dans le localStorage de votre navigateur. Ces données ne quittent jamais votre appareil et sont automatiquement supprimées lorsque vous effacez les données de votre navigateur."
-      },
-      "cookies": {
-        "title": "Cookies & Consentement",
-        "text": "Un bandeau de consentement s'affiche lors de votre première visite. Les cookies essentiels (préférence de consentement) sont stockés sans consentement. Les cookies analytics (PostHog) et l'enregistrement de session nécessitent votre consentement explicite."
-      },
-      "analytics": {
-        "title": "Analytics",
-        "text": "J'utilise PostHog pour des statistiques anonymes afin de comprendre comment les utilisateurs interagissent avec l'interface. Cela inclut les pages visitées, les clics et la navigation. Aucun contenu texte, nom de tâche ou donnée personnelle n'est enregistré."
-      },
-      "session": {
-        "title": "Enregistrement de Session",
-        "text": "L'enregistrement de session est optionnel et désactivé par défaut. Lorsqu'il est activé, il capture les interactions UI pour m'aider à identifier les problèmes d'ergonomie. Tous les champs texte sont automatiquement masqués. Les enregistrements sont stockés dans l'UE et supprimés après 30 jours."
-      },
-      "rights": {
-        "title": "Vos Droits",
-        "text": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que toutes les données sont stockées localement dans votre navigateur, vous pouvez les effacer à tout moment via les paramètres de votre navigateur."
+      "demo": {
+        "title": "2. Démo Interactive de NuxiPro",
+        "intro": "La version démo de NuxiPro fonctionne entièrement en mode client (local) au sein de votre navigateur.",
+        "storage": {
+          "title": "Stockage des données",
+          "local": {
+            "title": "Stockage exclusivement local",
+            "text": "Toutes les données générées dans la démo sont conservées uniquement dans le stockage local (LocalStorage) de votre appareil. Aucune donnée n'est transmise, traitée ou sauvegardée sur un serveur distant."
+          },
+          "loss": {
+            "title": "Perte définitive en cas de nettoyage",
+            "text": "Si vous effacez vos données de navigation (vide du cache ou suppression du LocalStorage), l'ensemble des données de démonstration sera perdu de manière définitive et irréversible, sans aucune possibilité de récupération."
+          }
+        },
+        "warning": {
+          "title": "Avertissement et restrictions d'usage",
+          "experimental": {
+            "title": "Usage expérimental",
+            "text": "La démo est un outil d'expérimentation conçu uniquement pour vous permettre de découvrir le concept et les fonctionnalités de base de NuxiPro."
+          },
+          "professional": {
+            "title": "Usage professionnel déconseillé",
+            "text": "L'utilisation de cette démo dans un cadre professionnel ou au quotidien est strictement déconseillée. Le stockage côté navigateur étant par nature volatil, veillez à ne jamais y saisir de données critiques, confidentielles ou irremplaçables."
+          }
+        },
+        "clause": {
+          "title": "Clause de non-responsabilité",
+          "text": "La démo est fournie « en l'état » à des fins d'essai. En aucun cas l'éditeur ne pourra être tenu responsable de toute perte de données, interruption d'accès ou dommage direct ou indirect lié à l'utilisation de la démo ou au non-respect des avertissements d'usage énoncés ci-dessus."
+        }
       },
       "noSell": {
         "title": "Je ne vends pas vos données",
         "text": "NuxiPro ne vend, ne loue ni ne partage vos données personnelles à des tiers. Les seules données collectées sont des statistiques anonymes d'utilisation du site, uniquement pour améliorer le produit."
       },
-      "disclaimer": {
-        "title": "Avertissement",
-        "text": "La version démo est un outil expérimental. N'y saisissez pas de données critiques, confidentielles ou irremplaçables. Les données stockées dans votre navigateur peuvent être perdues si vous videz le cache."
+      "rights": {
+        "title": "Vos Droits",
+        "text": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que toutes les données sont stockées localement dans votre navigateur, vous pouvez les effacer à tout moment via les paramètres de votre navigateur."
       }
     },
     "cookies": {
