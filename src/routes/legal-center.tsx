@@ -29,7 +29,7 @@ const LINK_ACTIVE = "bg-surface-card text-ink font-medium";
 
 const sections = [
   { to: "/legal-center/privacy" as const, key: "privacy" },
-  { to: "/legal-center/terms" as const, key: "terms" },
+  { to: "/legal-center/cgu" as const, key: "cgu" },
   { to: "/legal-center/notices" as const, key: "notices" },
 ] as const;
 

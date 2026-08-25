@@ -5,21 +5,21 @@ import { LegalCenterBack } from "../../components/svg-icon";
 import { createPageHead, SITE_URL } from "../../config/seo";
 import { useTranslation } from "../../i18n";
 
-const TITLE = "Privacy Policy - NuxiPro";
-const DESCRIPTION = "How we collect, use, and protect your personal data.";
-const URL = `${SITE_URL}/legal-center/privacy`;
+const TITLE = "Terms of Use - NuxiPro";
+const DESCRIPTION = "Terms and conditions for using NuxiPro.";
+const URL = `${SITE_URL}/legal-center/cgu`;
 
-export const Route = createFileRoute("/legal-center/privacy")({
+export const Route = createFileRoute("/legal-center/cgu")({
   head: () =>
     createPageHead({
       title: TITLE,
       description: DESCRIPTION,
       url: URL,
     }),
-  component: PrivacyPage,
+  component: CguPage,
 });
 
-function PrivacyPage() {
+function CguPage() {
   const { t } = useTranslation();
   const [active, setActive] = useState("landing");
   useEffect(() => {
@@ -47,12 +47,12 @@ function PrivacyPage() {
             {t("legal.center.title")}
           </Link>
           <h1 className="text-2xl font-heading font-semibold tracking-tight mb-2">
-            {t("legal.privacy.title")}
+            {t("legal.cgu.title")}
           </h1>
           <p className="text-[13px] text-muted-soft">{t("legal.center.lastUpdated")} : août 2026</p>
         </div>
 
-        <p className="text-[15px] text-body leading-relaxed mb-10">{t("legal.privacy.intro")}</p>
+        <p className="text-[15px] text-body leading-relaxed mb-10">{t("legal.cgu.intro")}</p>
 
         {/* Mobile — 2 entrées seulement */}
         <nav className="flex lg:hidden gap-2 mb-8">
@@ -76,35 +76,12 @@ function PrivacyPage() {
             <h2 className="text-xl font-heading font-semibold tracking-tight">
               {t("legal.privacy.landingPage.title")}
             </h2>
-            <p className="text-[14px] text-body leading-relaxed">{t("legal.privacy.landingPage.intro")}</p>
 
-            <LegalSection title={t("legal.privacy.landingPage.tools.title")}>
-              <div className="space-y-2">
-                <p>{t("legal.privacy.landingPage.tools.text")}</p>
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>
-                    <strong>{t("legal.privacy.landingPage.tools.survol.title")} :</strong>{" "}
-                    {t("legal.privacy.landingPage.tools.survol.text")}
-                  </li>
-                  <li>
-                    <strong>{t("legal.privacy.landingPage.tools.conversion.title")} :</strong>{" "}
-                    {t("legal.privacy.landingPage.tools.conversion.text")}
-                  </li>
-                  <li>
-                    <strong>{t("legal.privacy.landingPage.tools.recording.title")} :</strong>{" "}
-                    {t("legal.privacy.landingPage.tools.recording.text")}
-                  </li>
-                </ul>
-              </div>
-            </LegalSection>
-
-            <LegalSection title={t("legal.privacy.landingPage.protection.title")}>
-              <p>{t("legal.privacy.landingPage.protection.text")}</p>
-            </LegalSection>
-
-            <LegalSection title={t("legal.privacy.landingPage.cookies.title")}>
-              <p>{t("legal.privacy.landingPage.cookies.text")}</p>
-            </LegalSection>
+            <div id="availability">
+              <LegalSection title={t("legal.cgu.availability.title")}>
+                <p>{t("legal.cgu.availability.text")}</p>
+              </LegalSection>
+            </div>
           </section>
 
           {/* Module 2 — Démo Interactive */}
@@ -112,37 +89,38 @@ function PrivacyPage() {
             <h2 className="text-xl font-heading font-semibold tracking-tight">
               {t("legal.privacy.demo.title")}
             </h2>
-            <p className="text-[14px] text-body leading-relaxed">{t("legal.privacy.demo.intro")}</p>
+            <p className="text-[14px] text-body leading-relaxed">{t("legal.cgu.demo.text")}</p>
 
-            <div className="space-y-6">
-              <h3 className="text-[14px] font-medium text-ink">{t("legal.privacy.demo.storage.title")}</h3>
-              <LegalSection title={t("legal.privacy.demo.storage.local.title")}>
-                <p>{t("legal.privacy.demo.storage.local.text")}</p>
-              </LegalSection>
-              <LegalSection title={t("legal.privacy.demo.storage.loss.title")}>
-                <p>{t("legal.privacy.demo.storage.loss.text")}</p>
+            <div id="storage" className="scroll-mt-24">
+              <LegalSection title={t("legal.cgu.storage.title")}>
+                <p>{t("legal.cgu.storage.text")}</p>
               </LegalSection>
             </div>
 
-            <div className="space-y-6">
-              <h3 className="text-[14px] font-medium text-ink">{t("legal.privacy.demo.warning.title")}</h3>
-              <LegalSection title={t("legal.privacy.demo.warning.experimental.title")}>
-                <p>{t("legal.privacy.demo.warning.experimental.text")}</p>
+            <div id="responsability" className="scroll-mt-24">
+              <LegalSection title={t("legal.cgu.responsability.title")}>
+                <p>{t("legal.cgu.responsability.text")}</p>
               </LegalSection>
-              <LegalSection title={t("legal.privacy.demo.warning.professional.title")}>
-                <p>{t("legal.privacy.demo.warning.professional.text")}</p>
+            </div>
+            <div id="clause" className="scroll-mt-24">
+              <LegalSection title={t("legal.cgu.clause.title")}>
+                <p>{t("legal.cgu.clause.text")}</p>
               </LegalSection>
             </div>
           </section>
 
           {/* Hors modules — éléments duplicables */}
           <section className="space-y-8 pt-8 border-t border-hairline">
-            <LegalSection title={t("legal.privacy.noSell.title")}>
-              <p>{t("legal.privacy.noSell.text")}</p>
+            <LegalSection title={t("legal.cgu.ip.title")}>
+              <div id="ip" className="scroll-mt-24">
+                <p>{t("legal.cgu.ip.text")}</p>
+              </div>
             </LegalSection>
 
-            <LegalSection title={t("legal.privacy.rights.title")}>
-              <p>{t("legal.privacy.rights.text")}</p>
+            <LegalSection title={t("legal.cgu.jurisdiction.title")}>
+              <div id="jurisdiction" className="scroll-mt-24">
+                <p>{t("legal.cgu.jurisdiction.text")}</p>
+              </div>
             </LegalSection>
           </section>
         </div>
@@ -151,7 +129,9 @@ function PrivacyPage() {
       {/* Sidebar droite premium — 2 entrées seulement */}
       <aside className="hidden lg:block w-[200px] shrink-0">
         <nav className="sticky top-24 rounded-2xl border border-hairline bg-white/60 backdrop-blur p-5">
-          <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-muted-soft mb-4">Sommaire</p>
+          <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-muted-soft mb-4">
+            Sommaire
+          </p>
           <ul className="space-y-1 text-[13px] leading-none">
             <li>
               <a

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/legal-center/")({
 
 const sections = [
   { to: "/legal-center/privacy" as const, key: "privacy", icon: <LegalIconPrivacy /> },
-  { to: "/legal-center/terms" as const, key: "terms", icon: <LegalIconTerms /> },
+  { to: "/legal-center/cgu" as const, key: "cgu", icon: <LegalIconTerms /> },
   { to: "/legal-center/notices" as const, key: "notices", icon: <LegalIconNotices /> },
 ] as const;
 

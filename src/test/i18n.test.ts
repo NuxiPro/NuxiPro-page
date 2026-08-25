@@ -37,8 +37,8 @@ describe("i18n", () => {
       "legal.center.subtitle",
       "legal.privacy.title",
       "legal.privacy.desc",
-      "legal.terms.title",
-      "legal.terms.desc",
+      "legal.cgu.title",
+      "legal.cgu.desc",
       "legal.notices.title",
       "legal.notices.desc",
     ];

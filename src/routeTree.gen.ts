@@ -14,9 +14,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LegalCenterRouteImport } from './routes/legal-center'
 import { Route as LegalCenterIndexRouteImport } from './routes/legal-center/index'
+import { Route as LegalCenterCguRouteImport } from './routes/legal-center/cgu'
 import { Route as LegalCenterNoticesRouteImport } from './routes/legal-center/notices'
 import { Route as LegalCenterPrivacyRouteImport } from './routes/legal-center/privacy'
-import { Route as LegalCenterTermsRouteImport } from './routes/legal-center/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -43,6 +43,11 @@ const LegalCenterIndexRoute = LegalCenterIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LegalCenterRoute,
 } as any)
+const LegalCenterCguRoute = LegalCenterCguRouteImport.update({
+  id: '/cgu',
+  path: '/cgu',
+  getParentRoute: () => LegalCenterRoute,
+} as any)
 const LegalCenterNoticesRoute = LegalCenterNoticesRouteImport.update({
   id: '/notices',
   path: '/notices',
@@ -53,29 +58,24 @@ const LegalCenterPrivacyRoute = LegalCenterPrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => LegalCenterRoute,
 } as any)
-const LegalCenterTermsRoute = LegalCenterTermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => LegalCenterRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/legal-center': typeof LegalCenterRouteWithChildren
+  '/legal-center/cgu': typeof LegalCenterCguRoute
   '/legal-center/notices': typeof LegalCenterNoticesRoute
   '/legal-center/privacy': typeof LegalCenterPrivacyRoute
-  '/legal-center/terms': typeof LegalCenterTermsRoute
   '/legal-center/': typeof LegalCenterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/legal-center/cgu': typeof LegalCenterCguRoute
   '/legal-center/notices': typeof LegalCenterNoticesRoute
   '/legal-center/privacy': typeof LegalCenterPrivacyRoute
-  '/legal-center/terms': typeof LegalCenterTermsRoute
   '/legal-center': typeof LegalCenterIndexRoute
 }
 export interface FileRoutesById {
@@ -84,9 +84,9 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/legal-center': typeof LegalCenterRouteWithChildren
+  '/legal-center/cgu': typeof LegalCenterCguRoute
   '/legal-center/notices': typeof LegalCenterNoticesRoute
   '/legal-center/privacy': typeof LegalCenterPrivacyRoute
-  '/legal-center/terms': typeof LegalCenterTermsRoute
   '/legal-center/': typeof LegalCenterIndexRoute
 }
 export interface FileRouteTypes {
@@ -96,18 +96,18 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/legal-center'
+    | '/legal-center/cgu'
     | '/legal-center/notices'
     | '/legal-center/privacy'
-    | '/legal-center/terms'
     | '/legal-center/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contact'
     | '/faq'
+    | '/legal-center/cgu'
     | '/legal-center/notices'
     | '/legal-center/privacy'
-    | '/legal-center/terms'
     | '/legal-center'
   id:
     | '__root__'
@@ -115,9 +115,9 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/legal-center'
+    | '/legal-center/cgu'
     | '/legal-center/notices'
     | '/legal-center/privacy'
-    | '/legal-center/terms'
     | '/legal-center/'
   fileRoutesById: FileRoutesById
 }
@@ -165,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalCenterIndexRouteImport
       parentRoute: typeof LegalCenterRoute
     }
+    '/legal-center/cgu': {
+      id: '/legal-center/cgu'
+      path: '/cgu'
+      fullPath: '/legal-center/cgu'
+      preLoaderRoute: typeof LegalCenterCguRouteImport
+      parentRoute: typeof LegalCenterRoute
+    }
     '/legal-center/notices': {
       id: '/legal-center/notices'
       path: '/notices'
@@ -179,27 +186,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalCenterPrivacyRouteImport
       parentRoute: typeof LegalCenterRoute
     }
-    '/legal-center/terms': {
-      id: '/legal-center/terms'
-      path: '/terms'
-      fullPath: '/legal-center/terms'
-      preLoaderRoute: typeof LegalCenterTermsRouteImport
-      parentRoute: typeof LegalCenterRoute
-    }
   }
 }
 
 interface LegalCenterRouteChildren {
+  LegalCenterCguRoute: typeof LegalCenterCguRoute
   LegalCenterNoticesRoute: typeof LegalCenterNoticesRoute
   LegalCenterPrivacyRoute: typeof LegalCenterPrivacyRoute
-  LegalCenterTermsRoute: typeof LegalCenterTermsRoute
   LegalCenterIndexRoute: typeof LegalCenterIndexRoute
 }
 
 const LegalCenterRouteChildren: LegalCenterRouteChildren = {
+  LegalCenterCguRoute: LegalCenterCguRoute,
   LegalCenterNoticesRoute: LegalCenterNoticesRoute,
   LegalCenterPrivacyRoute: LegalCenterPrivacyRoute,
-  LegalCenterTermsRoute: LegalCenterTermsRoute,
   LegalCenterIndexRoute: LegalCenterIndexRoute,
 }
 

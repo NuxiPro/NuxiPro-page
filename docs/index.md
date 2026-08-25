@@ -105,7 +105,7 @@ src/
 │  └── legal-center/
 │     ├── index.tsx      # /legal-center/ hub 3 cards
 │     ├── privacy.tsx    # /legal-center/privacy 8 sections
-│     ├── terms.tsx      # /legal-center/terms 6 sections
+│     ├── cgu.tsx        # /legal-center/cgu 6 sections
 │     └── notices.tsx    # /legal-center/notices publisher/hosting (InfoRow)
 └ test/
    ├── setup.ts
@@ -127,7 +127,7 @@ File-based, `routeTree.gen.ts` auto-generated.
 | `/legal-center` | `routes/legal-center.tsx` | Layout Breadcrumb+WebPage + `Outlet` |
 | `/legal-center/` | `routes/legal-center/index.tsx` | Hub |
 | `/legal-center/privacy` | `routes/legal-center/privacy.tsx` | Privacy |
-| `/legal-center/terms` | `routes/legal-center/terms.tsx` | Terms |
+| `/legal-center/cgu` | `routes/legal-center/cgu.tsx` | CGU |
 | `/legal-center/notices` | `routes/legal-center/notices.tsx` | Notices |
 
 Add route = create file in `src/routes/` + `bun run build` regenerates `routeTree.gen.ts`.
@@ -138,12 +138,12 @@ Add route = create file in `src/routes/` + `bun run build` regenerates `routeTre
 
 **Layout** `legal-center.tsx:11` = header `99-113` + sidebar `117-137` (`sections:30-34`) + `Outlet:140`. No legal text.
 
-**Hub** `legal-center/index.tsx:16` = 3 cards `26-30` → privacy/terms/notices.
+**Hub** `legal-center/index.tsx:16` = 3 cards `26-30` → privacy/cgu/notices.
 
 | File | Role | Sections | When to edit |
 |---|---|---|---|
 | `privacy.tsx:7` | **RGPD** privacy policy | 8× `LegalSection` `privacy.tsx:43-73` : data/noSell/storage/cookies/analytics/session/rights/disclaimer | tracker/cookie/storage change |
-| `terms.tsx:7` | **CGU** terms of use | 6× `LegalSection` `terms.tsx:43-65` : demo/storage/responsability/ip/availability/jurisdiction | feature/liability change |
+| `cgu.tsx:7` | **CGU** terms of use | 6× `LegalSection` `cgu.tsx:43-65` : demo/storage/responsability/ip/availability/jurisdiction | feature/liability change |
 | `notices.tsx:7` | **Mentions légales** LCEN | 4× `LegalSection` + `InfoRow:87` publisher/hosting/ip/contact | publisher `S. Babas` / email / hosting `Cloudflare` change |
 
 Template identique: `TITLE/DESCRIPTION/URL:7-9` (SEO) → `createFileRoute:11` → `PrivacyPage:21` → `max-w-2xl:25` → header back `27-33` + `h1 t("legal.*.title"):35` + `lastUpdated:37` (hardcoded `août 2026` — centralize) → `intro:40` → `space-y-10:42` + `LegalSection`.
@@ -202,7 +202,7 @@ Add key = add to **both** `en.json` and `fr.json` (tested `i18n.test.ts:78` pari
 
 | File | Notes |
 |---|---|
-| `public/sitemap.xml` | **TODO P0**: currently 4 URLs (`/`, `/faq`, `/legal-center`, `/contact`) — must be 7 (+ `/privacy`, `/terms`, `/notices`). `lastmod` update on legal change. hreflang `en/fr/x-default` per URL. |
+| `public/sitemap.xml` | **TODO P0**: currently 4 URLs (`/`, `/faq`, `/legal-center`, `/contact`) — must be 7 (+ `/privacy`, `/cgu`, `/notices`). `lastmod` update on legal change. hreflang `en/fr/x-default` per URL. |
 | `public/robots.txt` | Allow all + 11 bots, `Sitemap: /sitemap.xml` OK but `Sitemap: /llms.txt` invalid (not XML) |
 | `public/llms.txt` | 94L summary, contains dead link `/mentions-legales` → `/legal-center` |
 | `public/manifest.json` | `name NuxiPro`, icons `logo.png 192/512`, `lang fr`, `start_url .` |

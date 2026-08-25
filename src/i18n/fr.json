@@ -197,7 +197,7 @@
         "text": "La version démo (demo.nuxipro.com) utilise uniquement le localStorage pour le stockage. Aucun cookie côté serveur n'est utilisé. Vos données restent uniquement dans votre navigateur."
       }
     },
-    "terms": {
+    "cgu": {
       "title": "Conditions d'Utilisation",
       "desc": "Termes et conditions d'utilisation de NuxiPro.",
       "intro": "En utilisant NuxiPro (landing page ou démo), vous acceptez ces conditions.",
@@ -224,6 +224,10 @@
       "jurisdiction": {
         "title": "Droit Applicable",
         "text": "Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents."
+      },
+      "clause": {
+        "title": "Clause de non-responsabilité",
+        "text": "La démo est fournie « en l'état » à des fins d'essai. En aucun cas l'éditeur ne pourra être tenu responsable de toute perte de données, interruption d'accès ou dommage direct ou indirect lié à l'utilisation de la démo ou au non-respect des avertissements d'usage énoncés ci-dessus."
       }
     },
     "notices": {
