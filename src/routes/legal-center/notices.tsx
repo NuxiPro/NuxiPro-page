@@ -110,12 +110,69 @@ function NoticesPage() {
 
           {/* Hors modules — éléments duplicables */}
           <section className="space-y-8 pt-8 border-t border-hairline">
+            <LegalSection title={t("legal.notices.subcontractors.title")}>
+              <p className="mb-4">{t("legal.notices.subcontractors.text")}</p>
+              <div className="overflow-hidden rounded-xl border border-hairline bg-white">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-[13px]">
+                    <thead className="bg-zinc-50 border-b border-hairline">
+                      <tr className="text-muted-soft">
+                        <th className="px-4 py-2.5 font-medium whitespace-nowrap">{t("legal.notices.subcontractors.headers.provider")}</th>
+                        <th className="px-4 py-2.5 font-medium whitespace-nowrap">{t("legal.notices.subcontractors.headers.service")}</th>
+                        <th className="px-4 py-2.5 font-medium whitespace-nowrap">{t("legal.notices.subcontractors.headers.purpose")}</th>
+                        <th className="px-4 py-2.5 font-medium whitespace-nowrap">{t("legal.notices.subcontractors.headers.location")}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-hairline">
+                      <tr>
+                        <td className="px-4 py-3 font-medium text-ink">{t("legal.notices.subcontractors.infomaniak.name")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.infomaniak.service")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.infomaniak.purpose")}</td>
+                        <td className="px-4 py-3 text-muted whitespace-nowrap">{t("legal.notices.subcontractors.infomaniak.location")}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 font-medium text-ink">{t("legal.notices.subcontractors.cloudflare.name")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.cloudflare.service")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.cloudflare.purpose")}</td>
+                        <td className="px-4 py-3 text-muted whitespace-nowrap">{t("legal.notices.subcontractors.cloudflare.location")}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 font-medium text-ink">{t("legal.notices.subcontractors.render.name")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.render.service")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.render.purpose")}</td>
+                        <td className="px-4 py-3 text-muted whitespace-nowrap">{t("legal.notices.subcontractors.render.location")}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 font-medium text-ink">{t("legal.notices.subcontractors.posthog.name")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.posthog.service")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.posthog.purpose")}</td>
+                        <td className="px-4 py-3 text-muted whitespace-nowrap">{t("legal.notices.subcontractors.posthog.location")}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 font-medium text-ink">{t("legal.notices.subcontractors.plunk.name")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.plunk.service")}</td>
+                        <td className="px-4 py-3 text-body">{t("legal.notices.subcontractors.plunk.purpose")}</td>
+                        <td className="px-4 py-3 text-muted whitespace-nowrap">{t("legal.notices.subcontractors.plunk.location")}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="px-4 py-2.5 text-[11px] text-muted-soft bg-zinc-50 border-t border-hairline">{t("legal.notices.subcontractors.note")}</p>
+              </div>
+            </LegalSection>
+
             <LegalSection title={t("legal.notices.ip.title")}>
               <p>{t("legal.notices.ip.text")}</p>
             </LegalSection>
 
             <LegalSection title={t("legal.notices.contact.title")}>
-              <p>{t("legal.notices.contact.text")}</p>
+              <p>
+                {t("legal.notices.contact.text").split("contact@nuxipro.com")[0]}
+                <a href="mailto:contact@nuxipro.com" className="text-teal hover:text-teal-hover underline">
+                  contact@nuxipro.com
+                </a>
+                {t("legal.notices.contact.text").split("contact@nuxipro.com")[1] ?? ""}
+              </p>
             </LegalSection>
           </section>
         </div>

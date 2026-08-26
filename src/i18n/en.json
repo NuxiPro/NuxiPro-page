@@ -260,13 +260,54 @@
           "value": "https://www.cloudflare.com/contact"
         }
       },
+      "subcontractors": {
+        "title": "Sub-processors",
+        "text": "In accordance with Article 28 GDPR, I use the following sub-processors who process data on my behalf:",
+        "headers": {
+          "provider": "Sub-processor",
+          "service": "Service",
+          "purpose": "Purpose",
+          "location": "Location"
+        },
+        "infomaniak": {
+          "name": "Infomaniak Network SA",
+          "service": "Registrar — domain name",
+          "purpose": "Domain registration & DNS for nuxipro.com",
+          "location": "Switzerland (Geneva) — EU adequacy"
+        },
+        "cloudflare": {
+          "name": "Cloudflare, Inc.",
+          "service": "Workers, Pages & DNS — frontend & edge",
+          "purpose": "Frontend hosting + DNS + security",
+          "location": "Global edge (US, DPF + SCC)"
+        },
+        "render": {
+          "name": "Render, Inc.",
+          "service": "Temporary backend bridge (Frankfurt)",
+          "purpose": "HTTPS relay to Plunk — transport only, no storage",
+          "location": "Frankfurt (eu-central-1 via AWS, US DPF + SCC)"
+        },
+        "posthog": {
+          "name": "PostHog, Inc. (EU Cloud)",
+          "service": "Analytics & session recording",
+          "purpose": "Product improvement (with consent, anonymized)",
+          "location": "EU (EU Cloud)"
+        },
+        "plunk": {
+          "name": "Plunk (useplunk.com)",
+          "service": "Email SaaS — transactional & campaigns",
+          "purpose": "Email delivery via Render → Plunk API",
+          "location": "EU (Hetzner DE) — delivery via AWS SES global"
+        },
+        "note": "Each sub-processor is bound by a GDPR-compliant DPA and acts only on my instructions. Render → Plunk flow is 100% HTTPS with no intermediate storage."
+      },
       "ip": {
         "title": "Intellectual Property",
         "text": "All source code, design, and content of NuxiPro are the exclusive property of the publisher. Reverse engineering, reproduction, or commercial use is prohibited."
       },
       "contact": {
         "title": "Contact",
-        "text": "For any questions about these legal notices, contact us at contact@nuxipro.com."
+        "text": "The data controller for personal data collected on this site is Sébastien Babas, reachable at email address: contact@nuxipro.com."
       }
     }
   },

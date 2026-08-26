@@ -260,13 +260,54 @@
           "value": "https://www.cloudflare.com/contact"
         }
       },
+      "subcontractors": {
+        "title": "Sous-traitants",
+        "text": "Conformément à l'article 28 du RGPD, voici la liste des sous-traitants qui traitent des données pour mon compte :",
+        "headers": {
+          "provider": "Sous-traitant",
+          "service": "Service",
+          "purpose": "Finalité",
+          "location": "Localisation"
+        },
+        "infomaniak": {
+          "name": "Infomaniak Network SA",
+          "service": "Registrar — nom de domaine",
+          "purpose": "Enregistrement & gestion DNS du domaine nuxipro.com",
+          "location": "Suisse (Genève) — adéquation UE"
+        },
+        "cloudflare": {
+          "name": "Cloudflare, Inc.",
+          "service": "Workers, Pages & DNS — frontend & edge",
+          "purpose": "Hébergement frontend + DNS + sécurité",
+          "location": "Global edge (US, DPF + SCC)"
+        },
+        "render": {
+          "name": "Render, Inc.",
+          "service": "Backend pont temporaire (Frankfurt)",
+          "purpose": "Relais HTTPS vers Plunk — transport seul, sans stockage",
+          "location": "Frankfurt (eu-central-1 via AWS, US DPF + SCC)"
+        },
+        "posthog": {
+          "name": "PostHog, Inc. (EU Cloud)",
+          "service": "Mesure d'audience & session recording",
+          "purpose": "Amélioration produit (avec consentement, anonymisé)",
+          "location": "UE (EU Cloud)"
+        },
+        "plunk": {
+          "name": "Plunk (useplunk.com)",
+          "service": "Email SaaS — transactionnel & campagnes",
+          "purpose": "Envoi d'emails via API Render → Plunk",
+          "location": "UE (Hetzner DE) — envoi via AWS SES global"
+        },
+        "note": "Chaque sous-traitant est lié par un DPA conforme au RGPD et n'agit que sur mes instructions. Flux Render → Plunk 100% HTTPS, pas de stockage intermédiaire."
+      },
       "ip": {
         "title": "Propriété Intellectuelle",
         "text": "Tout le code source, le design et le contenu de NuxiPro sont la propriété exclusive de l'éditeur. La rétro-ingénierie, la reproduction ou l'utilisation commerciale est interdite."
       },
       "contact": {
         "title": "Contact",
-        "text": "Pour toute question relative à ces mentions légales, contactez-moi à contact@nuxipro.com."
+        "text": "Le responsable du traitement des données personnelles collectées sur ce site est Sébastien Babas, joignable à l'adresse e-mail : contact@nuxipro.com."
       }
     }
   },
