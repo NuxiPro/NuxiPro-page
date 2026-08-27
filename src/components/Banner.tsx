@@ -1,6 +1,7 @@
 import { usePostHog } from "@posthog/react";
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "../i18n";
+import { CloseIcon, LegalChevronRight, LegalIconCookies, SettingsIcon } from "./svg-icon";
 
 const CONSENT_VERSION = "1.0";
 const COOKIE_KEY = "nuxipro_cookie_consent";
@@ -84,6 +85,9 @@ export function CookieBanner() {
     localStorage.setItem(COOKIE_CONSENT_DATE, new Date().toISOString());
     localStorage.setItem(COOKIE_ANALYTICS_KEY, String(analytics));
     localStorage.setItem(COOKIE_RECORDING_KEY, String(recording && analytics));
+    if (analytics) {
+      window.dispatchEvent(new CustomEvent("posthog-consent-given"));
+    }
     applyConsent(analytics, recording && analytics);
     setPreviousChoice(choice);
     setVisible(false);
@@ -130,19 +134,7 @@ export function CookieBanner() {
           onClick={reopenBanner}
           aria-label={t("banner.manageCookies")}
         >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-          </svg>
+          <SettingsIcon />
         </button>
       )}
 
@@ -150,23 +142,7 @@ export function CookieBanner() {
         <div className="cookie-panel">
           <div className="cookie-panel-header">
             <div className="cookie-panel-brand">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
-                <path d="M8.5 8.5v.01" />
-                <path d="M16 15.5v.01" />
-                <path d="M12 12v.01" />
-                <path d="M11 17v.01" />
-                <path d="M7 14v.01" />
-              </svg>
+              <LegalIconCookies />
               <span>{t("banner.title")}</span>
             </div>
             <button
@@ -175,19 +151,7 @@ export function CookieBanner() {
               onClick={handleDecline}
               aria-label={t("banner.close")}
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
+              <CloseIcon />
             </button>
           </div>
 
@@ -227,18 +191,7 @@ export function CookieBanner() {
 
             <button type="button" className="cookie-learn-more" onClick={() => setShowModal(true)}>
               {t("banner.learnMore")}
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
+              <LegalChevronRight />
             </button>
           </div>
 
@@ -294,19 +247,7 @@ export function CookieBanner() {
                 onClick={() => setShowModal(false)}
                 aria-label={t("banner.close")}
               >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 6 6 18" />
-                  <path d="m6 6 12 12" />
-                </svg>
+                <CloseIcon />
               </button>
             </div>
             <div className="cookie-modal-body">

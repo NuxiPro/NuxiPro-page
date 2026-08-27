@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Navbar } from "../components/Navbar";
+import { ChevronDownIcon } from "../components/svg-icon";
 import { createPageHead, SITE_URL } from "../config/seo";
 import { useTranslation } from "../i18n";
 
@@ -59,10 +60,9 @@ function FAQPage() {
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#141413] font-body">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema).replace(/</g, "\\u003c")}
+      </script>
       <Navbar />
       <main className="max-w-[640px] mx-auto px-6 pt-10 pb-16">
         <a
@@ -75,32 +75,31 @@ function FAQPage() {
           {t("legal.back")}
         </a>
 
-        <h1 className="font-heading text-[28px] font-normal mt-[60px] mb-10">{t("faq.title")}</h1>
+        <h1 className="font-heading text-[28px] font-normal mt-[60px] mb-10">
+          {t("faq.title")}
+        </h1>
 
         <section aria-label={t("nav.faq")}>
           {faqs.map((faq, i) => (
-            <details key={faq.q} open={openIndex === i} className="group border-b border-[#e6dfd8]">
+            <details
+              key={faq.q}
+              open={openIndex === i}
+              className="group border-b border-[#e6dfd8]"
+            >
               {/* biome-ignore lint/a11y/noStaticElementInteractions: summary is inherently interactive */}
               <summary
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenIndex(openIndex === i ? null : i);
                 }}
-                className="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-[15px] font-medium text-[#141413] hover:text-[#0d9488] transition-all duration-300 ease-out active:scale-[0.98]"
+                className="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-[15px] font-medium text-[#141413] hover:text-[#0f766e] transition-all duration-300 ease-out active:scale-[0.98]"
               >
                 <span className="transition-transform duration-300 ease-out group-open:translate-x-1">
                   {faq.q}
                 </span>
-                <svg
-                  className={`h-4 w-4 shrink-0 text-[#6c6a64] transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${openIndex === i ? "rotate-180 scale-110" : "scale-100"}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
+                <ChevronDownIcon
+                  className={`shrink-0 text-[#6c6a64] transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${openIndex === i ? "rotate-180 scale-110" : "scale-100"}`}
+                />
               </summary>
               <div className="pb-5 text-[14px] leading-[1.8] text-[#6c6a64] animate-accordion-down">
                 {faq.a}

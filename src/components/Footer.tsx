@@ -25,9 +25,9 @@ export function Footer() {
           {/* Links grouped right */}
           <div className="flex gap-x-10 gap-y-4">
             <div className="flex flex-col gap-2">
-              <h4 className="text-[11px] font-semibold text-[#F0F0F0]/80 tracking-[0.12em] uppercase">
+              <h2 className="text-[11px] font-semibold text-[#F0F0F0]/80 tracking-[0.12em] uppercase">
                 {t("footer.project")}
-              </h4>
+              </h2>
               <ul className="flex flex-col gap-1.5">
                 <li>
                   <a
@@ -85,9 +85,9 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <h4 className="text-[11px] font-semibold text-[#F0F0F0]/80 tracking-[0.12em] uppercase">
+              <h2 className="text-[11px] font-semibold text-[#F0F0F0]/80 tracking-[0.12em] uppercase">
                 {t("footer.legal.title")}
-              </h4>
+              </h2>
               <ul className="flex flex-col gap-1.5">
                 <li>
                   <a

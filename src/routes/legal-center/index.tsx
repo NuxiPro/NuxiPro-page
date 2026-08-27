@@ -53,9 +53,9 @@ function LegalCenterHub() {
                 {icon}
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-[15px] font-medium text-ink mb-1.5 group-hover:text-ink transition-colors">
+                <h2 className="text-[15px] font-medium text-ink mb-1.5 group-hover:text-ink transition-colors">
                   {t(`legal.${key}.title`)}
-                </h3>
+                </h2>
                 <p className="text-[13px] text-muted-soft leading-relaxed">
                   {t(`legal.${key}.desc`)}
                 </p>

@@ -9,7 +9,7 @@ function BenefitIcon({ labelKey, children }: { labelKey: string; children: React
       height="28"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#0d9488"
+      stroke="#0f766e"
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -53,7 +53,7 @@ export function BenefitsTwo() {
     <BenefitIcon labelKey="svg.target">
       <path d="M 2 12 C 5 5, 19 5, 22 12 C 19 19, 5 19, 2 12 Z" />
       <circle cx="12" cy="12" r="4" />
-      <circle cx="12" cy="12" r="1.5" fill="#0d9488" />
+      <circle cx="12" cy="12" r="1.5" fill="#0f766e" />
     </BenefitIcon>
   );
 }
@@ -116,7 +116,7 @@ export function LegalCenterTitle() {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-[#0d9488]"
+      className="text-[#0f766e]"
     >
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
@@ -282,6 +282,126 @@ export function IconDocs({ className }: { className?: string }) {
     >
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+  );
+}
+
+export function CloseIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  );
+}
+
+export function SettingsIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+export function MailIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+
+export function XTwitterIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+export function CursorArrowIcon() {
+  return (
+    <svg
+      className="cursor-arrow"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+    >
+      <path
+        d="M1 1L1 14.5L4.6 11.2L6.9 16.3L9 15.3L6.8 10.3L11.2 10.1L1 1Z"
+        fill="white"
+        stroke="#1a1a1a"
+        strokeWidth="0.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function CursorHandIcon() {
+  return (
+    <svg
+      className="cursor-hand"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M7 11V5a2 2 0 114 0v6M11 11V3a2 2 0 114 0v8M15 11V4.5a2 2 0 114 0V11M19 11v3.5a2 2 0 114 0V11M3 14c0 3.866 3.134 7 7 7h4c3.866 0 7-3.134 7-7v-3a2 2 0 10-4 0v1h-1a2 2 0 10-4 0v1h-1a2 2 0 10-4 0v1H7V11a2 2 0 10-4 0v3z"
+        fill="white"
+        stroke="#1a1a1a"
+        strokeWidth="0.8"
+      />
     </svg>
   );
 }

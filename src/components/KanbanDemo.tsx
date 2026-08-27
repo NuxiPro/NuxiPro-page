@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "../i18n";
+import { CursorArrowIcon, CursorHandIcon } from "./svg-icon";
 import "../kanban.css";
 
 // Noms de tâches affichées aléatoirement dans le kanban
@@ -443,37 +444,8 @@ export default function KanbanDemo({ className }: KanbanDemoProps) {
         {/* Curseur animé rendu en absolute dans le board */}
         {mounted && (
           <div className="kanban-cursor" ref={cursorRef}>
-            <svg
-              className="cursor-arrow"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              aria-label={t("svg.cursor")}
-            >
-              <path
-                d="M1 1L1 14.5L4.6 11.2L6.9 16.3L9 15.3L6.8 10.3L11.2 10.1L1 1Z"
-                fill="white"
-                stroke="#1a1a1a"
-                strokeWidth="0.7"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <svg
-              className="cursor-hand"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-label={t("svg.hand")}
-            >
-              <path
-                d="M7 11V5a2 2 0 114 0v6M11 11V3a2 2 0 114 0v8M15 11V4.5a2 2 0 114 0V11M19 11v3.5a2 2 0 114 0V11M3 14c0 3.866 3.134 7 7 7h4c3.866 0 7-3.134 7-7v-3a2 2 0 10-4 0v1h-1a2 2 0 10-4 0v1h-1a2 2 0 10-4 0v1H7V11a2 2 0 10-4 0v3z"
-                fill="white"
-                stroke="#1a1a1a"
-                strokeWidth="0.8"
-              />
-            </svg>
+            <CursorArrowIcon />
+            <CursorHandIcon />
           </div>
         )}
       </div>

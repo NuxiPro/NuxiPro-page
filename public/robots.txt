@@ -35,4 +35,5 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://nuxipro.com/sitemap.xml
-Sitemap: https://nuxipro.com/llms.txt
+
+# llms.txt for AI engines: https://nuxipro.com/llms.txt

@@ -9,9 +9,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-3 flex items-center">
         {/* Logo — left */}
         <Link to="/" className="flex items-center gap-2.5">
-          <img src="/icon.svg" alt="" className="h-7 w-auto block" />
-          <img src="/text23.svg" alt="NuxiPro" className="h-4.5 w-auto block" />
-          <span className="text-[10px] font-semibold text-[#0d9488] bg-[#0d9488]/8 px-2 py-0.5 rounded-full tracking-wide uppercase">
+          <img src="/icon.svg" alt="" width="29" height="28" className="h-7 w-auto block" />
+          <img
+            src="/text23.svg"
+            alt="NuxiPro"
+            width="67"
+            height="18"
+            className="h-4.5 w-auto block"
+          />
+          <span className="text-[10px] font-semibold text-[#0f766e] bg-[#0f766e]/8 px-2 py-0.5 rounded-full tracking-wide uppercase">
             {t("nav.beta")}
           </span>
         </Link>

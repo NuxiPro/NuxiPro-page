@@ -4,9 +4,9 @@
   --card: #ffffff;
   --card-border: #e6dfd8;
   --text: #141413;
-  --text-dim: #8e8b82;
-  --accent: #0d9488;
-  --accent-glow: rgba(13, 148, 136, 0.12);
+  --text-dim: #57534e;
+  --accent: #0f766e;
+  --accent-glow: rgba(15, 118, 110, 0.12);
   --window-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
   --placeholder-bg: #f5f0e8;
   --cursor-stroke: #141413;
@@ -134,10 +134,10 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #8e8b82;
+  color: #57534e;
   font-size: 13px;
   font-weight: 500;
-  opacity: 0.7;
+  opacity: 1;
   pointer-events: none;
   user-select: none;
   text-align: center;
@@ -155,7 +155,7 @@
     transform: scale(0.97);
   }
   to {
-    opacity: 0.7;
+    opacity: 1;
     transform: scale(1);
   }
 }
@@ -193,7 +193,7 @@
   display: block;
   margin-top: 6px;
   font-size: 11px;
-  color: #8e8b82;
+  color: #57534e;
 }
 
 .kanban-task.active-grab {
@@ -316,7 +316,7 @@
   text-align: center;
   padding: 0 24px 22px;
   font-size: 12px;
-  color: #8e8b82;
+  color: #57534e;
 }
 
 .kanban-footer-note b {

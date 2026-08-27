@@ -15,15 +15,24 @@ export const Route = createFileRoute("/legal-center")({
       description: LEGAL_CENTER_DESCRIPTION,
       url: LEGAL_CENTER_URL,
       links: [
-        { rel: "alternate", hreflang: "fr", href: `${SITE_URL}/fr/legal-center` },
-        { rel: "alternate", hreflang: "en", href: `${SITE_URL}/en/legal-center` },
+        {
+          rel: "alternate",
+          hreflang: "fr",
+          href: `${SITE_URL}/fr/legal-center`,
+        },
+        {
+          rel: "alternate",
+          hreflang: "en",
+          href: `${SITE_URL}/en/legal-center`,
+        },
         { rel: "alternate", hreflang: "x-default", href: LEGAL_CENTER_URL },
       ],
     }),
   component: LegalCenterLayout,
 });
 
-const LINK_BASE = "text-left px-3 py-2 rounded-lg text-[13px] transition-all duration-150";
+const LINK_BASE =
+  "text-left px-3 py-2 rounded-lg text-[13px] transition-all duration-150";
 const LINK_INACTIVE = "text-muted hover:text-ink hover:bg-surface-card";
 const LINK_ACTIVE = "bg-surface-card text-ink font-medium";
 
@@ -87,14 +96,12 @@ function LegalCenterLayout() {
 
   return (
     <div className="min-h-screen bg-canvas text-ink font-body">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c")}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(webPageSchema).replace(/</g, "\\u003c")}
+      </script>
 
       <header className="border-b border-hairline">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -107,7 +114,9 @@ function LegalCenterLayout() {
           </Link>
           <div className="flex items-center gap-3">
             <LegalCenterTitle />
-            <span className="text-sm font-medium">{t("legal.center.title")}</span>
+            <span className="text-sm font-medium">
+              {t("legal.center.title")}
+            </span>
           </div>
         </div>
       </header>

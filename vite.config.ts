@@ -30,6 +30,10 @@ const config = defineConfig(({ mode }) => {
         },
       },
     },
+    build: {
+      target: "esnext",
+      cssCodeSplit: true,
+    },
   };
 });
 

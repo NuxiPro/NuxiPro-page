@@ -37,4 +37,31 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/contact" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/contact" />
   </url>
+  <url>
+    <loc>https://nuxipro.com/legal-center/privacy</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/legal-center/privacy" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/legal-center/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/legal-center/privacy" />
+  </url>
+  <url>
+    <loc>https://nuxipro.com/legal-center/cgu</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/legal-center/cgu" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/legal-center/cgu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/legal-center/cgu" />
+  </url>
+  <url>
+    <loc>https://nuxipro.com/legal-center/notices</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nuxipro.com/en/legal-center/notices" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr/legal-center/notices" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuxipro.com/legal-center/notices" />
+  </url>
 </urlset>

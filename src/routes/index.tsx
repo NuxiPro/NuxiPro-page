@@ -17,7 +17,7 @@ import { trackClick, useSectionTracking } from "../hooks/useSectionTracking";
 import { useTranslation } from "../i18n";
 
 const CTA_BASE =
-  "bg-teal text-white font-medium rounded-lg shadow-[0_2px_12px_rgba(13,148,136,0.2)] hover:shadow-[0_6px_24px_rgba(13,148,136,0.3)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-150 text-sm inline-block";
+  "bg-teal text-white font-medium rounded-lg shadow-[0_2px_12px_rgba(15,118,110,0.2)] hover:shadow-[0_6px_24px_rgba(15,118,110,0.3)] hover:scale-[1.03] active:scale-[0.97] transition-all duration-150 text-sm inline-block";
 
 function CtaButton({
   href,
@@ -145,7 +145,7 @@ function LandingPage() {
             trackClick("scroll-indicator");
             scrollToPourquoi();
           }}
-          className={`scroll-tooltip relative mb-3 px-4 py-2 bg-[#efe9de] border border-[#e6dfd8] rounded-lg text-sm text-[#6c6a64] transition-all duration-150 cursor-pointer hover:bg-[#e8e0d2] hover:border-[#d6cec3] ${
+          className={`scroll-tooltip relative mb-3 px-4 py-2 bg-[#efe9de] border border-[#e6dfd8] rounded-lg text-sm text-[#57534e] transition-all duration-150 cursor-pointer hover:bg-[#e8e0d2] hover:border-[#d6cec3] ${
             showTooltip
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-2 pointer-events-none"
@@ -177,7 +177,7 @@ function LandingPage() {
             e.currentTarget.classList.remove("scroll-indicator-pressed");
           }}
           aria-label={t("scroll.tooltip")}
-          className="scroll-indicator w-10 h-10 rounded-full border border-[#e6dfd8] flex items-center justify-center text-[#8e8b82] hover:text-[#6c6a64] hover:border-[#d6cec3] transition-colors cursor-pointer"
+          className="scroll-indicator w-10 h-10 rounded-full border border-[#e6dfd8] flex items-center justify-center text-[#57534e] hover:text-[#44403c] hover:border-[#d6cec3] transition-colors cursor-pointer"
         >
           <ScrollChevron />
         </button>
