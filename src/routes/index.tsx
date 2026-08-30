@@ -270,22 +270,10 @@ function LandingPage() {
         </FadeIn>
       </section>
 
-      {/* ─── CTA + Waitlist — Premium ─── */}
-      <section
-        id="cta-final"
-        className="w-full max-w-6xl mx-auto px-6 py-16 sm:py-24 relative z-10"
-      >
+      {/* ─── CTA + Waitlist — strict Newsletter.astro ─── */}
+      <section id="cta-final" className="w-full max-w-3xl mx-auto px-6 py-16 sm:py-24 relative z-10">
         <FadeIn>
-          <div className="rounded-[24px] border border-black/[0.04] bg-[#efe9de] px-8 py-12 sm:px-16 sm:py-16 text-center shadow-[0_20px_60px_rgba(20,20,19,0.06),0_4px_16px_rgba(20,20,19,0.04)]">
-            <h2 className="font-heading text-3xl sm:text-[2.45rem] font-normal tracking-[-0.015em] text-[#141413] leading-[1.1] text-balance">
-              {t("cta.title")}
-            </h2>
-            <p className="text-[#6c6a64] max-w-[560px] mx-auto mt-4 mb-10 text-[17px] leading-relaxed">
-              {t("cta.subtitle")}
-            </p>
-
-            <Waitlist variant="inline" />
-          </div>
+          <Waitlist />
         </FadeIn>
       </section>
 

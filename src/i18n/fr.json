@@ -52,13 +52,17 @@
     "button": "Essayer la démo sans compte →"
   },
   "waitlist": {
-    "title": "Rejoindre la waitlist",
+    "badge": "Accès anticipé",
+    "title": "Rejoignez l'aventure NuxiPro",
+    "desc": "Découvrez la démo instantanément ou inscrivez-vous pour suivre les coulisses et le lancement officiel.",
     "placeholder": "votre@email.com",
     "button": "Rejoindre",
     "buttonLoading": "Envoi…",
-    "microCopy": "Zéro spam. Désabonnement en 1 clic.",
+    "microCopy": "Zéro spam. Uniquement les avancées majeures.",
     "or": "ou",
     "demo": "Essayer la démo sans compte",
+    "successText": "Vous êtes inscrit !",
+    "errorRetry": "Réessayer",
     "errors": {
       "invalidEmail": "Email invalide.",
       "rateLimit": "Trop de tentatives, réessaie dans une minute.",

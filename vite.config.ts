@@ -8,6 +8,7 @@ const config = defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
   return {
+    envPrefix: ["VITE_", "PUBLIC_"],
     resolve: { tsconfigPaths: true },
     plugins: [devtools(), tailwindcss(), tanstackRouter({ quoteStyle: "single" }), viteReact()],
     server: {

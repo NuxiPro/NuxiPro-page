@@ -52,13 +52,17 @@
     "button": "Try demo without account →"
   },
   "waitlist": {
-    "title": "Join the waitlist",
+    "badge": "Early Access",
+    "title": "Join the NuxiPro adventure",
+    "desc": "Discover the live demo instantly or sign up to follow the journey and official launch.",
     "placeholder": "your@email.com",
     "button": "Join",
     "buttonLoading": "Sending…",
-    "microCopy": "No spam. Unsubscribe in 1 click.",
+    "microCopy": "No spam. Only major updates.",
     "or": "or",
     "demo": "Try demo without account",
+    "successText": "You're on the list!",
+    "errorRetry": "Try again",
     "errors": {
       "invalidEmail": "Invalid email.",
       "rateLimit": "Too many attempts, try again in a minute.",
