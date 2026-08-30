@@ -12,7 +12,13 @@ import {
   BenefitsTwo,
   ScrollChevron,
 } from "../components/svg-icon";
-import { createPageHead, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../config/seo";
+import { Waitlist } from "../components/Waitlist";
+import {
+  createPageHead,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+} from "../config/seo";
 import { trackClick, useSectionTracking } from "../hooks/useSectionTracking";
 import { useTranslation } from "../i18n";
 
@@ -250,8 +256,12 @@ function LandingPage() {
                     {b.icon}
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#141413] text-[15px] mb-2">{t(b.titleKey)}</h3>
-                    <p className="text-[#6c6a64] text-[14px] leading-[1.65]">{t(b.textKey)}</p>
+                    <h3 className="font-medium text-[#141413] text-[15px] mb-2">
+                      {t(b.titleKey)}
+                    </h3>
+                    <p className="text-[#6c6a64] text-[14px] leading-[1.65]">
+                      {t(b.textKey)}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -260,26 +270,21 @@ function LandingPage() {
         </FadeIn>
       </section>
 
-      {/* ─── CTA ─── */}
+      {/* ─── CTA + Waitlist — Premium ─── */}
       <section
         id="cta-final"
         className="w-full max-w-6xl mx-auto px-6 py-16 sm:py-24 relative z-10"
       >
         <FadeIn>
-          <div className="rounded-xl border border-[#e6dfd8] bg-[#efe9de] px-8 py-12 sm:px-16 sm:py-16 text-center">
-            <h2 className="font-heading text-3xl sm:text-[2.5rem] font-normal tracking-[-0.01em] text-[#141413] mb-5">
+          <div className="rounded-[24px] border border-black/[0.04] bg-[#efe9de] px-8 py-12 sm:px-16 sm:py-16 text-center shadow-[0_20px_60px_rgba(20,20,19,0.06),0_4px_16px_rgba(20,20,19,0.04)]">
+            <h2 className="font-heading text-3xl sm:text-[2.45rem] font-normal tracking-[-0.015em] text-[#141413] leading-[1.1] text-balance">
               {t("cta.title")}
             </h2>
-            <p className="text-[#6c6a64] max-w-lg mx-auto mb-10 text-[17px] leading-relaxed">
+            <p className="text-[#6c6a64] max-w-[560px] mx-auto mt-4 mb-10 text-[17px] leading-relaxed">
               {t("cta.subtitle")}
             </p>
-            <CtaButton
-              href="https://demo.nuxipro.com"
-              onClick={() => trackClick("cta-final")}
-              className="px-10 py-3.5"
-            >
-              {t("cta.button")}
-            </CtaButton>
+
+            <Waitlist variant="inline" />
           </div>
         </FadeIn>
       </section>

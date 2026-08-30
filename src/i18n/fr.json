@@ -47,9 +47,39 @@
     "hand": "Main"
   },
   "cta": {
-    "title": "Tester la démo gratuitement aujourd'hui",
-    "subtitle": "Teste la démo sans inscription et rejoins la liste d'attente à l'intérieur pour le lancement officiel.",
+    "title": "Découvrez NuxiPro Cloud ou testez l'outil aujourd'hui",
+    "subtitle": "Inscrivez-vous pour obtenir un accès prioritaire au lancement ou explorez la démo instantanément sans créer de compte.",
     "button": "Essayer la démo sans compte →"
+  },
+  "waitlist": {
+    "title": "Rejoindre la waitlist",
+    "placeholder": "votre@email.com",
+    "button": "Rejoindre",
+    "buttonLoading": "Envoi…",
+    "microCopy": "Zéro spam. Désabonnement en 1 clic.",
+    "or": "ou",
+    "demo": "Essayer la démo sans compte",
+    "errors": {
+      "invalidEmail": "Email invalide.",
+      "rateLimit": "Trop de tentatives, réessaie dans une minute.",
+      "unknown": "Erreur inconnue",
+      "network": "Erreur réseau",
+      "simulated": "Erreur simulée : impossible de rejoindre la waitlist."
+    },
+    "success": {
+      "title": "Inscription confirmée !",
+      "detail": "Un e-mail de confirmation a été envoyé à",
+      "retry": "Inscrire une autre adresse"
+    },
+    "debug": {
+      "title": "[Debug Waitlist]",
+      "endpoint": "Endpoint:",
+      "payload": "Payload:",
+      "status": "Status:",
+      "response": "Réponse:",
+      "simulateSuccess": "Simuler Succès",
+      "simulateError": "Simuler Erreur"
+    }
   },
   "nav": {
     "faq": "FAQ",

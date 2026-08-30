@@ -33,6 +33,14 @@ const config = defineConfig(({ mode }) => {
     build: {
       target: "esnext",
       cssCodeSplit: true,
+      chunkSizeWarningLimit: 700,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("posthog-js") || id.includes("@posthog")) return "posthog";
+          },
+        },
+      },
     },
   };
 });
