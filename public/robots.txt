@@ -1,39 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# AI Search crawlers — allow for visibility in AI-powered search
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-# AI crawlers — allow for AEO/GEO visibility
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
 Sitemap: https://nuxipro.com/sitemap.xml
-
-# llms.txt for AI engines: https://nuxipro.com/llms.txt
