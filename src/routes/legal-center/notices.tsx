@@ -17,9 +17,16 @@ export const Route = createFileRoute("/legal-center/notices")({
       description: DESCRIPTION,
       url: URL,
       links: [
-        { rel: "alternate", hreflang: "fr", href: `${SITE_URL}/fr/legal-center/notices` },
-        { rel: "alternate", hreflang: "en", href: `${SITE_URL}/en/legal-center/notices` },
-        { rel: "alternate", hreflang: "x-default", href: URL },
+        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/legal-center/notices` },
+        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/legal-center/notices` },
+        { rel: "alternate", hrefLang: "x-default", href: URL },
+      ],
+      extraMeta: [
+        {
+          name: "keywords",
+          content:
+            "NuxiPro legal notices, publisher, hosting, Cloudflare, Infomaniak, sub-processors, DPA",
+        },
       ],
     }),
   component: NoticesPage,
@@ -55,9 +62,22 @@ function NoticesPage() {
     inLanguage: "en",
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center` },
+      { "@type": "ListItem", position: 3, name: "Legal Notices", item: URL },
+    ],
+  } as const;
+
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(schema).replace(/</g, "\\u003c")}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c")}
+      </script>
       <div className="flex gap-12">
         <div className="flex-1 max-w-2xl min-w-0">
           <div className="mb-8">

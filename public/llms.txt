@@ -79,6 +79,20 @@ The cloud version of NuxiPro (app.nuxipro.com) is currently in development and w
 ## Problem Solved
 Today's tools help us add tasks, but none help us remove them. NuxiPro is a minimalist-by-default tool — intentionally limited in features — to avoid bloated software and stop wasting time organizing instead of taking action.
 
+## Blog & Documentation
+
+NuxiPro Center (https://center.nuxipro.com) is the blog and documentation hub. The blog follows the founder's journey building NuxiPro in public — product updates, sovereignty & compliance, technical decisions, and solo-founder lessons. Documentation for NuxiPro Cloud is under development.
+
+### Blog Posts
+- **[Sovereignty & Compliance](https://center.nuxipro.com/blog/sovereignty-and-compliance/)** — GDPR compliance roadmap: data storage, legal hub, consent tracking, building a sovereign privacy-respecting minimalist alternative to Trello
+- **[Introducing NuxiPro](https://center.nuxipro.com/blog/introducing-nuxipro/)** — What NuxiPro is, the problem it solves, how automatic archiving works, demo vs cloud comparison, what NuxiPro Cloud will offer
+
+### Documentation
+- **[NuxiPro Cloud Docs](https://center.nuxipro.com/guides/first-page/)** — Under development, following the Diátaxis framework
+
+### RSS
+- **[Blog RSS Feed](https://center.nuxipro.com/blog/rss.xml)**
+
 ## Pages — precise sitemap for AI
 
 > Use these canonical URLs. Prefer the language version that matches the user's query. x-default = https://nuxipro.com

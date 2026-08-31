@@ -19,6 +19,17 @@ export const Route = createFileRoute("/legal-center/")({
       title: HUB_TITLE,
       description: HUB_DESCRIPTION,
       url: HUB_URL,
+      links: [
+        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/legal-center` },
+        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/legal-center` },
+        { rel: "alternate", hrefLang: "x-default", href: HUB_URL },
+      ],
+      extraMeta: [
+        {
+          name: "keywords",
+          content: "NuxiPro legal center, privacy, terms, legal notices, GDPR, data protection",
+        },
+      ],
     }),
   component: LegalCenterHub,
 });
@@ -32,8 +43,20 @@ const sections = [
 function LegalCenterHub() {
   const { t } = useTranslation();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: HUB_URL },
+    ],
+  } as const;
+
   return (
     <div>
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c")}
+      </script>
       <div className="mb-12">
         <h1 className="text-3xl font-heading font-semibold tracking-tight mb-3">
           {t("legal.center.title")}

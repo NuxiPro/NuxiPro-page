@@ -17,9 +17,16 @@ export const Route = createFileRoute("/faq")({
       description: FAQ_DESCRIPTION,
       url: FAQ_URL,
       links: [
-        { rel: "alternate", hreflang: "fr", href: `${SITE_URL}/fr/faq` },
-        { rel: "alternate", hreflang: "en", href: `${SITE_URL}/en/faq` },
-        { rel: "alternate", hreflang: "x-default", href: FAQ_URL },
+        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/faq` },
+        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/faq` },
+        { rel: "alternate", hrefLang: "x-default", href: FAQ_URL },
+      ],
+      extraMeta: [
+        {
+          name: "keywords",
+          content:
+            "NuxiPro FAQ, task manager questions, automatic archiving, kanban FAQ, minimalist productivity",
+        },
       ],
     }),
   component: FAQPage,
@@ -58,10 +65,22 @@ function FAQPage() {
     [faqs],
   );
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "FAQ", item: FAQ_URL },
+    ],
+  } as const;
+
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#141413] font-body">
       <script type="application/ld+json">
         {JSON.stringify(faqSchema).replace(/</g, "\\u003c")}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c")}
       </script>
       <Navbar />
       <main className="max-w-[640px] mx-auto px-6 pt-10 pb-16">
@@ -75,17 +94,11 @@ function FAQPage() {
           {t("legal.back")}
         </a>
 
-        <h1 className="font-heading text-[28px] font-normal mt-[60px] mb-10">
-          {t("faq.title")}
-        </h1>
+        <h1 className="font-heading text-[28px] font-normal mt-[60px] mb-10">{t("faq.title")}</h1>
 
         <section aria-label={t("nav.faq")}>
           {faqs.map((faq, i) => (
-            <details
-              key={faq.q}
-              open={openIndex === i}
-              className="group border-b border-[#e6dfd8]"
-            >
+            <details key={faq.q} open={openIndex === i} className="group border-b border-[#e6dfd8]">
               {/* biome-ignore lint/a11y/noStaticElementInteractions: summary is inherently interactive */}
               <summary
                 onClick={(e) => {

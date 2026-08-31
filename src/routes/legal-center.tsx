@@ -17,22 +17,27 @@ export const Route = createFileRoute("/legal-center")({
       links: [
         {
           rel: "alternate",
-          hreflang: "fr",
+          hrefLang: "fr",
           href: `${SITE_URL}/fr/legal-center`,
         },
         {
           rel: "alternate",
-          hreflang: "en",
+          hrefLang: "en",
           href: `${SITE_URL}/en/legal-center`,
         },
-        { rel: "alternate", hreflang: "x-default", href: LEGAL_CENTER_URL },
+        { rel: "alternate", hrefLang: "x-default", href: LEGAL_CENTER_URL },
+      ],
+      extraMeta: [
+        {
+          name: "keywords",
+          content: "NuxiPro legal, privacy policy, terms of use, legal notices, GDPR",
+        },
       ],
     }),
   component: LegalCenterLayout,
 });
 
-const LINK_BASE =
-  "text-left px-3 py-2 rounded-lg text-[13px] transition-all duration-150";
+const LINK_BASE = "text-left px-3 py-2 rounded-lg text-[13px] transition-all duration-150";
 const LINK_INACTIVE = "text-muted hover:text-ink hover:bg-surface-card";
 const LINK_ACTIVE = "bg-surface-card text-ink font-medium";
 
@@ -114,9 +119,7 @@ function LegalCenterLayout() {
           </Link>
           <div className="flex items-center gap-3">
             <LegalCenterTitle />
-            <span className="text-sm font-medium">
-              {t("legal.center.title")}
-            </span>
+            <span className="text-sm font-medium">{t("legal.center.title")}</span>
           </div>
         </div>
       </header>

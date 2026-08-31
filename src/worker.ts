@@ -4,7 +4,10 @@ const POSTHOG_HOST = "eu.i.posthog.com";
 const POSTHOG_ASSETS_HOST = "eu-assets.i.posthog.com";
 
 export default {
-  async fetch(request: Request, env: Record<string, string> & { ASSETS: Fetcher }): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: Record<string, string> & { ASSETS: Fetcher },
+  ): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.pathname.startsWith("/nuxi-data/x/")) {
@@ -77,7 +80,9 @@ export default {
       }
 
       // Proxy vers backend réel si configuré, sinon 503 explicite (pas de faux 200)
-      const backend = (env.PUBLIC_API_URL ?? env.VITE_PUBLIC_API_URL ?? "").trim().replace(/\/+$/, "");
+      const backend = (env.PUBLIC_API_URL ?? env.VITE_PUBLIC_API_URL ?? "")
+        .trim()
+        .replace(/\/+$/, "");
       if (backend) {
         const target = `${backend}/api/subscribe`;
         const res = await fetch(target, {

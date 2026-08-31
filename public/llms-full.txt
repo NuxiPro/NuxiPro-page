@@ -62,6 +62,39 @@ The cloud version of NuxiPro (app.nuxipro.com) is currently in development and w
 - **Quick start** — A tool ready to use, simple day-to-day and ready to handle your tasks
 - **Personal focus** — No team features, notifications, or collaboration overhead
 
+## Blog & Documentation — NuxiPro Center
+
+> Blog & docs hub: https://center.nuxipro.com — Founder's journal building NuxiPro in public.
+
+### Blog Posts
+
+#### Sovereignty & Compliance (Aug 28, 2026)
+- Author: Sébastien Babas (Fondateur NuxiPro)
+- Focus: sovereignty and compliance for NuxiPro — build a truly helpful, privacy-first tool that respects user data
+- Roadmap before cloud version:
+  - GDPR Compliance: document data storage locations, processing methods, third-party sub-processors
+  - Legal Hub: centralize all legal and compliance documents on landing page
+  - GDPR Traceability: track user consent, permissions, privacy preferences
+- Ultimate goal: sovereign, privacy-respecting, minimalist alternative to Trello
+- URL: https://center.nuxipro.com/blog/sovereignty-and-compliance/
+
+#### Introducing NuxiPro (Aug 19, 2026)
+- Author: Sébastien Babas (Fondateur NuxiPro)
+- What: minimalist lightweight task manager, self-cleaning workspace, tasks archive automatically
+- Problem: tools help add tasks but none help remove them, "Done" column becomes graveyard
+- How it works: Instant archiving (demo, localStorage) / Configurable archiving (cloud, instant or time-based)
+- Key Features: Zero friction, Zero visual clutter, Simple tracking, No useless features, Quick start
+- Cloud features: Secure data storage, Data sovereignty, Multi-project, Auto-archiving, Workspaces, Low configuration
+- Follow: Blog, Dev.to (@sbabas), Twitter (@Tybass450)
+- URL: https://center.nuxipro.com/blog/introducing-nuxipro/
+
+### Documentation
+- **NuxiPro Cloud Docs** — Under construction, following Diátaxis framework
+- URL: https://center.nuxipro.com/guides/first-page/
+
+### RSS Feed
+- https://center.nuxipro.com/blog/rss.xml
+
 ## Technical Documentation
 
 ### Stack & Principles

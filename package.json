@@ -21,6 +21,7 @@
     "@tanstack/react-devtools": "^0.10.12",
     "@tanstack/react-router": "^1.170.32",
     "@tanstack/react-router-devtools": "^1.167.1",
+    "@tanstack/react-start": "1.168.49",
     "@tanstack/router-plugin": "^1.168.35",
     "lucide-react": "^1.34.0",
     "posthog-js": "^1.422.0",

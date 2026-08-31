@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useCallback, useContext, useState } from "react";
+import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import en from "./en.json";
 import fr from "./fr.json";
 
@@ -28,6 +28,7 @@ function resolveNested(obj: NestedValue, path: string): string | undefined {
 }
 
 function detectBrowserLocale(): Locale {
+  if (typeof navigator === "undefined") return "en";
   const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
   for (const lang of langs) {
     const code = lang.split("-")[0].toLowerCase();
@@ -38,15 +39,20 @@ function detectBrowserLocale(): Locale {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    const stored = localStorage.getItem("nuxipro-locale");
-    if (stored === "fr" || stored === "en") return stored;
-    return detectBrowserLocale();
-  });
+  const [locale, setLocaleState] = useState<Locale>("en");
 
-  const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale);
-    localStorage.setItem("nuxipro-locale", newLocale);
+  useEffect(() => {
+    const saved = localStorage.getItem("nuxipro-locale");
+    if (saved === "en" || saved === "fr") {
+      setLocaleState(saved);
+    } else {
+      setLocaleState(detectBrowserLocale());
+    }
+  }, []);
+
+  const setLocale = useCallback((value: Locale) => {
+    setLocaleState(value);
+    localStorage.setItem("nuxipro-locale", value);
   }, []);
 
   const t = useCallback(

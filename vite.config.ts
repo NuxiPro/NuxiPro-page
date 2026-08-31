@@ -1,6 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
-import { devtools } from "@tanstack/devtools-vite";
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 
@@ -10,7 +9,7 @@ const config = defineConfig(({ mode }) => {
   return {
     envPrefix: ["VITE_", "PUBLIC_"],
     resolve: { tsconfigPaths: true },
-    plugins: [devtools(), tailwindcss(), tanstackRouter({ quoteStyle: "single" }), viteReact()],
+    plugins: [tanstackStart({ router: { quoteStyle: "single" } }), tailwindcss(), viteReact()],
     server: {
       port: 3000,
       proxy: {

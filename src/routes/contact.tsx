@@ -16,9 +16,15 @@ export const Route = createFileRoute("/contact")({
       description: DESCRIPTION,
       url: URL,
       links: [
-        { rel: "alternate", hreflang: "fr", href: `${SITE_URL}/fr/contact` },
-        { rel: "alternate", hreflang: "en", href: `${SITE_URL}/en/contact` },
-        { rel: "alternate", hreflang: "x-default", href: URL },
+        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/contact` },
+        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/contact` },
+        { rel: "alternate", hrefLang: "x-default", href: URL },
+      ],
+      extraMeta: [
+        {
+          name: "keywords",
+          content: "NuxiPro contact, support, feedback, email, GitHub, questions",
+        },
       ],
     }),
   component: ContactPage,
@@ -104,12 +110,8 @@ function ContactPage() {
               <MailIcon />
             </div>
             <div>
-              <div className="text-[14px] font-medium text-ink">
-                {t("contact.email")}
-              </div>
-              <div className="text-[13px] text-muted-soft">
-                {t("contact.emailValue")}
-              </div>
+              <div className="text-[14px] font-medium text-ink">{t("contact.email")}</div>
+              <div className="text-[13px] text-muted-soft">{t("contact.emailValue")}</div>
             </div>
           </a>
 
@@ -123,12 +125,8 @@ function ContactPage() {
               <IconGitHub />
             </div>
             <div>
-              <div className="text-[14px] font-medium text-ink">
-                {t("contact.github")}
-              </div>
-              <div className="text-[13px] text-muted-soft">
-                {t("contact.githubValue")}
-              </div>
+              <div className="text-[14px] font-medium text-ink">{t("contact.github")}</div>
+              <div className="text-[13px] text-muted-soft">{t("contact.githubValue")}</div>
             </div>
           </a>
 
@@ -142,21 +140,14 @@ function ContactPage() {
               <XTwitterIcon />
             </div>
             <div>
-              <div className="text-[14px] font-medium text-ink">
-                {t("contact.twitter")}
-              </div>
-              <div className="text-[13px] text-muted-soft">
-                {t("contact.twitterValue")}
-              </div>
+              <div className="text-[14px] font-medium text-ink">{t("contact.twitter")}</div>
+              <div className="text-[13px] text-muted-soft">{t("contact.twitterValue")}</div>
             </div>
           </a>
         </div>
 
         <div className="mt-10 text-center">
-          <Link
-            to="/"
-            className="text-[13px] text-muted hover:text-ink transition-colors"
-          >
+          <Link to="/" className="text-[13px] text-muted hover:text-ink transition-colors">
             {t("contact.back")}
           </Link>
         </div>

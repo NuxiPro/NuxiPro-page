@@ -13,12 +13,7 @@ import {
   ScrollChevron,
 } from "../components/svg-icon";
 import { Waitlist } from "../components/Waitlist";
-import {
-  createPageHead,
-  SITE_DESCRIPTION,
-  SITE_TITLE,
-  SITE_URL,
-} from "../config/seo";
+import { createPageHead, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../config/seo";
 import { trackClick, useSectionTracking } from "../hooks/useSectionTracking";
 import { useTranslation } from "../i18n";
 
@@ -55,6 +50,19 @@ export const Route = createFileRoute("/")({
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,
       url: `${SITE_URL}/`,
+      links: [
+        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr` },
+        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en` },
+        { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` },
+      ],
+      extraMeta: [
+        {
+          name: "keywords",
+          content:
+            "NuxiPro, kanban, task manager, automatic task archiving, minimalist productivity, personal kanban, done column cleanup",
+        },
+        { property: "og:locale", content: "en_US" },
+      ],
     }),
   component: LandingPage,
 });
@@ -256,12 +264,8 @@ function LandingPage() {
                     {b.icon}
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#141413] text-[15px] mb-2">
-                      {t(b.titleKey)}
-                    </h3>
-                    <p className="text-[#6c6a64] text-[14px] leading-[1.65]">
-                      {t(b.textKey)}
-                    </p>
+                    <h3 className="font-medium text-[#141413] text-[15px] mb-2">{t(b.titleKey)}</h3>
+                    <p className="text-[#6c6a64] text-[14px] leading-[1.65]">{t(b.textKey)}</p>
                   </div>
                 </div>
               ))}
@@ -271,7 +275,10 @@ function LandingPage() {
       </section>
 
       {/* ─── CTA + Waitlist — strict Newsletter.astro ─── */}
-      <section id="cta-final" className="w-full max-w-3xl mx-auto px-6 py-16 sm:py-24 relative z-10">
+      <section
+        id="cta-final"
+        className="w-full max-w-3xl mx-auto px-6 py-16 sm:py-24 relative z-10"
+      >
         <FadeIn>
           <Waitlist />
         </FadeIn>
