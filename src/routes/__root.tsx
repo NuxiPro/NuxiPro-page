@@ -10,7 +10,6 @@ import {
   SITE_NAME,
   SITE_TITLE,
   SITE_URL,
-  TWITTER_CREATOR,
 } from "../config/seo";
 import { I18nProvider, useTranslation } from "../i18n";
 import appCss from "../styles.css?url";

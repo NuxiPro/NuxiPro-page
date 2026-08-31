@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.7",
+    "@cloudflare/vite-plugin": "^1.54.2",
     "@cloudflare/workers-types": "^5.20260827.1",
     "@lhci/cli": "^0.15.1",
     "@tailwindcss/typography": "^0.5.20",

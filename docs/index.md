@@ -55,13 +55,12 @@ This repo = **landing page** only: showcase + marketing + legal + contact. Rende
 
 ```
 ┌─────────────────────────────────────┐
-│      Cloudflare Workers Assets      │  wrangler.jsonc: assets ./dist
+│      Cloudflare Workers Assets      │  wrangler.jsonc: assets ./dist/client
 │  ┌─────────────────────────────┐    │  SSR: dist/server/server.js
-│  │  SSR Server (Start)         │    │  → renders full HTML per request
+│  │  SSR Server (server.ts)     │    │  → renders full HTML per request
 │  │  __root.tsx → <html> shell  │    │  → HeadContent + Scripts
-│  └─────────────────────────────┘    │
-│  ┌─────────────────────────────┐    │
-│  │  Worker src/worker.ts       │    │  → /nuxi-data/x/* → PostHog EU
+│  │  /nuxi-data/x/* → PostHog   │    │  → proxy eu.i.posthog.com
+│  │  /api/subscribe → backend   │    │  → email subscription
 │  └─────────────────────────────┘    │
 │  ┌─────────────────────────────┐    │
 │  │  Static Assets (dist/client)│    │
@@ -88,7 +87,7 @@ src/
 ├ styles.css             # Tailwind @theme (teal #0d9488, canvas, hairline) + global
 ├ kanban.css             # Kanban window/board/cursor
 ├ cookie.css             # Banner modal/FAB
-├ worker.ts              # Edge proxy /nuxi-data/x/*
+├ server.ts              # SSR + PostHog proxy + subscribe endpoint
 ├ config/seo.ts          # SITE_URL, SITE_TITLE, TWITTER_CREATOR, createPageHead(title, desc, url, links, extraMeta)
 ├ hooks/useSectionTracking.ts # IntersectionObserver → posthog.capture(section_view/cta_click)
 ├ i18n/index.tsx         # SSR-safe: useState("en") + useEffect reads localStorage/navigator
@@ -259,14 +258,15 @@ Add key = add to **both** `en.json` and `fr.json` (tested `i18n.test.ts:78` pari
 
 ## Worker & Analytics Proxy
 
-`src/worker.ts:1` (prod) vs `vite.config.ts` (dev) — **divergent paths** (P0):
+`src/server.ts` — unified entry for SSR + PostHog proxy + subscribe endpoint:
 
-| Env | Request | Target |
-|---|---|---|
-| Dev | `/ingest/*`, `/ingest/static/*`, `/ingest/array/*` | Vite proxy → `eu-assets.i.posthog.com` / `VITE_PUBLIC_POSTHOG_HOST\|\|eu.i.posthog.com` |
-| Prod | `/nuxi-data/x/*` | Worker → `eu.i.posthog.com` / `eu-assets.i.posthog.com` (if `static/`) + strip CSP/X-Frame |
+| Route | Handler |
+|---|---|
+| `/nuxi-data/x/*` | PostHog EU proxy → `eu.i.posthog.com` / `eu-assets.i.posthog.com` (if `static/`) + strip CSP/X-Frame |
+| `/api/subscribe` | Email subscription → backend (if configured) or 503 |
+| `*` | SSR fallback → TanStack Start renders full HTML |
 
-`__root.tsx` `posthog.init({api_host:"/ingest"})` — broken in prod if not rewritten. Keep both proxies aligned or unify to `/ingest`.
+`__root.tsx` `posthog.init({api_host:"/nuxi-data/x"})` — aligns with production proxy path.
 
 ---
 
@@ -330,12 +330,12 @@ Tailwind v4 `@theme` in `styles.css` — no `tailwind.config.js`.
 **Cloudflare Workers Assets** (not Pages). `wrangler.jsonc`:
 
 ```jsonc
-{ "name":"nuxipro-page", "compatibility_date":"2026-08-01", "main":"src/worker.ts", "assets":{"directory":"./dist","not_found_handling":"single-page-application"} }
+{ "name":"nuxipro-page", "compatibility_date":"2026-08-01", "assets":{"directory":"./dist/client"} }
 ```
 
 ```bash
 bun run build
-npx wrangler deploy # not `wrangler pages deploy`
+bun x wrangler deploy # not `wrangler pages deploy`
 ```
 
 Domains: `nuxipro.com` (prod), `demo.nuxipro.com`, `center.nuxipro.com`, `app.nuxipro.com` (dev).
@@ -372,7 +372,7 @@ Add test = `src/test/*.test.ts` (jsdom, `setup.ts`).
 | Translate | add key to both `en.json`+`fr.json` then `t("key")` |
 | Icons | `src/components/svg-icon.tsx` |
 | Styles section | `src/components/legal-section.tsx` |
-| Analytics | `src/worker.ts` + `vite.config.ts` + `__root.tsx` (keep `/ingest` ≡ `/nuxi-data/x` in sync) |
+| Analytics | `src/server.ts` (PostHog proxy route) + `__root.tsx` (posthog.init) |
 | Sitemap | `public/sitemap.xml` — add URL + hreflang + bump `lastmod` |
 | Global JSON-LD | `src/routes/__root.tsx` → `@graph` + `index.html` → `@graph` (keep in sync) |
 | Blog posts | `src/routes/__root.tsx` → `blogPost[]` + `index.html` → `blogPost[]` + `llms.txt` |
@@ -380,7 +380,6 @@ Add test = `src/test/*.test.ts` (jsdom, `setup.ts`).
 | Check before PR | `bun run check && bun run test` |
 
 **Critical TODOs:**
-- P0: unify analytics proxy paths (`/ingest` ≡ `/nuxi-data/x`)
 - P1: rename `sixMonthsLater`→`twelveMonthsLater`, remove dead `src/components/legal.tsx`
 - P2: fix `manifest.json`/`index.html`/`__root.tsx` lang triple source
 

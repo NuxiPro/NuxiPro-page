@@ -1,15 +1,14 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "nuxipro-page",
-  "main": "src/worker.ts",
+  "main": "src/server.ts",
   "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application",
+    "directory": "./dist/client"
   },
   "observability": {
     "enabled": false,
-    "head_sampling_rate": 1,
-    "redact_query_string": false,
     "logs": {
       "enabled": true,
       "head_sampling_rate": 1,

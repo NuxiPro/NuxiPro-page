@@ -1,3 +1,4 @@
+import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -9,7 +10,12 @@ const config = defineConfig(({ mode }) => {
   return {
     envPrefix: ["VITE_", "PUBLIC_"],
     resolve: { tsconfigPaths: true },
-    plugins: [tanstackStart({ router: { quoteStyle: "single" } }), tailwindcss(), viteReact()],
+    plugins: [
+      cloudflare({ viteEnvironment: { name: "ssr" } }),
+      tanstackStart({ router: { quoteStyle: "single" } }),
+      tailwindcss(),
+      viteReact(),
+    ],
     server: {
       port: 3000,
       proxy: {
