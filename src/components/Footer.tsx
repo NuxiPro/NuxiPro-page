@@ -31,14 +31,14 @@ export function Footer() {
               <ul className="flex flex-col gap-1.5">
                 <li>
                   <a
-                    href="https://github.com/NuxiPro"
+                    href="https://github.com/NuxiPro/NuxiPro-page"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackClick("footer-github")}
                     className="group inline-flex items-center gap-2 text-[13px] text-[#F0F0F0] hover:text-white transition-colors duration-200"
                   >
                     <IconGitHub className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
-                    <span>GitHub</span>
+                    <span>{t("footer.openSource")}</span>
                     <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-50 transition-opacity" />
                   </a>
                 </li>

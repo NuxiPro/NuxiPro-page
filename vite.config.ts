@@ -6,12 +6,13 @@ import { defineConfig, loadEnv } from "vite";
 
 const config = defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const isProd = mode === "production";
 
   return {
     envPrefix: ["VITE_", "PUBLIC_"],
     resolve: { tsconfigPaths: true },
     plugins: [
-      cloudflare({ viteEnvironment: { name: "ssr" } }),
+      ...(isProd ? [cloudflare({ viteEnvironment: { name: "ssr" } })] : []),
       tanstackStart({ router: { quoteStyle: "single" } }),
       tailwindcss(),
       viteReact(),

@@ -93,9 +93,10 @@
     "contact": "Contact"
   },
   "footer": {
-    "copyright": "© 2026 NuxiPro. Designed for absolute mental clarity.",
+    "copyright": "© 2026 NuxiPro. Designed for absolute mental clarity. Open source — BSD 2-Clause",
     "author": "Built by S. Babas",
     "project": "Project",
+    "openSource": "Open source on GitHub",
     "legal": {
       "title": "Legal"
     },
@@ -249,7 +250,7 @@
       },
       "ip": {
         "title": "Intellectual Property",
-        "text": "All source code, design, and content of NuxiPro are the exclusive property of the publisher. Reverse engineering, reproduction, or commercial use is prohibited."
+        "text": "This site (landing page and demo) is an open source project under the BSD 2-Clause license. The source code is available on GitHub: https://github.com/NuxiPro/NuxiPro-page. The Cloud version (app.nuxipro.com) is not under the same license and is subject to separate terms of use."
       },
       "availability": {
         "title": "Service Availability",
@@ -337,7 +338,7 @@
       },
       "ip": {
         "title": "Intellectual Property",
-        "text": "All source code, design, and content of NuxiPro are the exclusive property of the publisher. Reverse engineering, reproduction, or commercial use is prohibited."
+        "text": "This site (landing page and demo) is an open source project under the BSD 2-Clause license. The source code is available on GitHub: https://github.com/NuxiPro/NuxiPro-page. The Cloud version (app.nuxipro.com) is not under the same license and is subject to separate terms of use."
       },
       "contact": {
         "title": "Contact",

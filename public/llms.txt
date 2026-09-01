@@ -143,7 +143,7 @@ NuxiPro is similar to Todoist, Trello, and TickTick, but focuses specifically on
 Sébastien Babas — contact@nuxipro.com — https://nuxipro.com
 
 ## License
-Proprietary — All source code, design and content are the exclusive property of the publisher. No reproduction without permission.
+Open source — BSD 2-Clause. This landing page and demo only. Source code: https://github.com/NuxiPro/NuxiPro-page. The Cloud version (app.nuxipro.com) is not under the same license.
 
 ## Architecture Principles
 - Solo-first, minimalist by default — no team overhead
