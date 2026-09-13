@@ -33,6 +33,7 @@ This repository contains the **landing page** for NuxiPro, built with React and 
 | Demo | [demo.nuxipro.com](https://demo.nuxipro.com) |
 | Blog & Docs | [center.nuxipro.com](https://center.nuxipro.com) |
 | GitHub | [github.com/NuxiPro](https://github.com/NuxiPro) |
+| Product Hunt | [Page](https://www.producthunt.com/products/nuxipro) |
 
 ## Features
 
@@ -65,7 +66,7 @@ This repository contains the **landing page** for NuxiPro, built with React and 
 
 ### Prerequisites
 
-- [Bun](https://bun.sh) >= 1.3.13
+- [Bun](https://bun.sh) >= 1.4.2
 
 ### Installation
 

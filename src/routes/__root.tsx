@@ -5,11 +5,17 @@ import { useEffect, useRef, useState } from "react";
 import { CookieBanner } from "#/components/Banner";
 import {
   createPageHead,
+  DEMO_URL,
+  DEMO_URL_CANONICAL,
+  ORG_EMAIL,
+  ORG_LOGO,
   SITE_DESCRIPTION,
   SITE_IMAGE,
   SITE_NAME,
   SITE_TITLE,
   SITE_URL,
+  SOFTWARE_DISAMBIGUATING_DESCRIPTION,
+  SOFTWARE_VERSION,
 } from "../config/seo";
 import { I18nProvider, useTranslation } from "../i18n";
 import appCss from "../styles.css?url";
@@ -22,8 +28,6 @@ export const Route = createRootRoute({
       url: `${SITE_URL}/`,
       links: [
         { rel: "manifest", href: "/manifest.json" },
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en` },
         { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" as const },
@@ -126,7 +130,7 @@ function App() {
         content
       )}
 
-      {/* Global structured data — SEO/AEO/GEO */}
+      {/* Global structured data — SEO/AEO/GEO (must stay 1:1 with index.html @graph) */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -139,6 +143,7 @@ function App() {
               description: SITE_DESCRIPTION,
               inLanguage: "en",
               publisher: { "@id": `${SITE_URL}/#organization` },
+              hasPart: [{ "@id": `${SITE_URL}/#software` }, { "@id": `${SITE_URL}/#demo` }],
             },
             {
               "@type": "Organization",
@@ -147,8 +152,8 @@ function App() {
               alternateName: ["NuxiPro Software", "NuxiPro Kanban"],
               identifier: SITE_URL,
               url: `${SITE_URL}/`,
-              logo: `${SITE_URL}/logo.png`,
-              email: "contact@nuxipro.com",
+              logo: ORG_LOGO,
+              email: ORG_EMAIL,
               description:
                 "NuxiPro is a software company building minimalist productivity tools for personal Kanban task management.",
               founder: { "@type": "Person", name: "Sébastien Babas" },
@@ -157,6 +162,15 @@ function App() {
                 "https://github.com/NuxiPro",
                 "https://www.producthunt.com/products/nuxipro",
                 "https://center.nuxipro.com",
+                DEMO_URL,
+              ],
+              relatedLink: [DEMO_URL, "https://center.nuxipro.com"],
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": `${SITE_URL}/#breadcrumb`,
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
               ],
             },
             {
@@ -167,20 +181,24 @@ function App() {
               applicationCategory: "BusinessApplication",
               applicationSubCategory: "Task Management Software",
               operatingSystem: "All (Web Browser)",
-              softwareVersion: "1.0",
+              softwareVersion: SOFTWARE_VERSION,
               description:
                 "NuxiPro is a minimalist personal Kanban task manager with automatic archiving. It cleans your board by archiving completed tasks so you never have to.",
+              disambiguatingDescription: SOFTWARE_DISAMBIGUATING_DESCRIPTION,
               screenshot: SITE_IMAGE,
               keywords:
-                "NuxiPro Kanban, NuxiPro task manager, automatic task archiving, minimalist to-do list, personal kanban, single-user productivity",
+                "NuxiPro Kanban, NuxiPro task manager, automatic task archiving, how to clean done column kanban, too many done tasks, minimalist to-do list, personal kanban, single-user productivity",
               datePublished: "2026-01-01",
               dateModified: "2026-08-31",
               isSimilarTo: ["https://todoist.com", "https://trello.com", "https://ticktick.com"],
+              sameAs: [DEMO_URL, "https://center.nuxipro.com"],
+              relatedLink: [DEMO_URL, "https://center.nuxipro.com"],
               offers: {
                 "@type": "Offer",
                 price: "0",
                 priceCurrency: "USD",
-                url: "https://demo.nuxipro.com",
+                url: DEMO_URL_CANONICAL,
+                availability: "https://schema.org/InStock",
                 description: "Free interactive demo — no account required",
               },
               author: { "@type": "Person", name: "Sébastien Babas" },
@@ -198,6 +216,31 @@ function App() {
                 "No useless features — focus on what matters",
                 "Quick start — ready to use from day one",
                 "Interactive live demo without registration",
+              ],
+            },
+            {
+              "@type": "WebApplication",
+              "@id": `${SITE_URL}/#demo`,
+              name: "NuxiPro — Interactive Demo",
+              description:
+                "Free interactive demo of NuxiPro — try automatic Kanban archiving without creating an account. Data stays in your browser.",
+              url: DEMO_URL,
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "All (Web Browser)",
+              isPartOf: { "@id": `${SITE_URL}/#software` },
+              publisher: { "@id": `${SITE_URL}/#organization` },
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+                url: DEMO_URL_CANONICAL,
+                availability: "https://schema.org/InStock",
+                description: "Free interactive demo — no account required",
+              },
+              featureList: [
+                "Instant archiving from Done column",
+                "No account required",
+                "Browser-only storage for testing",
               ],
             },
             {

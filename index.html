@@ -7,13 +7,11 @@
     <meta name="description" content="Stop wasting time manually archiving your tasks. With NuxiPro, your workspace cleans itself automatically." />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Sebastien Babas" />
-    <meta name="keywords" content="NuxiPro, Nuxi Pro, task manager, automatic task archiving, kanban, minimalist productivity, personal kanban, done column cleanup" />
+    <meta name="keywords" content="NuxiPro, NuxiPro Kanban, task manager, automatic task archiving, kanban, minimalist productivity, personal kanban, done column cleanup" />
     <link rel="canonical" href="https://nuxipro.com/" />
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- Hreflang -->
-    <link rel="alternate" hreflang="fr" href="https://nuxipro.com/fr" />
-    <link rel="alternate" hreflang="en" href="https://nuxipro.com/en" />
+    <!-- Hreflang — only x-default (no /fr or /en routes exist) -->
     <link rel="alternate" hreflang="x-default" href="https://nuxipro.com/" />
 
     <!-- Open Graph -->
@@ -45,7 +43,15 @@
             "inLanguage": "en",
             "publisher": {
               "@id": "https://nuxipro.com/#organization"
-            }
+            },
+            "hasPart": [
+              {
+                "@id": "https://nuxipro.com/#software"
+              },
+              {
+                "@id": "https://nuxipro.com/#demo"
+              }
+            ]
           },
           {
             "@type": "Organization",
@@ -66,7 +72,9 @@
               "https://github.com/NuxiPro",
               "https://www.producthunt.com/products/nuxipro",
               "https://center.nuxipro.com",
-            ]
+              "https://demo.nuxipro.com/"
+            ],
+            "relatedLink": ["https://demo.nuxipro.com/", "https://center.nuxipro.com"]
           },
           {
             "@type": "BreadcrumbList",
@@ -88,23 +96,22 @@
             "applicationCategory": "BusinessApplication",
             "applicationSubCategory": "Task Management Software",
             "operatingSystem": "All (Web Browser)",
-            "softwareVersion": "1.0",
+            "softwareVersion": "1.0.0",
             "description": "NuxiPro is a minimalist personal Kanban task manager with automatic archiving. It cleans your board by archiving completed tasks so you never have to.",
-            "disambiguatingDescription": "NuxiPro is a SaaS software application for automatic task archiving and personal Kanban management, not a chemical or industrial product.",
+            "disambiguatingDescription": "NuxiPro is a SaaS software application for personal Kanban task management with automatic archiving of completed tasks. Not affiliated with Nuxt, Nuxt Pro, Nexi, or any chemical or industrial product. NuxiPro runs in any modern web browser as a BusinessApplication.",
             "screenshot": "https://nuxipro.com/og-image.png",
             "keywords": "NuxiPro Kanban, NuxiPro task manager, automatic task archiving, how to clean done column kanban, too many done tasks, minimalist to-do list, personal kanban, single-user productivity",
             "datePublished": "2026-01-01",
             "dateModified": "2026-08-31",
-            "isSimilarTo": [
-              "https://todoist.com",
-              "https://trello.com",
-              "https://ticktick.com"
-            ],
+            "isSimilarTo": ["https://todoist.com", "https://trello.com", "https://ticktick.com"],
+            "sameAs": ["https://demo.nuxipro.com/", "https://center.nuxipro.com"],
+            "relatedLink": ["https://demo.nuxipro.com/", "https://center.nuxipro.com"],
             "offers": {
               "@type": "Offer",
               "price": "0",
               "priceCurrency": "USD",
               "url": "https://demo.nuxipro.com",
+              "availability": "https://schema.org/InStock",
               "description": "Free interactive demo — no account required"
             },
             "author": {
@@ -128,6 +135,30 @@
               "Quick start — ready to use from day one",
               "Interactive live demo without registration"
             ]
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://nuxipro.com/#demo",
+            "name": "NuxiPro — Interactive Demo",
+            "description": "Free interactive demo of NuxiPro — try automatic Kanban archiving without creating an account. Data stays in your browser.",
+            "url": "https://demo.nuxipro.com/",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "All (Web Browser)",
+            "isPartOf": {
+              "@id": "https://nuxipro.com/#software"
+            },
+            "publisher": {
+              "@id": "https://nuxipro.com/#organization"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "url": "https://demo.nuxipro.com",
+              "availability": "https://schema.org/InStock",
+              "description": "Free interactive demo — no account required"
+            },
+            "featureList": ["Instant archiving from Done column", "No account required", "Browser-only storage for testing"]
           },
           {
             "@type": "Blog",

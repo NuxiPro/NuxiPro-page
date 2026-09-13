@@ -63,7 +63,9 @@ async function handleSubscribe(request: Request): Promise<Response> {
     return json({ error: "Bot detected." }, { status: 400 });
   }
 
-  const email = String(data.email ?? "").trim().toLowerCase();
+  const email = String(data.email ?? "")
+    .trim()
+    .toLowerCase();
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
     return json({ error: "Email invalide." }, { status: 400 });
   }

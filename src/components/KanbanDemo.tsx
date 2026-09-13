@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "../i18n";
 import { CursorArrowIcon, CursorHandIcon } from "./svg-icon";
 import "../kanban.css";
 
@@ -69,8 +68,6 @@ interface KanbanDemoProps {
 }
 
 export default function KanbanDemo({ className }: KanbanDemoProps) {
-  const { t } = useTranslation();
-  // mounted = true uniquement côté client (évite le mismatch SSR)
   const [mounted, setMounted] = useState(false);
   const [tasks, setTasks] = useState<TaskItem[]>([]);
   const [flyingCard, setFlyingCard] = useState<FlyingCard | null>(null);

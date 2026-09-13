@@ -1,10 +1,22 @@
 export const SITE_URL = "https://nuxipro.com";
 export const SITE_NAME = "NuxiPro";
-export const SITE_TITLE = "NuxiPro - Your workspace cleans itself";
+// IMPORTANT: must stay 1:1 with <title> in index.html to avoid JS hydration overwriting SEO title (anti-overwriting)
+export const SITE_TITLE = "NuxiPro – Automated task archiving for your Kanban workspace";
 export const SITE_DESCRIPTION =
   "Stop wasting time manually archiving your tasks. With NuxiPro, your workspace cleans itself automatically.";
 export const SITE_IMAGE = `${SITE_URL}/og-image.png`;
 export const TWITTER_CREATOR = "@Tybass450";
+
+// Demo — single source of truth for JSON-LD (Offer/hasPart/sameAs/relatedLink)
+export const DEMO_URL = "https://demo.nuxipro.com/";
+export const DEMO_URL_CANONICAL = "https://demo.nuxipro.com";
+export const SOFTWARE_VERSION = "1.0.0";
+export const ORG_EMAIL = "contact@nuxipro.com";
+export const ORG_LOGO = `${SITE_URL}/logo.png`;
+
+// Disambiguation — critical for Google/Bing brand understanding (GEO/AEO)
+export const SOFTWARE_DISAMBIGUATING_DESCRIPTION =
+  "NuxiPro is a SaaS software application for personal Kanban task management with automatic archiving of completed tasks. Not affiliated with Nuxt, Nuxt Pro, Nexi, or any chemical or industrial product. NuxiPro runs in any modern web browser as a BusinessApplication.";
 
 export function createPageHead({
   title,

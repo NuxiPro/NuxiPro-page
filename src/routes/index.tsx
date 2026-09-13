@@ -50,16 +50,12 @@ export const Route = createFileRoute("/")({
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,
       url: `${SITE_URL}/`,
-      links: [
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en` },
-        { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` },
-      ],
+      links: [{ rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` }],
       extraMeta: [
         {
           name: "keywords",
           content:
-            "NuxiPro, kanban, task manager, automatic task archiving, minimalist productivity, personal kanban, done column cleanup",
+            "NuxiPro, NuxiPro Kanban, task manager, automatic task archiving, kanban, minimalist productivity, personal kanban, done column cleanup",
         },
         { property: "og:locale", content: "en_US" },
       ],
