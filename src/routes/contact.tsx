@@ -15,11 +15,6 @@ export const Route = createFileRoute("/contact")({
       title: TITLE,
       description: DESCRIPTION,
       url: URL,
-      links: [
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/contact` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/contact` },
-        { rel: "alternate", hrefLang: "x-default", href: URL },
-      ],
       extraMeta: [
         {
           name: "keywords",

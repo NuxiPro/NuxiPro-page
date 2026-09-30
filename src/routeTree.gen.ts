@@ -15,6 +15,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LegalCenterRouteImport } from './routes/legal-center'
 import { Route as LegalCenterIndexRouteImport } from './routes/legal-center/index'
 import { Route as LegalCenterCguRouteImport } from './routes/legal-center/cgu'
+import { Route as LegalCenterCookiesRouteImport } from './routes/legal-center/cookies'
 import { Route as LegalCenterNoticesRouteImport } from './routes/legal-center/notices'
 import { Route as LegalCenterPrivacyRouteImport } from './routes/legal-center/privacy'
 
@@ -48,6 +49,11 @@ const LegalCenterCguRoute = LegalCenterCguRouteImport.update({
   path: '/cgu',
   getParentRoute: () => LegalCenterRoute,
 } as any)
+const LegalCenterCookiesRoute = LegalCenterCookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => LegalCenterRoute,
+} as any)
 const LegalCenterNoticesRoute = LegalCenterNoticesRouteImport.update({
   id: '/notices',
   path: '/notices',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/legal-center': typeof LegalCenterRouteWithChildren
   '/legal-center/cgu': typeof LegalCenterCguRoute
+  '/legal-center/cookies': typeof LegalCenterCookiesRoute
   '/legal-center/notices': typeof LegalCenterNoticesRoute
   '/legal-center/privacy': typeof LegalCenterPrivacyRoute
   '/legal-center/': typeof LegalCenterIndexRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/legal-center/cgu': typeof LegalCenterCguRoute
+  '/legal-center/cookies': typeof LegalCenterCookiesRoute
   '/legal-center/notices': typeof LegalCenterNoticesRoute
   '/legal-center/privacy': typeof LegalCenterPrivacyRoute
   '/legal-center': typeof LegalCenterIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/legal-center': typeof LegalCenterRouteWithChildren
   '/legal-center/cgu': typeof LegalCenterCguRoute
+  '/legal-center/cookies': typeof LegalCenterCookiesRoute
   '/legal-center/notices': typeof LegalCenterNoticesRoute
   '/legal-center/privacy': typeof LegalCenterPrivacyRoute
   '/legal-center/': typeof LegalCenterIndexRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/legal-center'
     | '/legal-center/cgu'
+    | '/legal-center/cookies'
     | '/legal-center/notices'
     | '/legal-center/privacy'
     | '/legal-center/'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/legal-center/cgu'
+    | '/legal-center/cookies'
     | '/legal-center/notices'
     | '/legal-center/privacy'
     | '/legal-center'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/legal-center'
     | '/legal-center/cgu'
+    | '/legal-center/cookies'
     | '/legal-center/notices'
     | '/legal-center/privacy'
     | '/legal-center/'
@@ -172,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalCenterCguRouteImport
       parentRoute: typeof LegalCenterRoute
     }
+    '/legal-center/cookies': {
+      id: '/legal-center/cookies'
+      path: '/cookies'
+      fullPath: '/legal-center/cookies'
+      preLoaderRoute: typeof LegalCenterCookiesRouteImport
+      parentRoute: typeof LegalCenterRoute
+    }
     '/legal-center/notices': {
       id: '/legal-center/notices'
       path: '/notices'
@@ -191,6 +210,7 @@ declare module '@tanstack/react-router' {
 
 interface LegalCenterRouteChildren {
   LegalCenterCguRoute: typeof LegalCenterCguRoute
+  LegalCenterCookiesRoute: typeof LegalCenterCookiesRoute
   LegalCenterNoticesRoute: typeof LegalCenterNoticesRoute
   LegalCenterPrivacyRoute: typeof LegalCenterPrivacyRoute
   LegalCenterIndexRoute: typeof LegalCenterIndexRoute
@@ -198,6 +218,7 @@ interface LegalCenterRouteChildren {
 
 const LegalCenterRouteChildren: LegalCenterRouteChildren = {
   LegalCenterCguRoute: LegalCenterCguRoute,
+  LegalCenterCookiesRoute: LegalCenterCookiesRoute,
   LegalCenterNoticesRoute: LegalCenterNoticesRoute,
   LegalCenterPrivacyRoute: LegalCenterPrivacyRoute,
   LegalCenterIndexRoute: LegalCenterIndexRoute,

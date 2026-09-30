@@ -1,18 +1,17 @@
 {
   "hero": {
-    "title": "Libérez votre espace des tâches terminées",
-    "subtitle": "Arrêtez de perdre du temps à archiver vos tâches manuellement. NuxiPro automatise tout le processus pour vous.",
-    "cta": "Essayer la démo sans compte →",
-    "cloud": "Accès anticipé"
+    "title": "Et si votre outil évoluait avec vous, sans vous surcharger de fonctionnalités inutiles ?",
+    "subtitle": "Arrêtez de perdre du temps à chercher un outil pensé pour les solos, minimaliste par défaut, qui nettoie votre espace tout seul : NuxiPro fait l'essentiel et simplifie votre quotidien.",
+    "cta": "Essayer la démo sans compte →"
   },
   "scroll": {
     "tooltip": "Découvrir la suite"
   },
   "pourquoi": {
     "label": "Pourquoi j'ai créé ce logiciel",
-    "p1": "Les outils actuels regorgent de fonctionnalités qu'on n'utilise jamais. Résultat : des interfaces surchargées, complexes, et aucun archivage automatique natif pour les tâches terminées.",
-    "p2": "Sans ce ménage, la colonne \"Terminé\" devient un cimetière de cartes. On perd un temps précieux à chercher comment archiver et à faire le ménage à la main, au lieu de faire avancer son projet.",
-    "p3": "J'ai créé NuxiPro pour proposer un Kanban simple, minimaliste et prêt à l'emploi. Dès qu'une tâche glisse dans la colonne \"Terminé\", elle est archivée instantanément en arrière-plan. Faible configuration, zéro usine à gaz, et ton board reste propre dès le premier jour. La démo archive les tâches instantanément par défaut — les données restent dans ton navigateur et peuvent être perdues."
+    "p1": "J'utilisais des solutions propriétaires que je ne pouvais pas auditer et qui ne résolvaient pas mon problème : mon espace de travail devenait un cimetière de tâches terminées.",
+    "p2": "J'ai testé les todo lists et les kanbans : ils ont un point commun, les tâches restent visibles même quand elles sont terminées. J'avais testé Todoist mais il ne déplaçait pas les tâches vers un espace d'archive dédié, du coup elles se rechargeaient en arrière-plan à chaque fois que j'arrivais sur la page, ce qui faisait perdre en performance.",
+    "p3": "J'ai donc décidé de créer cet outil minimaliste, volontairement limité à l'essentiel, souverain et respectueux de votre vie privée. Il est aussi open source : vous ne serez jamais prisonnier du logiciel, vos données sont à vous et vous pouvez migrer vers un VPS ou un serveur dédié pour l'héberger en toute tranquillité."
   },
   "benefits": {
     "title": "Ce que j'obtiens en utilisant ce logiciel",
@@ -90,17 +89,43 @@
     "cloud": "Cloud",
     "dev": "(en dev)",
     "beta": "Bêta",
-    "contact": "Contact"
+    "contact": "Contact",
+    "docs": "Docs",
+    "blog": "Blog",
+    "openSource": "Open source",
+    "codeTitle": "Code source ouvert sur Codeberg"
+  },
+  "comparison": {
+    "title": "Démo vs Cloud",
+    "columns": ["", "Démo", "Cloud"],
+    "rows": [
+      { "key": "usage", "label": "Cas d'usage", "demo": "Tester et découvrir le concept", "cloud": "Stocker et utiliser au quotidien sans perdre de donnée" },
+      { "key": "account", "label": "Besoin de créer un compte ?", "demo": "Non", "cloud": "Oui" },
+      { "key": "archive", "label": "Type d'archive native", "demo": "Archive instantanée", "cloud": "2 types d'archivage : instantané et basé sur la date (temporel)" },
+      { "key": "duration", "label": "Durée de disponibilité (estimer)", "demo": "Limité et va très probablement être arrêté", "cloud": "Indéfini, usage quotidien par le créateur" },
+      { "key": "storage", "label": "Où sont stockées les données ?", "demo": "Dans votre navigateur", "cloud": "Dans un cloud souverain en Europe" },
+      { "key": "simplicity", "label": "Simplicité ?", "demo": "Très simple et fonctionne dès maintenant", "cloud": "Simple, nécessite une petite configuration guidée" },
+      { "key": "sovereignty", "label": "Souveraineté de donnée", "demo": "Élevée – les données restent dans le navigateur, seules analytics anonymes", "cloud": "Élevée – données vous restent, hébergées en Europe, possibilité d'auto‑hébergement" },
+      { "key": "selfhost", "label": "Auto hébergeable ?", "demo": "Non", "cloud": "Oui, une fois stable, vous pouvez le déployer sans perte de temps" },
+      { "key": "opensource", "label": "Open source ?", "demo": "Non (propriétaire, bientôt supprimé)", "cloud": "Oui" },
+      { "key": "purpose", "label": "Le seul but", "demo": "Tester sans données critiques", "cloud": "Outil simple quotidien, stockage sécurisé" }
+    ]
   },
   "footer": {
+    "tagline": "Gérez vos projets sans vous soucier de l'outil au quotidien.",
     "copyright": "© 2026 NuxiPro. Conçu pour une clarté mentale absolue. Open source — BSD 2-Clause",
-    "author": "Conçu par S. Babas",
+    "author": "Conçu par S Babas",
     "project": "Projet",
+    "resources": "Ressources",
+    "orgButton": "Voir l'organisation",
+    "core": "Cloud NuxiPro",
+    "landing": "Landing page",
+    "centerRepo": "Blog & docs",
     "openSource": "Open source sur GitHub",
     "legal": {
-      "title": "Mentions légales"
+      "title": "Légales"
     },
-    "legalCenter": "Centre Juridique",
+    "legalCenter": "Informations légales",
     "terms": "Conditions d'utilisation (démo)",
     "cookies": "Cookies",
     "blog": "Blog",
@@ -126,7 +151,7 @@
   "legal": {
     "back": "Retour",
     "center": {
-      "title": "Centre Juridique",
+      "title": "Informations juridiques",
       "subtitle": "Tous les documents et politiques juridiques de NuxiPro au même endroit.",
       "back": "Retour au site",
       "lastUpdated": "Dernière mise à jour"
@@ -203,7 +228,7 @@
       }
     },
     "cookies": {
-      "title": "Cookies & Stockage Local",
+      "title": "Cookies",
       "desc": "Politique d'utilisation des cookies, analytics et stockage local.",
       "p1": "Cette politique explique comment j'utilise les cookies et le stockage local sur NuxiPro.",
       "types": {

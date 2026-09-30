@@ -16,11 +16,6 @@ export const Route = createFileRoute("/legal-center/cgu")({
       title: TITLE,
       description: DESCRIPTION,
       url: URL,
-      links: [
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/legal-center/cgu` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/legal-center/cgu` },
-        { rel: "alternate", hrefLang: "x-default", href: URL },
-      ],
       extraMeta: [
         {
           name: "keywords",

@@ -10,6 +10,8 @@ const COOKIE_CONSENT_DATE = "nuxipro_cookie_consent_date";
 const COOKIE_ANALYTICS_KEY = "nuxipro_cookie_analytics";
 const COOKIE_RECORDING_KEY = "nuxipro_cookie_recording";
 
+const PRIVACY_URL = "/legal-center/cookies";
+
 type ConsentChoice = "accepted" | "declined" | "partial" | null;
 
 function getStoredConsentVersion(): string | null {
@@ -20,16 +22,15 @@ function isConsentExpired(): boolean {
   const date = localStorage.getItem(COOKIE_CONSENT_DATE);
   if (!date) return true;
   const consentDate = new Date(date);
-  const sixMonthsLater = new Date(consentDate);
-  sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 12);
-  return new Date() > sixMonthsLater;
+  const expiryDate = new Date(consentDate);
+  expiryDate.setMonth(expiryDate.getMonth() + 12);
+  return new Date() > expiryDate;
 }
 
 export function CookieBanner() {
   const posthog = usePostHog();
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
   const [recordingEnabled, setRecordingEnabled] = useState(false);
   const [hasDecided, setHasDecided] = useState(false);
@@ -72,13 +73,6 @@ export function CookieBanner() {
     }
   }, [posthog, applyConsent]);
 
-  useEffect(() => {
-    document.body.style.overflow = showModal ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [showModal]);
-
   const saveConsent = (choice: ConsentChoice, analytics: boolean, recording: boolean) => {
     localStorage.setItem(COOKIE_KEY, choice ?? "declined");
     localStorage.setItem(COOKIE_CONSENT_VERSION, CONSENT_VERSION);
@@ -94,7 +88,7 @@ export function CookieBanner() {
     setHasDecided(true);
   };
 
-  const handleAccept = () => saveConsent("accepted", true, recordingEnabled);
+  const handleAccept = () => saveConsent("accepted", true, true);
   const handleDecline = () => saveConsent("declined", false, false);
 
   const handleSavePreferences = () => {
@@ -113,7 +107,6 @@ export function CookieBanner() {
 
   useEffect(() => {
     const handleReopen = () => {
-      setShowModal(false);
       setVisible(true);
     };
     window.addEventListener("reopen-cookie-banner", handleReopen);
@@ -121,7 +114,6 @@ export function CookieBanner() {
   }, []);
 
   const reopenBanner = () => {
-    setShowModal(false);
     setVisible(true);
   };
 
@@ -189,10 +181,10 @@ export function CookieBanner() {
               </button>
             </div>
 
-            <button type="button" className="cookie-learn-more" onClick={() => setShowModal(true)}>
+            <a href={PRIVACY_URL} className="cookie-learn-more">
               {t("banner.learnMore")}
               <LegalChevronRight />
-            </button>
+            </a>
           </div>
 
           <div className="cookie-panel-footer">
@@ -217,102 +209,6 @@ export function CookieBanner() {
             >
               {t("banner.accept")}
             </button>
-          </div>
-        </div>
-      )}
-
-      {showModal && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="cookie-modal-overlay"
-          onClick={() => setShowModal(false)}
-          onKeyDown={(e) => {
-            if (e.key === "Escape") setShowModal(false);
-          }}
-        >
-          <div
-            role="document"
-            className="cookie-modal"
-            onClick={(e) => e.stopPropagation()}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") setShowModal(false);
-            }}
-          >
-            <div className="cookie-modal-header">
-              <h2>{t("banner.modalTitle")}</h2>
-              <button
-                type="button"
-                className="cookie-modal-close"
-                onClick={() => setShowModal(false)}
-                aria-label={t("banner.close")}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-            <div className="cookie-modal-body">
-              <section>
-                <h3>{t("banner.whatIs")}</h3>
-                <p>{t("banner.whatIsText")}</p>
-              </section>
-
-              <section>
-                <h3>{t("banner.cookiesUsed")}</h3>
-                <div className="cookie-modal-table">
-                  <div className="cookie-modal-table-header">
-                    <span>{t("banner.cookieCol")}</span>
-                    <span>{t("banner.purposeCol")}</span>
-                    <span>{t("banner.durationCol")}</span>
-                  </div>
-                  <div className="cookie-modal-table-row">
-                    <span className="cookie-modal-table-name">{t("banner.posthog")}</span>
-                    <span>{t("banner.posthogPurpose")}</span>
-                    <span>{t("banner.posthogDuration")}</span>
-                  </div>
-                  <div className="cookie-modal-table-row">
-                    <span className="cookie-modal-table-name">{t("banner.sessionRec")}</span>
-                    <span>{t("banner.sessionRecPurpose")}</span>
-                    <span>{t("banner.sessionRecDuration")}</span>
-                  </div>
-                  <div className="cookie-modal-table-row">
-                    <span className="cookie-modal-table-name">{t("banner.consent")}</span>
-                    <span>{t("banner.consentPurpose")}</span>
-                    <span>{t("banner.consentDuration")}</span>
-                  </div>
-                </div>
-              </section>
-
-              <section>
-                <h3>{t("banner.dataCollected")}</h3>
-                <p>{t("banner.dataCollectedText")}</p>
-              </section>
-
-              <section>
-                <h3>{t("banner.preferences")}</h3>
-                <p>{t("banner.preferencesText")}</p>
-              </section>
-
-              <section>
-                <h3>{t("banner.rights")}</h3>
-                <p>{t("banner.rightsText")}</p>
-              </section>
-              <a
-                href="https://nuxipro.com/legal-center/privacy"
-                className="cookie-explanation-link"
-              >
-                {t("banner.legalLink")}
-              </a>
-              <p className="cookie-modal-updated">{t("banner.lastUpdated")}</p>
-            </div>
-            <div className="cookie-modal-footer">
-              <button
-                type="button"
-                className="cookie-btn cookie-btn-primary"
-                onClick={() => setShowModal(false)}
-              >
-                {t("banner.understood")}
-              </button>
-            </div>
           </div>
         </div>
       )}

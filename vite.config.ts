@@ -41,6 +41,13 @@ const config = defineConfig(({ mode }) => {
       target: "esnext",
       cssCodeSplit: true,
       chunkSizeWarningLimit: 700,
+      // Don't preload the consent-gated PostHog chunk on first visit
+      modulePreload: {
+        polyfill: false,
+        resolveDependencies(filename, deps) {
+          return deps.filter((dep) => !dep.includes("posthog"));
+        },
+      },
       rollupOptions: {
         output: {
           manualChunks(id) {

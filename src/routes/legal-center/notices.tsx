@@ -16,11 +16,6 @@ export const Route = createFileRoute("/legal-center/notices")({
       title: TITLE,
       description: DESCRIPTION,
       url: URL,
-      links: [
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/legal-center/notices` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/legal-center/notices` },
-        { rel: "alternate", hrefLang: "x-default", href: URL },
-      ],
       extraMeta: [
         {
           name: "keywords",

@@ -16,11 +16,6 @@ export const Route = createFileRoute("/faq")({
       title: FAQ_TITLE,
       description: FAQ_DESCRIPTION,
       url: FAQ_URL,
-      links: [
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/faq` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/faq` },
-        { rel: "alternate", hrefLang: "x-default", href: FAQ_URL },
-      ],
       extraMeta: [
         {
           name: "keywords",

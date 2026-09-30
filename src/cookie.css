@@ -118,15 +118,6 @@
   color: #6b7280;
 }
 
-.cookie-option-badge {
-  font-size: 11px;
-  font-weight: 500;
-  color: #0f766e;
-  background: rgba(13, 148, 136, 0.08);
-  padding: 0.25rem 0.625rem;
-  border-radius: 100px;
-}
-
 /* ─── Toggle ─── */
 .cookie-toggle {
   position: relative;
@@ -161,6 +152,11 @@
   transform: translateX(18px);
 }
 
+.cookie-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ─── Learn More Link ─── */
 .cookie-learn-more {
   display: inline-flex;
@@ -177,7 +173,7 @@
 }
 
 .cookie-learn-more:hover {
-  color: #0f766e;
+  color: #0d655f;
 }
 
 .cookie-learn-more svg {
@@ -216,7 +212,7 @@
 }
 
 .cookie-btn-primary:hover {
-  background: #0f766e;
+  background: #0d655f;
   box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
 }
 
@@ -384,7 +380,7 @@
 }
 
 .cookie-modal-footer .cookie-btn {
-  flex: 0;
+  flex: none;
   padding: 0.625rem 2rem;
 }
 
@@ -428,6 +424,17 @@
   to {
     opacity: 1;
   }
+}
+
+/* ─── Focus (keyboard) ─── */
+.cookie-panel-close:focus-visible,
+.cookie-modal-close:focus-visible,
+.cookie-toggle:focus-visible,
+.cookie-btn:focus-visible,
+.cookie-learn-more:focus-visible,
+.cookie-settings-fab:focus-visible {
+  outline: 2px solid #0f766e;
+  outline-offset: 2px;
 }
 
 /* ─── Explanation Link ─── */

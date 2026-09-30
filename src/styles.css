@@ -13,7 +13,7 @@
   --color-muted-soft: #57534e;
   --color-teal: #0f766e;
   --color-teal-hover: #0f766e;
-  --font-heading: "Fraunces", serif;
+  --font-heading: "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
@@ -40,7 +40,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .kanban-wrapper {
@@ -109,5 +109,27 @@ h6 {
   }
   .hover-scale:hover {
     transform: scale(1.03);
+  }
+}
+
+.benefit-progress {
+  animation-name: benefit-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.benefit-progress.paused {
+  animation-play-state: paused;
+}
+@keyframes benefit-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .benefit-progress {
+    animation: none;
   }
 }

@@ -28,7 +28,6 @@ export const Route = createRootRoute({
       url: `${SITE_URL}/`,
       links: [
         { rel: "manifest", href: "/manifest.json" },
-        { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" as const },
         {

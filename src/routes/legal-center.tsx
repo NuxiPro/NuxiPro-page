@@ -14,19 +14,6 @@ export const Route = createFileRoute("/legal-center")({
       title: LEGAL_CENTER_TITLE,
       description: LEGAL_CENTER_DESCRIPTION,
       url: LEGAL_CENTER_URL,
-      links: [
-        {
-          rel: "alternate",
-          hrefLang: "fr",
-          href: `${SITE_URL}/fr/legal-center`,
-        },
-        {
-          rel: "alternate",
-          hrefLang: "en",
-          href: `${SITE_URL}/en/legal-center`,
-        },
-        { rel: "alternate", hrefLang: "x-default", href: LEGAL_CENTER_URL },
-      ],
       extraMeta: [
         {
           name: "keywords",
@@ -45,6 +32,7 @@ const sections = [
   { to: "/legal-center/privacy" as const, key: "privacy" },
   { to: "/legal-center/cgu" as const, key: "cgu" },
   { to: "/legal-center/notices" as const, key: "notices" },
+  { to: "/legal-center/cookies" as const, key: "cookies" },
 ] as const;
 
 function LegalCenterLayout() {

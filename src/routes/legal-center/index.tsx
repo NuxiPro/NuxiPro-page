@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   LegalChevronRight,
+  LegalIconCookies,
   LegalIconNotices,
   LegalIconPrivacy,
   LegalIconTerms,
@@ -19,11 +20,6 @@ export const Route = createFileRoute("/legal-center/")({
       title: HUB_TITLE,
       description: HUB_DESCRIPTION,
       url: HUB_URL,
-      links: [
-        { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr/legal-center` },
-        { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en/legal-center` },
-        { rel: "alternate", hrefLang: "x-default", href: HUB_URL },
-      ],
       extraMeta: [
         {
           name: "keywords",
@@ -38,6 +34,7 @@ const sections = [
   { to: "/legal-center/privacy" as const, key: "privacy", icon: <LegalIconPrivacy /> },
   { to: "/legal-center/cgu" as const, key: "cgu", icon: <LegalIconTerms /> },
   { to: "/legal-center/notices" as const, key: "notices", icon: <LegalIconNotices /> },
+  { to: "/legal-center/cookies" as const, key: "cookies", icon: <LegalIconCookies /> },
 ] as const;
 
 function LegalCenterHub() {

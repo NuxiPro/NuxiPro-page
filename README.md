@@ -5,11 +5,11 @@
 <h1 align="center">NuxiPro</h1>
 
 <p align="center">
-  <strong>Minimalist Kanban task manager with automatic archiving</strong>
+  <strong>Just one tool for solo workers that grows with you, without becoming a graveyard of completed tasks</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/NuxiPro/NuxiPro-page/blob/main/LICENSE">
+  <a href="https://codeberg.org/NuxiPro/NuxiPro-page/src/branch/main/LICENSE">
     <img src="https://img.shields.io/badge/license-BSD--2--Clause-blue.svg" alt="BSD 2-Clause License" />
   </a>
   <a href="https://demo.nuxipro.com">
@@ -21,9 +21,9 @@
 
 ## About
 
-NuxiPro is a personal Kanban task manager built around one core idea: **completed tasks should disappear**. No manual cleanup, no clutter. When a task reaches "Done", it archives automatically. The demo uses instant archiving (data in localStorage, not for real work). The cloud version lets you choose between instant or time-based archiving (X days) — made for daily use with persistent data.
+As I wanted a sovereign tool that respects my privacy, I created NuxiPro to get a workspace that cleans itself up, without wasting time manually archiving my tasks every time.
 
-This repository contains the **landing page** for NuxiPro, built with React and deployed on Cloudflare Pages.
+This repo simply contains the NuxiPro landing page.
 
 **Links:**
 
@@ -40,9 +40,9 @@ This repository contains the **landing page** for NuxiPro, built with React and 
 - **Automatic archiving** — Demo: instant archiving. Cloud: choose between instant or time-based (X days)
 - **Bilingual** — English & French with automatic browser detection
 - **Interactive demo** — Animated Kanban board directly on the landing page
-- **Legal Center** — Privacy policy, terms of use, legal notices
-- **Cookie Consent** — GDPR-compliant banner with analytics opt-in
-- **SEO optimized** — Structured data (JSON-LD), Open Graph, hreflang, canonical URLs
+- **Legal Center** — Privacy policy, cookie policy, terms of use, legal notices
+- **Cookie Consent** — GDPR-compliant banner with analytics opt-in, linking to the dedicated cookie policy page
+- **SEO optimized** — Structured data (JSON-LD), Open Graph, canonical URLs
 - **AEO/GEO ready** — BreadcrumbList, ContactPage, Organization schemas
 - **Analytics** — PostHog integration (opt-in only, anonymized)
 - **Contact page** — Email, GitHub, X (Twitter)
@@ -110,8 +110,8 @@ NuxiPro-page/
 ├ src/
 │  ├── components/
 │  │   ├── Navbar.tsx           # Sticky nav (logo, Contact, FAQ, Cloud)
-│  │   ├── Footer.tsx           # Dark footer (GitHub, PH, Blog, Docs, Legal)
-│  │   ├── Banner.tsx           # Cookie consent banner (GDPR)
+│  │   ├── Footer.tsx           # Dark footer (GitHub, PostHog, Blog, Docs, Legal)
+│  │   ├── Banner.tsx           # Cookie consent banner (GDPR, links to cookie policy)
 │  │   ├── KanbanDemo.tsx       # Animated Kanban board demo
 │  │   ├── FadeIn.tsx           # Scroll-triggered fade-in animation
 │  │   ├── legal-section.tsx    # Shared legal page section
@@ -122,6 +122,7 @@ NuxiPro-page/
 │  │   └── useSectionTracking.ts  # PostHog section tracking
 │  ├── i18n/
 │  │   ├── index.tsx            # i18n context & provider
+│  │   ├── useTranslation.ts    # Translation hook & types
 │  │   ├── en.json              # English translations
 │  │   └── fr.json              # French translations
 │  ├── test/
@@ -137,7 +138,8 @@ NuxiPro-page/
 │  │   └── legal-center/
 │  │       ├── index.tsx        # Legal hub
 │  │       ├── privacy.tsx      # Privacy policy
-│  │       ├── terms.tsx        # Terms of use
+│  │       ├── cookies.tsx      # Cookie policy
+│  │       ├── cgu.tsx          # Terms of use
 │  │       └── notices.tsx      # Legal notices
 │  ├── main.tsx                 # React entry point
 │  ├── router.tsx               # TanStack Router setup
@@ -164,8 +166,7 @@ NuxiPro-page/
 ├ vite.config.ts                # Vite configuration
 ├ tsconfig.json                 # TypeScript configuration
 ├ biome.json                    # Biome linter/formatter config
-├ tsr.config.json               # TanStack Router config
-├ wrangler.jsonc                # Cloudflare Pages deployment config
+├ wrangler.json                 # Cloudflare Pages deployment config
 └ package.json
 ```
 
