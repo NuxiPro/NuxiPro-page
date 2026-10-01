@@ -14,7 +14,7 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "deploy": "bun run build && bunx wrangler pages deploy ./dist"
+    "deploy": "bun run build && bunx wrangler pages deploy ./dist --project-name=nuxipro-page"
   },
   "dependencies": {
     "@posthog/react": "^1.11.3",
