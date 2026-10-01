@@ -45,7 +45,7 @@ export const Route = createRootRoute({
 // SSR shell - lisible pour crawlers et IA (HeadContent + Scripts obligatoires pour Start)
 function RootComponent() {
   return (
-    <html lang="en" className="light">
+    <html lang="fr" className="light">
       <head>
         <HeadContent />
       </head>
