@@ -165,7 +165,11 @@
         "intro": "Je ne collecte aucune donnée personnelle directe. Seules les données d'analytics strictement nécessaires sont recueillies afin d'améliorer le service, d'offrir une meilleure expérience utilisateur et de comprendre les points de friction ou d'abandon dans le parcours.",
         "tools": {
           "title": "Outils et données collectées",
-          "text": "J'utilise PostHog, un outil d'analytics qui m'aide à analyser le parcours des visiteurs sur la landing page.",
+          "text": "J'utilise deux outils complémentaires pour comprendre les visites sur la landing page : Cloudflare Web Analytics (anonyme, toujours actif) et PostHog (analyse détaillée du parcours, uniquement avec votre consentement).",
+          "anonymous": {
+            "title": "Comptage anonyme des visites",
+            "text": "Cloudflare Web Analytics compte les pages vues de façon agrégée. Il ne pose aucun cookie, ne stocke aucune adresse IP et ne permet pas d'identifier les visiteurs. Aucune donnée personnelle n'étant collectée, aucun consentement n'est requis."
+          },
           "survol": {
             "title": "Survol et interactions",
             "text": "Les sections de la page consultées par l'utilisateur."
@@ -176,7 +180,7 @@
           },
           "recording": {
             "title": "Enregistrement de session (Session Recording)",
-            "text": "Soumis à votre consentement explicite. Toutes les données capturées sont totalement anonymisées et configurées en mode confidentialité maximale dans PostHog. Les textes affichés ou saisis sont automatiquement masqués (remplacés par des « **** »). Conservées 30 jours max par PostHog, je peux les supprimer avant pour ne garder que les sessions utiles à l'amélioration du projet. Aucune donnée n'est jamais vendue ni partagée à un tiers."
+            "text": "Soumis à votre consentement explicite. Toutes les données capturées sont totalement anonymisées et configurées en mode confidentialité maximale dans PostHog : les adresses IP sont écartées au niveau du projet et jamais stockées, et les textes affichés ou saisis sont automatiquement masqués (remplacés par des « **** »). Conservées 30 jours max par PostHog, je peux les supprimer avant pour ne garder que les sessions utiles à l'amélioration du projet. Aucune donnée n'est jamais vendue ni partagée à un tiers."
           }
         },
         "protection": {
@@ -185,7 +189,7 @@
         },
         "cookies": {
           "title": "Utilisation des cookies",
-          "text": "J'utilise des cookies d'analytics uniquement pour mesurer l'audience et améliorer NuxiPro. Sans votre accord explicite, aucun suivi ni aucune donnée ne sont collectés."
+          "text": "Les analytics opt-in (PostHog) utilisent des cookies uniquement avec votre consentement explicite. Par ailleurs, la mesure d'audience anonyme (Cloudflare Web Analytics) fonctionne sans cookies et sans stockage d'adresses IP : aucun consentement n'est requis."
         }
       },
       "demo": {
@@ -231,6 +235,10 @@
       "title": "Cookies",
       "desc": "Politique d'utilisation des cookies, analytics et stockage local.",
       "p1": "Cette politique explique comment j'utilise les cookies et le stockage local sur NuxiPro.",
+      "exempt": {
+        "title": "Mesure d'audience sans cookies",
+        "text": "En plus des analytics opt-in, ce site utilise Cloudflare Web Analytics, activé via mon hébergement Cloudflare Pages. Il compte les pages vues de façon agrégée, sans poser de cookies, sans stocker d'adresses IP et sans identifier les visiteurs. Aucun consentement n'est requis car aucune donnée personnelle n'est collectée."
+      },
       "types": {
         "title": "Types de Stockage Utilisés"
       },
@@ -241,7 +249,7 @@
         },
         "analytics": {
           "title": "Analytics (PostHog)",
-          "desc": "Données d'utilisation anonymes pour améliorer le produit. Actif uniquement si vous consentez. Aucune donnée personnelle collectée."
+          "desc": "Données d'utilisation anonymes pour améliorer le produit. Actif uniquement si vous consentez. Adresses IP écartées, aucune donnée personnelle collectée."
         },
         "consent": {
           "title": "Stockage du Consentement",
@@ -411,7 +419,7 @@
     "consentPurpose": "Mémoriser votre choix",
     "consentDuration": "12 mois",
     "dataCollected": "Données collectées",
-    "dataCollectedText": "Les données collectées incluent les pages visitées et les clics. Aucune donnée personnelle n'est collectée. Tout le stockage est local dans votre navigateur.",
+    "dataCollectedText": "Avec votre consentement, PostHog collecte les pages visitées et les clics (adresses IP écartées, textes saisis masqués). Indépendamment, Cloudflare Web Analytics compte les pages vues de façon anonyme, sans cookies et sans stockage d'adresses IP.",
     "preferences": "Gestion de vos préférences",
     "preferencesText": "Vous pouvez modifier vos choix à tout moment en cliquant sur l'icône de rouage en bas à droite de l'écran. Vous pouvez activer ou désactiver l'enregistrement session indépendamment.",
     "rights": "Vos droits",

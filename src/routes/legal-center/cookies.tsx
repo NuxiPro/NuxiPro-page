@@ -20,7 +20,7 @@ export const Route = createFileRoute("/legal-center/cookies")({
         {
           name: "keywords",
           content:
-            "NuxiPro cookie policy, cookies, PostHog, analytics, session recording, consent, localStorage, GDPR",
+            "NuxiPro cookie policy, cookies, PostHog, Cloudflare Web Analytics, analytics, session recording, consent, localStorage, GDPR",
         },
       ],
     }),
@@ -172,6 +172,10 @@ function CookiesPage() {
 
               <LegalSection title={t("banner.dataCollected")}>
                 <p>{t("banner.dataCollectedText")}</p>
+              </LegalSection>
+
+              <LegalSection title={t("legal.cookies.exempt.title")}>
+                <p>{t("legal.cookies.exempt.text")}</p>
               </LegalSection>
 
               <LegalSection title={t("legal.cookies.types.title")}>

@@ -165,7 +165,11 @@
         "intro": "I do not collect any direct personal data. Only strictly necessary analytics data is collected to improve the service, provide a better user experience and understand friction or drop-off points.",
         "tools": {
           "title": "Tools and data collected",
-          "text": "I use PostHog, an analytics tool to analyze visitor journey on the landing page.",
+          "text": "I use two complementary tools to understand visits on the landing page: Cloudflare Web Analytics (anonymous, always on) and PostHog (detailed journey analysis, only with your consent).",
+          "anonymous": {
+            "title": "Anonymous visit counts",
+            "text": "Cloudflare Web Analytics counts page views in aggregate. It sets no cookies, stores no IP addresses, and cannot identify visitors. As no personal data is collected, no consent is required."
+          },
           "survol": {
             "title": "Hover and interactions",
             "text": "Page sections viewed by the user."
@@ -176,7 +180,7 @@
           },
           "recording": {
             "title": "Session Recording",
-            "text": "Subject to your explicit consent. All captured data is fully anonymized and configured in maximum privacy mode in PostHog. Displayed or entered texts are automatically masked (replaced with “****”). Stored 30 days max by PostHog, I can delete them beforehand to keep only useful sessions for project improvement. No data is ever sold or shared with third parties."
+            "text": "Subject to your explicit consent. All captured data is fully anonymized and configured in maximum privacy mode in PostHog: IP addresses are discarded at project level and never stored, and displayed or entered texts are automatically masked (replaced with “****”). Stored 30 days max by PostHog, I can delete them beforehand to keep only useful sessions for project improvement. No data is ever sold or shared with third parties."
           }
         },
         "protection": {
@@ -185,7 +189,7 @@
         },
         "cookies": {
           "title": "Cookie usage",
-          "text": "I use analytics cookies only to measure audience and improve NuxiPro. Without your explicit consent, no tracking or data is collected."
+          "text": "Opt-in analytics (PostHog) use cookies only with your explicit consent. Separately, anonymous audience measurement (Cloudflare Web Analytics) runs without cookies and without storing IP addresses, so it requires no consent."
         }
       },
       "demo": {
@@ -231,6 +235,10 @@
       "title": "Cookie Policy",
       "desc": "Cookies, analytics, and local storage usage policy.",
       "p1": "This policy explains how I use cookies and local storage on NuxiPro.",
+      "exempt": {
+        "title": "Audience measurement without cookies",
+        "text": "In addition to opt-in analytics, this site uses Cloudflare Web Analytics, enabled via my Cloudflare Pages hosting. It counts page views in aggregate without setting cookies, without storing IP addresses, and without identifying visitors. No consent is required as no personal data is collected."
+      },
       "types": {
         "title": "Types of Storage Used"
       },
@@ -241,7 +249,7 @@
         },
         "analytics": {
           "title": "Analytics (PostHog)",
-          "desc": "Anonymous usage data to improve the product. Only active if you consent. No personal data collected."
+          "desc": "Anonymous usage data to improve the product. Only active if you consent. IP addresses are discarded, no personal data collected."
         },
         "consent": {
           "title": "Consent Storage",
@@ -411,7 +419,7 @@
     "consentPurpose": "Remember your choice",
     "consentDuration": "12 months",
     "dataCollected": "Data collected",
-    "dataCollectedText": "Collected data includes pages visited and clicks. No personal data is collected. All storage is local in your browser.",
+    "dataCollectedText": "With your consent, PostHog collects pages visited and clicks (IP addresses are discarded, entered texts are masked). Independently, Cloudflare Web Analytics counts page views anonymously, without cookies and without storing IP addresses.",
     "preferences": "Managing your preferences",
     "preferencesText": "You can change your choices at any time by clicking the gear icon in the bottom-right corner. You can enable or disable session recording independently.",
     "rights": "Your rights",

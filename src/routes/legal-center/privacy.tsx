@@ -19,7 +19,7 @@ export const Route = createFileRoute("/legal-center/privacy")({
         {
           name: "keywords",
           content:
-            "NuxiPro privacy policy, data protection, GDPR, PostHog, cookies, analytics, localStorage",
+            "NuxiPro privacy policy, data protection, GDPR, PostHog, Cloudflare Web Analytics, cookies, analytics, localStorage",
         },
       ],
     }),
@@ -85,7 +85,7 @@ function PrivacyPage() {
               {t("legal.privacy.title")}
             </h1>
             <p className="text-[13px] text-muted-soft">
-              {t("legal.center.lastUpdated")} : août 2026
+              {t("legal.center.lastUpdated")} : octobre 2026
             </p>
           </div>
 
@@ -128,6 +128,10 @@ function PrivacyPage() {
                     <li>
                       <strong>{t("legal.privacy.landingPage.tools.conversion.title")} :</strong>{" "}
                       {t("legal.privacy.landingPage.tools.conversion.text")}
+                    </li>
+                    <li>
+                      <strong>{t("legal.privacy.landingPage.tools.anonymous.title")} :</strong>{" "}
+                      {t("legal.privacy.landingPage.tools.anonymous.text")}
                     </li>
                     <li>
                       <strong>{t("legal.privacy.landingPage.tools.recording.title")} :</strong>{" "}

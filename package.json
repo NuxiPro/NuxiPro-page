@@ -14,7 +14,7 @@
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "deploy": "bun run build && bunx wrangler pages deploy ./dist --project-name=nuxipro-page"
+    "deploy": "bun run build && bunx wrangler pages deploy ./dist/client --project-name=nuxipro-page --branch=main"
   },
   "dependencies": {
     "@posthog/react": "^1.11.3",
@@ -32,8 +32,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.7",
-    "@cloudflare/vite-plugin": "^1.62.3",
-    "@cloudflare/workers-types": "^5.20260930.2",
     "@lhci/cli": "^0.15.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/devtools-vite": "^0.8.5",

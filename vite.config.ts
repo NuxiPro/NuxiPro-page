@@ -1,4 +1,3 @@
-import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -6,14 +5,16 @@ import { defineConfig, loadEnv } from "vite";
 
 const config = defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const isProd = mode === "production";
-
   return {
     envPrefix: ["VITE_", "PUBLIC_"],
     resolve: { tsconfigPaths: true },
     plugins: [
-      ...(isProd ? [cloudflare({ viteEnvironment: { name: "ssr" } })] : []),
-      tanstackStart({ router: { quoteStyle: "single" } }),
+      // Pages statique : pas de @cloudflare/vite-plugin (réservé aux Workers SSR).
+      // Le prerender génère dist/client/index.html + une page HTML par route.
+      tanstackStart({
+        router: { quoteStyle: "single" },
+        prerender: { enabled: true, crawlLinks: true },
+      }),
       tailwindcss(),
       viteReact(),
     ],
