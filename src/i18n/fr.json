@@ -384,8 +384,8 @@
     "subtitle": "Une question, un retour, une suggestion ?",
     "email": "Email",
     "emailValue": "contact@nuxipro.com",
-    "github": "GitHub",
-    "githubValue": "github.com/nuxipro",
+    "codeberg": "Codeberg",
+    "codebergValue": "codeberg.org/nuxipro",
     "twitter": "X (Twitter)",
     "twitterValue": "Sébastien Babas",
     "back": "← Retour à l'accueil"

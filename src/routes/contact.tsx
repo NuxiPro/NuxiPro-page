@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "../components/Navbar";
-import { IconGitHub, MailIcon, XTwitterIcon } from "../components/svg-icon";
+import { IconCodeberg, MailIcon, XTwitterIcon } from "../components/svg-icon";
 import { createPageHead, SITE_NAME, SITE_URL } from "../config/seo";
 import { useTranslation } from "../i18n";
 
@@ -53,7 +53,7 @@ function ContactPage() {
       availableLanguage: ["English", "French"],
     },
     address: { "@type": "PostalAddress", addressCountry: "FR" },
-    sameAs: ["https://github.com/NuxiPro", "https://x.com/Tybass450"],
+    sameAs: ["https://codeberg.org/NuxiPro", "https://x.com/Tybass450"],
   };
 
   const breadcrumbSchema = {
@@ -111,17 +111,17 @@ function ContactPage() {
           </a>
 
           <a
-            href={`https://${t("contact.githubValue")}`}
+            href={`https://${t("contact.codebergValue")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 rounded-xl border border-hairline bg-surface-card hover:bg-[#e8e2d8] transition-colors"
           >
-            <div className="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center text-teal flex-shrink-0">
-              <IconGitHub />
+            <div className="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center text-teal flex-shrink-0 overflow-hidden border border-hairline p-1 [&_svg]:h-full [&_svg]:w-full">
+              <IconCodeberg />
             </div>
             <div>
-              <div className="text-[14px] font-medium text-ink">{t("contact.github")}</div>
-              <div className="text-[13px] text-muted-soft">{t("contact.githubValue")}</div>
+              <div className="text-[14px] font-medium text-ink">{t("contact.codeberg")}</div>
+              <div className="text-[13px] text-muted-soft">{t("contact.codebergValue")}</div>
             </div>
           </a>
 
