@@ -9,11 +9,9 @@ const config = defineConfig(({ mode }) => {
     envPrefix: ["VITE_", "PUBLIC_"],
     resolve: { tsconfigPaths: true },
     plugins: [
-      // Pages statique : pas de @cloudflare/vite-plugin (réservé aux Workers SSR).
-      // Le prerender génère dist/client/index.html + une page HTML par route.
       tanstackStart({
         router: { quoteStyle: "single" },
-        prerender: { enabled: true, crawlLinks: true },
+        prerender: { enabled: true, crawlLinks: true, concurrency: 4, retryCount: 3, retryDelay: 1500 },
       }),
       tailwindcss(),
       viteReact(),
@@ -42,7 +40,6 @@ const config = defineConfig(({ mode }) => {
       target: "esnext",
       cssCodeSplit: true,
       chunkSizeWarningLimit: 700,
-      // Don't preload the consent-gated PostHog chunk on first visit
       modulePreload: {
         polyfill: false,
         resolveDependencies(filename, deps) {
