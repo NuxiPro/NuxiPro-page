@@ -7,7 +7,7 @@ import { useTranslation } from "../i18n";
 const TITLE = "Contact NuxiPro — Support & Feedback";
 const DESCRIPTION =
   "Contact the NuxiPro team for questions, feedback, or support. Reach us by email, GitHub, or X — we reply quickly and are here to help you succeed.";
-const URL = `${SITE_URL}/contact`;
+const URL = `${SITE_URL}/contact/`;
 
 export const Route = createFileRoute("/contact")({
   head: () =>
@@ -64,7 +64,7 @@ function ContactPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: SITE_URL,
+        item: `${SITE_URL}/`,
       },
       {
         "@type": "ListItem",

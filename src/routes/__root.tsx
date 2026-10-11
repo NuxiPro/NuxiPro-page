@@ -45,7 +45,7 @@ export const Route = createRootRoute({
 // SSR shell - lisible pour crawlers et IA (HeadContent + Scripts obligatoires pour Start)
 function RootComponent() {
   return (
-    <html lang="fr" className="light">
+    <html lang="en" className="light">
       <head>
         <HeadContent />
       </head>
@@ -136,7 +136,7 @@ function App() {
           "@graph": [
             {
               "@type": "WebSite",
-              "@id": `${SITE_URL}/#website`,
+              "@id": `${SITE_URL}#website`,
               url: `${SITE_URL}/`,
               name: SITE_NAME,
               description: SITE_DESCRIPTION,
@@ -146,7 +146,7 @@ function App() {
             },
             {
               "@type": "Organization",
-              "@id": `${SITE_URL}/#organization`,
+              "@id": `${SITE_URL}#organization`,
               name: SITE_NAME,
               alternateName: ["NuxiPro Software", "NuxiPro Kanban"],
               identifier: SITE_URL,
@@ -167,14 +167,14 @@ function App() {
             },
             {
               "@type": "BreadcrumbList",
-              "@id": `${SITE_URL}/#breadcrumb`,
+              "@id": `${SITE_URL}#breadcrumb`,
               itemListElement: [
                 { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
               ],
             },
             {
               "@type": "SoftwareApplication",
-              "@id": `${SITE_URL}/#software`,
+              "@id": `${SITE_URL}#software`,
               name: SITE_NAME,
               url: `${SITE_URL}/`,
               applicationCategory: "BusinessApplication",
@@ -226,8 +226,8 @@ function App() {
               url: DEMO_URL,
               applicationCategory: "BusinessApplication",
               operatingSystem: "All (Web Browser)",
-              isPartOf: { "@id": `${SITE_URL}/#software` },
-              publisher: { "@id": `${SITE_URL}/#organization` },
+              isPartOf: { "@id": `${SITE_URL}#software` },
+              publisher: { "@id": `${SITE_URL}#organization` },
               offers: {
                 "@type": "Offer",
                 price: "0",
@@ -284,8 +284,8 @@ function App() {
               description:
                 "Technical documentation and guides for NuxiPro Cloud — the minimalist personal Kanban task manager with automatic archiving. Currently under development.",
               url: "https://center.nuxipro.com/guides/first-page/",
-              isPartOf: { "@id": `${SITE_URL}/#website` },
-              about: { "@id": `${SITE_URL}/#software` },
+              isPartOf: { "@id": `${SITE_URL}#website` },
+              about: { "@id": `${SITE_URL}#software` },
               inLanguage: "en",
             },
           ],

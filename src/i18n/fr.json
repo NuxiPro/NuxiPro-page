@@ -136,7 +136,7 @@
     "q1": "Qu'est-ce que NuxiPro ?",
     "a1": "NuxiPro est un gestionnaire de tâches personnel minimaliste qui nettoie automatiquement votre Kanban en archivant les tâches terminées.",
     "q2": "NuxiPro est-il conçu pour la collaboration en équipe ?",
-    "a2": "Non. NuxiPro est intentionnellement conçu pour la productivité personnelle et individuelle, en éliminant les fonctionnalités d'équipe, les notifications et le superflu.",
+    "a2": "Pas de fonctions d'équipe pour l'instant. NuxiPro reste solo avant tout : productivité personnelle sans surcharge d'équipe, notifications ni fouillis. L'équipe reste une évolution optionnelle possible — uniquement quand le solo sera totalement prêt, pas avant, et seulement si vous voulez évoluer.",
     "q3": "Comment fonctionne l'archivage automatique des tâches ?",
     "a3": "La démo archive les tâches instantanément quand elles passent en Done — les données restent dans votre navigateur. Dans la version cloud, vous choisissez simplement votre mode d'archivage au moment de l'inscription : archivage instantané ou archivage après X jours.",
     "q4": "Puis-je tester NuxiPro dès maintenant ?",
@@ -146,7 +146,13 @@
     "q6": "Puis-je retrouver mes tâches une fois qu'elles sont archivées ?",
     "a6": "Oui, toutes les tâches archivées sont stockées en toute sécurité et restent accessibles à tout moment dans votre zone d'archives dédiée.",
     "q7": "La version cloud est-elle minimaliste ?",
-    "a7": "Oui, NuxiPro cloud sera minimaliste et simple pour un usage quotidien."
+    "a7": "Oui. J'utilise NuxiPro Cloud pour mes propres projets, donc je garde l'essentiel : solo par défaut, sans surcharge d'équipe, sans onboarding façon Jira avec des champs interminables. On apprend en l'utilisant. Les fonctions d'équipe viendront peut-être plus tard, strictement optionnelles — uniquement quand le solo sera totalement prêt, jamais imposées au départ.",
+    "q8": "La démo actuelle va-t-elle disparaître ?",
+    "a8": "Non.\n\nLa démo actuelle sur demo.nuxipro.com n'est pas open source et est limitée dans le temps : elle sera arrêtée.\n\nElle sera remplacée par une démo open source très simplifiée basée sur Cloud, sans compte (stockage limité au navigateur et dans le temps), uniquement quand NuxiPro Cloud sera prêt — pas avant, pour ne pas perdre de temps sur une démo alors que Cloud n'est pas prêt.\n\nC'est prévu, sans date promise.\n\nN'utilisez pas la démo actuelle pour du vrai travail : les données restent dans votre navigateur et peuvent être perdues.",
+    "q9": "NuxiPro est-il open source et auto-hébergeable ?",
+    "a9": "Oui. NuxiPro Cloud est open source (AGPLv3) sur Codeberg et auto-hébergeable, mais pas prêt pour la production : toujours en développement.",
+    "q10": "Où NuxiPro est-il hébergé et est-il conforme RGPD ?",
+    "a10": "NuxiPro Cloud est hébergé en Finlande (UpCloud, Europe) et vos données restent en Europe.\n\nFeuille de route RGPD : hub légal, sous-traitants documentés, traçabilité du consentement.\n\nPoints noirs assumés (version Cloud uniquement, pas vos données) : frontend + DNS chez Cloudflare (société US) et monitoring via OpenObserve (société US même avec serveurs UE).\n\nPrévu : migrer DNS + frontend hors Cloudflare et auto-héberger OpenObserve dans ma propre infra pour une souveraineté totale quand les moyens le permettront — pour l'instant, je reste sur leurs services gérés."
   },
   "legal": {
     "back": "Retour",

@@ -29,7 +29,7 @@ function resolveNested(obj: NestedValue | Translations, path: string): string | 
   return typeof current === "string" ? current : undefined;
 }
 
-const DEFAULT_LOCALE: Locale = "fr";
+const DEFAULT_LOCALE: Locale = "en";
 
 function detectBrowserLocale(): Locale {
   if (typeof navigator === "undefined") return DEFAULT_LOCALE;

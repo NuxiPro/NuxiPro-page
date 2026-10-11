@@ -136,7 +136,7 @@
     "q1": "What is NuxiPro?",
     "a1": "NuxiPro is a minimalist personal task manager that automatically cleans your Kanban board by archiving completed tasks.",
     "q2": "Is NuxiPro built for team collaboration?",
-    "a2": "No. NuxiPro is intentionally designed for personal and single-user productivity, eliminating team features, notifications, and everything that doesn't matter.",
+    "a2": "No team features for now. NuxiPro stays solo-first: personal productivity without team overhead, notifications, or clutter. Team remains a possible optional upgrade later — only once solo is fully ready, not before, and only if you want to evolve.",
     "q3": "How does automatic task archiving work?",
     "a3": "The demo archives tasks instantly when moved to Done — data stays in your browser only. In the cloud version, you simply choose your archiving mode at sign-up: instant archiving or archiving after X days.",
     "q4": "Can I test NuxiPro right now?",
@@ -146,7 +146,13 @@
     "q6": "Can I still find my tasks once they are archived?",
     "a6": "Yes, all archived tasks are safely stored and remain accessible at any time in your dedicated archive area.",
     "q7": "Is the cloud version of NuxiPro minimalist?",
-    "a7": "Yes, NuxiPro cloud will be minimalist and simple for everyday use."
+    "a7": "Yes. I use NuxiPro Cloud for my own projects, so I keep only the essentials: solo-first by default, no team overhead, no Jira-like onboarding with endless fields. You learn it once by using it. Team features may come later, strictly optional — only once solo is fully ready, never required upfront.",
+    "q8": "Will the current demo disappear?",
+    "a8": "No.\n\nThe current demo at demo.nuxipro.com is not open source and is time-limited: it will be stopped.\n\nIt will be replaced by an open-source, very simplified Cloud-based demo without account (browser-limited, time-limited storage) only after NuxiPro Cloud is ready — not before, to avoid wasting time on a demo while Cloud is not ready.\n\nThis is planned, no date promised.\n\nDon't use the current demo for real work: data stays in your browser and can be lost.",
+    "q9": "Is NuxiPro open source and self-hostable?",
+    "a9": "Yes. NuxiPro Cloud is open source (AGPLv3) on Codeberg and self-hostable, but not production-ready: still in development.",
+    "q10": "Where is NuxiPro hosted and is it GDPR-compliant?",
+    "a10": "NuxiPro Cloud is hosted in Finland (UpCloud, Europe) and your data stays in Europe.\n\nGDPR roadmap: legal hub, documented sub-processors, consent traceability.\n\nHonest black spots (Cloud version only, not your data): frontend + DNS on Cloudflare (US company) and monitoring via OpenObserve (US company even with EU servers).\n\nPlanned: migrate DNS + frontend away from Cloudflare and self-host OpenObserve in my own infra for full sovereignty when means allow — for now, I stay on their managed services."
   },
   "legal": {
     "back": "Back",

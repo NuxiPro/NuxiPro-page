@@ -8,7 +8,7 @@ import { useTranslation } from "../../i18n";
 const TITLE = "Cookie Policy - NuxiPro";
 const DESCRIPTION =
   "Cookie Policy for NuxiPro — what cookies are, which cookies are used (analytics, session recording, consent), durations, local storage, and how to manage your preferences.";
-const URL = `${SITE_URL}/legal-center/cookies`;
+const URL = `${SITE_URL}/legal-center/cookies/`;
 
 export const Route = createFileRoute("/legal-center/cookies")({
   head: () =>
@@ -78,8 +78,8 @@ function CookiesPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center/` },
       { "@type": "ListItem", position: 3, name: "Cookie Policy", item: URL },
     ],
   } as const;

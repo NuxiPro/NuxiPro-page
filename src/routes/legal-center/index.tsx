@@ -12,7 +12,7 @@ import { useTranslation } from "../../i18n";
 const HUB_TITLE = "Legal Center - NuxiPro";
 const HUB_DESCRIPTION =
   "Browse our privacy policy, terms of use, and legal notices for the NuxiPro landing page and demo.";
-const HUB_URL = `${SITE_URL}/legal-center`;
+const HUB_URL = `${SITE_URL}/legal-center/`;
 
 export const Route = createFileRoute("/legal-center/")({
   head: () =>
@@ -44,8 +44,8 @@ function LegalCenterHub() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Legal Center", item: HUB_URL },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center/` },
     ],
   } as const;
 

@@ -1,51 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nuxipro.com</loc>
-    <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://nuxipro.com/</loc>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
-    <loc>https://nuxipro.com/faq</loc>
-    <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://nuxipro.com/faq/</loc>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
-    <loc>https://nuxipro.com/contact</loc>
+    <loc>https://nuxipro.com/contact/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://nuxipro.com/legal-center</loc>
+    <loc>https://nuxipro.com/legal-center/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://nuxipro.com/legal-center/privacy</loc>
+    <loc>https://nuxipro.com/legal-center/privacy/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://nuxipro.com/legal-center/cgu</loc>
+    <loc>https://nuxipro.com/legal-center/cgu/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://nuxipro.com/legal-center/notices</loc>
+    <loc>https://nuxipro.com/legal-center/notices/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://nuxipro.com/legal-center/cookies</loc>
+    <loc>https://nuxipro.com/legal-center/cookies/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>

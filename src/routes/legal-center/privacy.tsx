@@ -7,7 +7,7 @@ import { useTranslation } from "../../i18n";
 
 const TITLE = "Privacy Policy - NuxiPro";
 const DESCRIPTION = "How we collect, use, and protect your personal data.";
-const URL = `${SITE_URL}/legal-center/privacy`;
+const URL = `${SITE_URL}/legal-center/privacy/`;
 
 export const Route = createFileRoute("/legal-center/privacy")({
   head: () =>
@@ -59,8 +59,8 @@ function PrivacyPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center/` },
       { "@type": "ListItem", position: 3, name: "Privacy Policy", item: URL },
     ],
   } as const;

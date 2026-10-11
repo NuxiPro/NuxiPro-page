@@ -8,7 +8,7 @@ import { useTranslation } from "../../i18n";
 const TITLE = "Legal Notices - NuxiPro";
 const DESCRIPTION =
   "Legal notices for NuxiPro — publisher Sébastien Babas, hosting by Cloudflare and Infomaniak, sub-processors, and intellectual property details.";
-const URL = `${SITE_URL}/legal-center/notices`;
+const URL = `${SITE_URL}/legal-center/notices/`;
 
 export const Route = createFileRoute("/legal-center/notices")({
   head: () =>
@@ -61,8 +61,8 @@ function NoticesPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center/` },
       { "@type": "ListItem", position: 3, name: "Legal Notices", item: URL },
     ],
   } as const;

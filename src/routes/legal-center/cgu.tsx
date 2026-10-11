@@ -8,7 +8,7 @@ import { useTranslation } from "../../i18n";
 const TITLE = "Terms of Use - NuxiPro";
 const DESCRIPTION =
   "Detailed terms and conditions for using NuxiPro landing page and demo — storage, liability, and intellectual property. Learn more about our service rules.";
-const URL = `${SITE_URL}/legal-center/cgu`;
+const URL = `${SITE_URL}/legal-center/cgu/`;
 
 export const Route = createFileRoute("/legal-center/cgu")({
   head: () =>
@@ -60,8 +60,8 @@ function CguPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Legal Center", item: `${SITE_URL}/legal-center/` },
       { "@type": "ListItem", position: 3, name: "Terms of Use", item: URL },
     ],
   } as const;

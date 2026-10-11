@@ -8,7 +8,7 @@ import { useTranslation } from "../i18n";
 const FAQ_TITLE = "FAQ - NuxiPro";
 const FAQ_DESCRIPTION =
   "Frequently asked questions about NuxiPro, the minimalist personal task manager with automatic archiving.";
-const FAQ_URL = `${SITE_URL}/faq`;
+const FAQ_URL = `${SITE_URL}/faq/`;
 
 export const Route = createFileRoute("/faq")({
   head: () =>
@@ -40,6 +40,9 @@ function FAQPage() {
       { q: t("faq.q5"), a: t("faq.a5") },
       { q: t("faq.q6"), a: t("faq.a6") },
       { q: t("faq.q7"), a: t("faq.a7") },
+      { q: t("faq.q8"), a: t("faq.a8") },
+      { q: t("faq.q9"), a: t("faq.a9") },
+      { q: t("faq.q10"), a: t("faq.a10") },
     ],
     [t],
   );
@@ -64,7 +67,7 @@ function FAQPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
       { "@type": "ListItem", position: 2, name: "FAQ", item: FAQ_URL },
     ],
   } as const;
@@ -109,7 +112,7 @@ function FAQPage() {
                   className={`shrink-0 text-[#6c6a64] transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${openIndex === i ? "rotate-180 scale-110" : "scale-100"}`}
                 />
               </summary>
-              <div className="pb-5 text-[14px] leading-[1.8] text-[#6c6a64] animate-accordion-down">
+              <div className="pb-5 text-[14px] leading-[1.8] text-[#6c6a64] animate-accordion-down whitespace-pre-line">
                 {faq.a}
               </div>
             </details>

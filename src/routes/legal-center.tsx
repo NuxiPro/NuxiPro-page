@@ -1,26 +1,8 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { LegalCenterBack, LegalCenterTitle } from "../components/svg-icon";
-import { createPageHead, SITE_NAME, SITE_URL } from "../config/seo";
 import { useTranslation } from "../i18n";
 
-const LEGAL_CENTER_TITLE = "Legal Center - NuxiPro";
-const LEGAL_CENTER_DESCRIPTION =
-  "Privacy policy, terms of use, and legal notices for NuxiPro — the minimalist personal task manager with automatic archiving.";
-const LEGAL_CENTER_URL = `${SITE_URL}/legal-center`;
-
 export const Route = createFileRoute("/legal-center")({
-  head: () =>
-    createPageHead({
-      title: LEGAL_CENTER_TITLE,
-      description: LEGAL_CENTER_DESCRIPTION,
-      url: LEGAL_CENTER_URL,
-      extraMeta: [
-        {
-          name: "keywords",
-          content: "NuxiPro legal, privacy policy, terms of use, legal notices, GDPR",
-        },
-      ],
-    }),
   component: LegalCenterLayout,
 });
 
@@ -38,64 +20,8 @@ const sections = [
 function LegalCenterLayout() {
   const { t } = useTranslation();
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Legal Center",
-        item: LEGAL_CENTER_URL,
-      },
-    ],
-  };
-
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: LEGAL_CENTER_TITLE,
-    description: LEGAL_CENTER_DESCRIPTION,
-    url: LEGAL_CENTER_URL,
-    isPartOf: {
-      "@type": "WebSite",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: SITE_URL,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Legal Center",
-          item: LEGAL_CENTER_URL,
-        },
-      ],
-    },
-  };
-
   return (
     <div className="min-h-screen bg-canvas text-ink font-body">
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c")}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(webPageSchema).replace(/</g, "\\u003c")}
-      </script>
-
       <header className="border-b border-hairline">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
