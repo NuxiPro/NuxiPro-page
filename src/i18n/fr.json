@@ -102,12 +102,12 @@
       { "key": "usage", "label": "Cas d'usage", "demo": "Tester et découvrir le concept", "cloud": "Stocker et utiliser au quotidien sans perdre de donnée" },
       { "key": "account", "label": "Besoin de créer un compte ?", "demo": "Non", "cloud": "Oui" },
       { "key": "archive", "label": "Type d'archive native", "demo": "Archive instantanée", "cloud": "2 types d'archivage : instantané et basé sur la date (temporel)" },
-      { "key": "duration", "label": "Durée de disponibilité (estimer)", "demo": "Limité et va très probablement être arrêté", "cloud": "Indéfini, usage quotidien par le créateur" },
+      { "key": "duration", "label": "Durée de disponibilité (estimer)", "demo": "Limitée dans le temps : sera arrêtée et remplacée par une démo basée sur Cloud", "cloud": "Indéfini, usage quotidien par le créateur" },
       { "key": "storage", "label": "Où sont stockées les données ?", "demo": "Dans votre navigateur", "cloud": "Dans un cloud souverain en Europe" },
       { "key": "simplicity", "label": "Simplicité ?", "demo": "Très simple et fonctionne dès maintenant", "cloud": "Simple, nécessite une petite configuration guidée" },
       { "key": "sovereignty", "label": "Souveraineté de donnée", "demo": "Élevée – les données restent dans le navigateur, seules analytics anonymes", "cloud": "Élevée – données vous restent, hébergées en Europe, possibilité d'auto‑hébergement" },
       { "key": "selfhost", "label": "Auto hébergeable ?", "demo": "Non", "cloud": "Oui, une fois stable, vous pouvez le déployer sans perte de temps" },
-      { "key": "opensource", "label": "Open source ?", "demo": "Non (propriétaire, bientôt supprimé)", "cloud": "Oui" },
+      { "key": "opensource", "label": "Open source ?", "demo": "Non (propriétaire, sera remplacée par une démo Cloud open source)", "cloud": "Oui (AGPLv3)" },
       { "key": "purpose", "label": "Le seul but", "demo": "Tester sans données critiques", "cloud": "Outil simple quotidien, stockage sécurisé" }
     ]
   },

@@ -102,12 +102,12 @@
       { "key": "usage", "label": "Usage case", "demo": "Test and discover the concept", "cloud": "Store and use daily without losing data" },
       { "key": "account", "label": "Need to create an account?", "demo": "No", "cloud": "Yes" },
       { "key": "archive", "label": "Native archive type", "demo": "Instant archive", "cloud": "Two archive types: instant and date‑based (temporal)" },
-      { "key": "duration", "label": "Estimated availability duration", "demo": "Limited and likely to be stopped", "cloud": "Indefinite, used daily by the creator" },
+      { "key": "duration", "label": "Estimated availability duration", "demo": "Time-limited: will be stopped and replaced by a Cloud-based demo", "cloud": "Indefinite, used daily by the creator" },
       { "key": "storage", "label": "Where are the data stored?", "demo": "In your browser", "cloud": "In a sovereign European cloud" },
       { "key": "simplicity", "label": "Simplicity?", "demo": "Very simple and works right away", "cloud": "Simple, requires a small guided configuration" },
       { "key": "sovereignty", "label": "Data sovereignty", "demo": "High – data stays in the browser, only anonymous analytics", "cloud": "High – data remains yours, hosted in Europe, optional self‑hosting" },
       { "key": "selfhost", "label": "Self‑hostable?", "demo": "No", "cloud": "Yes, once stable you can deploy it without hassle" },
-      { "key": "opensource", "label": "Open source?", "demo": "No (proprietary, soon removed)", "cloud": "Yes" },
+      { "key": "opensource", "label": "Open source?", "demo": "No (proprietary, will be replaced by an open-source Cloud-based demo)", "cloud": "Yes (AGPLv3)" },
       { "key": "purpose", "label": "Primary purpose", "demo": "Test without critical data", "cloud": "Simple daily tool, secure storage" }
     ]
   },

@@ -1,3 +1,9 @@
+> **⚠️ Read-Only Mirror**
+> This repository is an automated public mirror of **NuxiPro Cloud**. 
+> The official source of truth, active development, issues, and merge requests are hosted on [Codeberg](https://codeberg.org/NuxiPro/NuxiPro-Page). Contributions and pull requests on GitHub are not monitored.
+
+---
+
 <p align="center">
   <img src="public/icon.svg" alt="NuxiPro" width="80" />
 </p>
