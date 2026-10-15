@@ -24,12 +24,14 @@ export function createPageHead({
   url,
   links = [],
   extraMeta = [],
+  canonical = true,
 }: {
   title: string;
   description: string;
   url: string;
   links?: readonly object[];
   extraMeta?: readonly object[];
+  canonical?: boolean;
 }) {
   return {
     meta: [
@@ -53,6 +55,6 @@ export function createPageHead({
       { name: "twitter:image", content: SITE_IMAGE },
       ...extraMeta,
     ],
-    links: [{ rel: "canonical", href: url }, ...links],
+    links: [...(canonical ? [{ rel: "canonical", href: url }] : []), ...links],
   };
 }

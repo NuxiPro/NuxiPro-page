@@ -161,7 +161,7 @@ NuxiPro-page/
 │  ├── manifest.json            # PWA manifest
 │  ├── robots.txt               # Robots file
 │  ├── security.txt             # Security contact info
-│  ├── sitemap.xml              # Sitemap
+│  ├── sitemap.xml              # Sitemap (auto-generated at build, git-ignored)
 │  ├── text23.svg               # Text logo (dark)
 │  └── text23-light.svg         # Text logo (light)
 ├ docs/

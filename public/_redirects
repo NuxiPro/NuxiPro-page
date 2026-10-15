@@ -1,0 +1,9 @@
+# Anciens prefixes de locale (/en, /fr) supprimes : redirection 301 vers
+# l'URL canonique sans prefixe. Transfere le jus de liens, repare les
+# bookmarks et fait sortir ces URLs de l'index Google (deviennent
+# "Page with redirect" au lieu de 404). Aucun fichier /en/* ni /fr/*
+# n'existe dans le build, ces regles ne peuvent masquer aucune vraie page.
+/fr / 301
+/en / 301
+/fr/* /:splat 301
+/en/* /:splat 301

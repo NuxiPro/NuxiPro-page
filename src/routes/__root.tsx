@@ -26,6 +26,9 @@ export const Route = createRootRoute({
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,
       url: `${SITE_URL}/`,
+      // Pas de canonical ici : chaque route feuille emet le sien, sinon
+      // TanStack concatene les heads et Google recoit 2 canonicals.
+      canonical: false,
       links: [
         { rel: "manifest", href: "/manifest.json" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
