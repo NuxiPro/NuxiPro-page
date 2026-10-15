@@ -1,6 +1,5 @@
 node_modules/
 dist/
-public/sitemap.xml
 .env
 .tanstack
 posthog-setup-report.md
