@@ -9,8 +9,7 @@
       "*.json",
       "*.jsonc",
       "!src/kanban.css",
-      "!src/styles.css",
-      "!src/cookie.css"
+      "!src/styles.css"
     ],
     "ignoreUnknown": true
   },
@@ -65,7 +64,7 @@
       "assist": { "actions": { "source": { "organizeImports": "off" } } }
     },
     {
-      "includes": ["src/kanban.css", "src/styles.css", "src/cookie.css"],
+      "includes": ["src/kanban.css", "src/styles.css"],
       "linter": { "enabled": false },
       "formatter": { "enabled": false },
       "css": { "parser": { "cssModules": false } }

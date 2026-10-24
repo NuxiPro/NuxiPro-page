@@ -47,10 +47,10 @@ This repo simply contains the NuxiPro landing page.
 - **Bilingual** — English & French with automatic browser detection
 - **Interactive demo** — Animated Kanban board directly on the landing page
 - **Legal Center** — Privacy policy, cookie policy, terms of use, legal notices
-- **Cookie Consent** — GDPR-compliant banner with analytics opt-in, linking to the dedicated cookie policy page
+- **Cookieless analytics** — PostHog server hash mode (no cookies, no consent banner, GDPR-documented) + Cloudflare Web Analytics
 - **SEO optimized** — Structured data (JSON-LD), Open Graph, canonical URLs
 - **AEO/GEO ready** — BreadcrumbList, ContactPage, Organization schemas
-- **Analytics** — PostHog integration (opt-in only, anonymized)
+- **Analytics** — PostHog EU, cookieless + anonymized, Do Not Track honored
 - **Contact page** — Email, GitHub, X (Twitter)
 
 ## Tech Stack
@@ -117,7 +117,6 @@ NuxiPro-page/
 │  ├── components/
 │  │   ├── Navbar.tsx           # Sticky nav (logo, Contact, FAQ, Cloud)
 │  │   ├── Footer.tsx           # Dark footer (GitHub, PostHog, Blog, Docs, Legal)
-│  │   ├── Banner.tsx           # Cookie consent banner (GDPR, links to cookie policy)
 │  │   ├── KanbanDemo.tsx       # Animated Kanban board demo
 │  │   ├── FadeIn.tsx           # Scroll-triggered fade-in animation
 │  │   ├── legal-section.tsx    # Shared legal page section

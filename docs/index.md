@@ -44,7 +44,7 @@ This repo = **landing page** only: showcase + marketing + legal + contact. Rende
 - **Kanban Demo** `src/components/KanbanDemo.tsx:1` — `requestAnimationFrame` + refs, Bezier drag, auto-archive, respects `prefers-reduced-motion`
 - **Bilingual FR/EN** — `navigator.languages` + `localStorage nuxipro-locale` + manual toggle, no `/fr` routing (SPA fallback)
 - **SEO/AEO/GEO** — `createPageHead()` + full `@graph` JSON-LD per route + global, hreflang `en/fr/x-default`, `llms.txt`/`llms-full.txt`
-- **Cookie GDPR** — `src/components/Banner.tsx:1` opt-in analytics + session recording, 12-month expiry
+- **Cookieless analytics** — PostHog EU via Worker proxy (`/nuxi-data/x`), cookieless server hash mode + Cloudflare Web Analytics
 - **PWA** — `public/manifest.json`
 - **Analytics** — PostHog EU, opt-in only, anonymized, via Worker proxy
 - **Responsive** — 540/768/1024px, mobile-first
@@ -86,7 +86,6 @@ src/
 ├ routeTree.gen.ts       # AUTO-GENERATED — DO NOT EDIT
 ├ styles.css             # Tailwind @theme (teal #0d9488, canvas, hairline) + global
 ├ kanban.css             # Kanban window/board/cursor
-├ cookie.css             # Banner modal/FAB
 ├ server.ts              # SSR + PostHog proxy + subscribe endpoint
 ├ config/seo.ts          # SITE_URL, SITE_TITLE, TWITTER_CREATOR, createPageHead(title, desc, url, links, extraMeta)
 ├ hooks/useSectionTracking.ts # IntersectionObserver → posthog.capture(section_view/cta_click)
@@ -95,7 +94,6 @@ src/
 ├ components/
 │  ├── Navbar.tsx        # sticky: logo icon.svg+text23.svg, FAQ/Contact, Cloud→app.nuxipro.com
 │  ├── Footer.tsx        # dark #0c0c0c, Project + Legal Center + Blog + Docs
-│  ├── Banner.tsx        # GDPR consent, CONSENT_VERSION 1.0, keys nuxipro_cookie_*
 │  ├── KanbanDemo.tsx    # 482L anim engine
 │  ├── FadeIn.tsx        # threshold 0.15
 │  ├── legal-section.tsx # USED — section + dot teal + border-hairline
@@ -252,7 +250,7 @@ Add key = add to **both** `en.json` and `fr.json` (tested `i18n.test.ts:78` pari
 
 ## Cookie Consent
 
-`src/components/Banner.tsx`: `CONSENT_VERSION 1.0`, keys `nuxipro_cookie_analytics/recording/consent`, expiry 12 months (`isConsentExpired` — var `sixMonthsLater` misnamed). Toggles 3, FAB gear emits `reopen-cookie-banner`. Opt-in only, `localStorage` only.
+Banner removed (2026-10): analytics run in PostHog **cookieless server hash mode** — no terminal storage, no consent banner required. Consent gating deleted from `__root.tsx`; PostHog initializes unconditionally (prod token) with `cookieless_mode: "always"`, `persistence: "memory"`, `person_profiles: "never"`, `respect_dnt: true`, session recording disabled. Legal basis: legitimate interest; opt-out via Do Not Track. Legal pages (privacy/cookies/notices) updated accordingly. `src/cookie.css` and `src/components/Banner.tsx` deleted; `banner.*` i18n keys kept (cookie policy page reuse).
 
 ---
 
@@ -320,7 +318,7 @@ VITE_PUBLIC_POSTHOG_HOST=https://eu.i.posthog.com # optional, fallback eu.i.post
 ```
 
 `tsconfig.json` aliases `#/*` + `@/*` → `./src/*` (strict, `ES2022`).
-`biome.json` includes `src/** public/**`, ignores `kanban.css/styles.css/cookie.css` + `routeTree.gen.ts` disabled.
+`biome.json` includes `src/** public/**`, ignores `kanban.css/styles.css` + `routeTree.gen.ts` disabled.
 Tailwind v4 `@theme` in `styles.css` — no `tailwind.config.js`.
 
 ---

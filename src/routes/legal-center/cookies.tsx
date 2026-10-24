@@ -7,7 +7,7 @@ import { useTranslation } from "../../i18n";
 
 const TITLE = "Cookie Policy - NuxiPro";
 const DESCRIPTION =
-  "Cookie Policy for NuxiPro — what cookies are, which cookies are used (analytics, session recording, consent), durations, local storage, and how to manage your preferences.";
+  "Cookie Policy for NuxiPro — cookieless audience measurement (PostHog server hash, Cloudflare Web Analytics), what is stored and what is not, Do Not Track opt-out, and how to manage your preferences.";
 const URL = `${SITE_URL}/legal-center/cookies/`;
 
 export const Route = createFileRoute("/legal-center/cookies")({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/legal-center/cookies")({
         {
           name: "keywords",
           content:
-            "NuxiPro cookie policy, cookies, PostHog, Cloudflare Web Analytics, analytics, session recording, consent, localStorage, GDPR",
+            "NuxiPro cookie policy, cookies, PostHog, Cloudflare Web Analytics, cookieless, Do Not Track, localStorage, GDPR",
         },
       ],
     }),
@@ -32,16 +32,6 @@ const COOKIE_TABLE_ROWS = [
     nameKey: "banner.posthog",
     purposeKey: "banner.posthogPurpose",
     durationKey: "banner.posthogDuration",
-  },
-  {
-    nameKey: "banner.sessionRec",
-    purposeKey: "banner.sessionRecPurpose",
-    durationKey: "banner.sessionRecDuration",
-  },
-  {
-    nameKey: "banner.consent",
-    purposeKey: "banner.consentPurpose",
-    durationKey: "banner.consentDuration",
   },
 ] as const;
 
@@ -133,10 +123,6 @@ function CookiesPage() {
                 {t("banner.cookiesUsed")}
               </h2>
 
-              <LegalSection title={t("banner.whatIs")}>
-                <p>{t("banner.whatIsText")}</p>
-              </LegalSection>
-
               <LegalSection title={t("banner.cookiesUsed")}>
                 <div className="overflow-hidden rounded-xl border border-hairline bg-white">
                   <div className="overflow-x-auto">
@@ -184,14 +170,6 @@ function CookiesPage() {
                     <strong>{t("legal.cookies.storage.localStorage.title")} :</strong>{" "}
                     {t("legal.cookies.storage.localStorage.desc")}
                   </p>
-                  <p>
-                    <strong>{t("legal.cookies.storage.analytics.title")} :</strong>{" "}
-                    {t("legal.cookies.storage.analytics.desc")}
-                  </p>
-                  <p>
-                    <strong>{t("legal.cookies.storage.consent.title")} :</strong>{" "}
-                    {t("legal.cookies.storage.consent.desc")}
-                  </p>
                 </div>
               </LegalSection>
             </section>
@@ -204,10 +182,6 @@ function CookiesPage() {
               <p className="text-[14px] text-body leading-relaxed">
                 {t("legal.cookies.manage.text")}
               </p>
-
-              <LegalSection title={t("banner.preferences")}>
-                <p>{t("banner.preferencesText")}</p>
-              </LegalSection>
 
               <LegalSection title={t("banner.rights")}>
                 <p>{t("banner.rightsText")}</p>

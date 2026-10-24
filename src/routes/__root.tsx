@@ -2,7 +2,6 @@ import { PostHogProvider } from "@posthog/react";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import type { PostHog } from "posthog-js";
 import { useEffect, useRef, useState } from "react";
-import { CookieBanner } from "#/components/Banner";
 import {
   createPageHead,
   DEMO_URL,
@@ -91,36 +90,31 @@ function App() {
       posthogInitRef.current = true;
       import("posthog-js").then((m) => {
         m.default.init(token, {
-          api_host: "/ingest",
+          api_host: "/nuxi-data/x",
           ui_host: host || "https://eu.posthog.com",
           defaults: "2026-06-25",
+          // Cookieless server hash mode: identity = server-side hash of IP +
+          // daily salt. Zero cookies, zero browser storage → no consent banner
+          // required (GDPR/ePrivacy). Requires "Cookieless server hash mode"
+          // enabled in PostHog Project Settings → Web analytics.
+          cookieless_mode: "always",
+          persistence: "memory",
+          person_profiles: "never",
+          respect_dnt: true,
           capture_exceptions: true,
           disable_session_recording: true,
           debug: false,
-          session_recording: { maskAllInputs: true },
         });
         setPosthogClient(m.default);
       });
     };
 
-    const consent = localStorage.getItem("nuxipro_cookie_consent");
-    const hasConsent =
-      consent === "accepted" ||
-      consent === "partial" ||
-      localStorage.getItem("nuxipro_cookie_analytics") === "true";
-
-    if (hasConsent) {
-      initPostHog();
-    }
-
-    window.addEventListener("posthog-consent-given", initPostHog);
-    return () => window.removeEventListener("posthog-consent-given", initPostHog);
+    initPostHog();
   }, []);
 
   const content = (
     <>
       <Outlet />
-      <CookieBanner />
     </>
   );
 

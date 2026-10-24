@@ -19,20 +19,20 @@ const config = defineConfig(({ mode }) => {
     server: {
       port: 3000,
       proxy: {
-        "/ingest/static": {
+        "/nuxi-data/x/static": {
           target: "https://eu-assets.i.posthog.com",
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/ingest/, ""),
+          rewrite: (path) => path.replace(/^\/nuxi-data\/x/, ""),
         },
-        "/ingest/array": {
+        "/nuxi-data/x/array": {
           target: "https://eu-assets.i.posthog.com",
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/ingest/, ""),
+          rewrite: (path) => path.replace(/^\/nuxi-data\/x/, ""),
         },
-        "/ingest": {
+        "/nuxi-data/x": {
           target: env.VITE_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com",
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/ingest/, ""),
+          rewrite: (path) => path.replace(/^\/nuxi-data\/x/, ""),
         },
       },
     },

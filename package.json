@@ -9,7 +9,6 @@
     "dev": "vite dev --port 3000",
     "sitemap": "bun scripts/sitemap.ts",
     "build": "vite build",
-    "lighthouse": "lhci autorun",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",

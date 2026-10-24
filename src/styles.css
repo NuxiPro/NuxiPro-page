@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "./cookie.css";
 
 @theme {
   --color-canvas: #faf9f5;

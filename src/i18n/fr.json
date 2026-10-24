@@ -99,16 +99,61 @@
     "title": "Démo vs Cloud",
     "columns": ["", "Démo", "Cloud"],
     "rows": [
-      { "key": "usage", "label": "Cas d'usage", "demo": "Tester et découvrir le concept", "cloud": "Stocker et utiliser au quotidien sans perdre de donnée" },
+      {
+        "key": "usage",
+        "label": "Cas d'usage",
+        "demo": "Tester et découvrir le concept",
+        "cloud": "Stocker et utiliser au quotidien sans perdre de donnée"
+      },
       { "key": "account", "label": "Besoin de créer un compte ?", "demo": "Non", "cloud": "Oui" },
-      { "key": "archive", "label": "Type d'archive native", "demo": "Archive instantanée", "cloud": "2 types d'archivage : instantané et basé sur la date (temporel)" },
-      { "key": "duration", "label": "Durée de disponibilité (estimer)", "demo": "Limitée dans le temps : sera arrêtée et remplacée par une démo basée sur Cloud", "cloud": "Indéfini, usage quotidien par le créateur" },
-      { "key": "storage", "label": "Où sont stockées les données ?", "demo": "Dans votre navigateur", "cloud": "Dans un cloud souverain en Europe" },
-      { "key": "simplicity", "label": "Simplicité ?", "demo": "Très simple et fonctionne dès maintenant", "cloud": "Simple, nécessite une petite configuration guidée" },
-      { "key": "sovereignty", "label": "Souveraineté de donnée", "demo": "Élevée – les données restent dans le navigateur, seules analytics anonymes", "cloud": "Élevée – données vous restent, hébergées en Europe, possibilité d'auto‑hébergement" },
-      { "key": "selfhost", "label": "Auto hébergeable ?", "demo": "Non", "cloud": "Oui, une fois stable, vous pouvez le déployer sans perte de temps" },
-      { "key": "opensource", "label": "Open source ?", "demo": "Non (propriétaire, sera remplacée par une démo Cloud open source)", "cloud": "Oui (AGPLv3)" },
-      { "key": "purpose", "label": "Le seul but", "demo": "Tester sans données critiques", "cloud": "Outil simple quotidien, stockage sécurisé" }
+      {
+        "key": "archive",
+        "label": "Type d'archive native",
+        "demo": "Archive instantanée",
+        "cloud": "2 types d'archivage : instantané et basé sur la date (temporel)"
+      },
+      {
+        "key": "duration",
+        "label": "Durée de disponibilité (estimer)",
+        "demo": "Limitée dans le temps : sera arrêtée et remplacée par une démo basée sur Cloud",
+        "cloud": "Indéfini, usage quotidien par le créateur"
+      },
+      {
+        "key": "storage",
+        "label": "Où sont stockées les données ?",
+        "demo": "Dans votre navigateur",
+        "cloud": "Dans un cloud souverain en Europe"
+      },
+      {
+        "key": "simplicity",
+        "label": "Simplicité ?",
+        "demo": "Très simple et fonctionne dès maintenant",
+        "cloud": "Simple, nécessite une petite configuration guidée"
+      },
+      {
+        "key": "sovereignty",
+        "label": "Souveraineté de donnée",
+        "demo": "Élevée – les données restent dans le navigateur, seules analytics anonymes",
+        "cloud": "Élevée – données vous restent, hébergées en Europe, possibilité d'auto‑hébergement"
+      },
+      {
+        "key": "selfhost",
+        "label": "Auto hébergeable ?",
+        "demo": "Non car sera remplacer par une demo de la version cloud prochainement",
+        "cloud": "Oui, une fois stable, vous pouvez le déployer sans perte de temps"
+      },
+      {
+        "key": "opensource",
+        "label": "Open source ?",
+        "demo": "Non (propriétaire, sera remplacée par une démo Cloud open source)",
+        "cloud": "Oui (AGPLv3)"
+      },
+      {
+        "key": "purpose",
+        "label": "Le seul but",
+        "demo": "Tester sans données critiques",
+        "cloud": "Outil simple quotidien, stockage sécurisé"
+      }
     ]
   },
   "footer": {
@@ -164,144 +209,116 @@
     },
     "privacy": {
       "title": "Politique de Confidentialité",
-      "desc": "Comment je collecte, utilise et protège vos données personnelles.",
-      "intro": "NuxiPro respecte votre vie privée. Cette politique explique comment je gère les données pour la landing page et la version démo.",
+      "desc": "Ce que la landing page collecte dans le cloud, et ce que la démo stocke dans votre navigateur.",
+      "intro": "L'essentiel d'abord, le détail ensuite. Aucune donnée collectée ne permet de vous identifier.",
+      "inshort": {
+        "s1": "Aucun cookie, rien d'écrit dans votre navigateur pour la mesure d'audience.",
+        "s2": "Deux outils anonymes : Cloudflare Web Analytics et PostHog (serveurs UE).",
+        "s3": "Seules des données d'usage : pages vues, source, temps passé, clics.",
+        "s4": "Enregistrement de session : jamais utilisé.",
+        "s5": "Données jamais vendues ni partagées."
+      },
       "landingPage": {
-        "title": "1. Landing Page",
-        "intro": "Je ne collecte aucune donnée personnelle directe. Seules les données d'analytics strictement nécessaires sont recueillies afin d'améliorer le service, d'offrir une meilleure expérience utilisateur et de comprendre les points de friction ou d'abandon dans le parcours.",
+        "title": "1. Landing page",
+        "intro": "Aucune donnée personnelle directe n'y est collectée.",
         "tools": {
-          "title": "Outils et données collectées",
-          "text": "J'utilise deux outils complémentaires pour comprendre les visites sur la landing page : Cloudflare Web Analytics (anonyme, toujours actif) et PostHog (analyse détaillée du parcours, uniquement avec votre consentement).",
-          "anonymous": {
-            "title": "Comptage anonyme des visites",
-            "text": "Cloudflare Web Analytics compte les pages vues de façon agrégée. Il ne pose aucun cookie, ne stocke aucune adresse IP et ne permet pas d'identifier les visiteurs. Aucune donnée personnelle n'étant collectée, aucun consentement n'est requis."
-          },
-          "survol": {
-            "title": "Survol et interactions",
-            "text": "Les sections de la page consultées par l'utilisateur."
-          },
-          "conversion": {
-            "title": "Conversion",
-            "text": "Les clics sur les boutons d'appel à l'action (CTA) pour mesurer l'efficacité de la page."
+          "title": "Qui mesure quoi",
+          "intro": "Deux outils, aucun cookie, rien d'écrit sur votre appareil :",
+          "cloudflare": "Cloudflare Web Analytics — comptage agrégé des visites, aucune IP stockée.",
+          "posthog": "PostHog (Cloud UE) — pages, source et temps passé, via un identifiant haché côté serveur (sel renouvelé chaque jour, IP jamais conservée après hachage).",
+          "measures": {
+            "title": "Événements mesurés",
+            "sections": "Sections consultées — pour repérer où le contenu perd le lecteur.",
+            "cta": "Clics sur les boutons d'action — pour mesurer l'efficacité de la page."
           },
           "recording": {
-            "title": "Enregistrement de session (Session Recording)",
-            "text": "Soumis à votre consentement explicite. Toutes les données capturées sont totalement anonymisées et configurées en mode confidentialité maximale dans PostHog : les adresses IP sont écartées au niveau du projet et jamais stockées, et les textes affichés ou saisis sont automatiquement masqués (remplacés par des « **** »). Conservées 30 jours max par PostHog, je peux les supprimer avant pour ne garder que les sessions utiles à l'amélioration du projet. Aucune donnée n'est jamais vendue ni partagée à un tiers."
+            "title": "Enregistrement de session",
+            "text": "Jamais utilisé : aucune capture d'écran ni d'interactions."
           }
         },
-        "protection": {
-          "title": "Protection et contrôle des enregistrements de session",
-          "text": "La fonctionnalité de session recording est strictement encadrée au niveau applicatif et dans les paramètres de PostHog. Elle est désactivée par défaut pour vous laisser le choix ultime. Vous pouvez modifier ou retirer votre consentement à tout moment."
-        },
-        "cookies": {
-          "title": "Utilisation des cookies",
-          "text": "Les analytics opt-in (PostHog) utilisent des cookies uniquement avec votre consentement explicite. Par ailleurs, la mesure d'audience anonyme (Cloudflare Web Analytics) fonctionne sans cookies et sans stockage d'adresses IP : aucun consentement n'est requis."
+        "optout": {
+          "title": "Refuser la mesure",
+          "text": "Activez « Do Not Track » dans votre navigateur : le signal est systématiquement respecté. Il n'y a rien à supprimer de votre appareil — rien n'y a été déposé."
         }
       },
       "demo": {
-        "title": "2. Démo Interactive de NuxiPro",
-        "intro": "La version démo de NuxiPro fonctionne entièrement en mode client (local) au sein de votre navigateur.",
-        "storage": {
-          "title": "Stockage des données",
-          "local": {
-            "title": "Stockage exclusivement local",
-            "text": "Toutes les données générées dans la démo sont conservées uniquement dans le stockage local (LocalStorage) de votre appareil. Aucune donnée n'est transmise, traitée ou sauvegardée sur un serveur distant."
-          },
-          "loss": {
-            "title": "Perte définitive en cas de nettoyage",
-            "text": "Si vous effacez vos données de navigation (vide du cache ou suppression du LocalStorage), l'ensemble des données de démonstration sera perdu de manière définitive et irréversible, sans aucune possibilité de récupération."
-          }
-        },
-        "warning": {
-          "title": "Avertissement et restrictions d'usage",
-          "experimental": {
-            "title": "Usage expérimental",
-            "text": "La démo est un outil d'expérimentation conçu uniquement pour vous permettre de découvrir le concept et les fonctionnalités de base de NuxiPro."
-          },
-          "professional": {
-            "title": "Usage professionnel déconseillé",
-            "text": "L'utilisation de cette démo dans un cadre professionnel ou au quotidien est strictement déconseillée. Le stockage côté navigateur étant par nature volatil, veillez à ne jamais y saisir de données critiques, confidentielles ou irremplaçables."
-          }
+        "title": "2. Démo interactive",
+        "intro": "C'est le seul endroit du site qui écrit dans votre navigateur.",
+        "points": {
+          "s1": "Tout reste en local (localStorage) — rien n'est envoyé sur un serveur.",
+          "s2": "Effacer les données du navigateur efface la démo, définitivement.",
+          "s3": "Usage expérimental : pour tester le concept.",
+          "s4": "Ne saisissez rien de critique, confidentiel ou irremplaçable."
         },
         "clause": {
-          "title": "Clause de non-responsabilité",
-          "text": "La démo est fournie « en l'état » à des fins d'essai. En aucun cas l'éditeur ne pourra être tenu responsable de toute perte de données, interruption d'accès ou dommage direct ou indirect lié à l'utilisation de la démo ou au non-respect des avertissements d'usage énoncés ci-dessus."
+          "title": "Responsabilité",
+          "text": "Fournée « en l'état », sans garantie — voir les CGU pour la limitation complète."
         }
       },
       "noSell": {
         "title": "Je ne vends pas vos données",
-        "text": "NuxiPro ne vend, ne loue ni ne partage vos données personnelles à des tiers. Les seules données collectées sont des statistiques anonymes d'utilisation du site, uniquement pour améliorer le produit."
+        "text": "Ni vente, ni location, ni partage avec des tiers. Seules des statistiques anonymes d'usage alimentent l'amélioration du produit."
       },
       "rights": {
-        "title": "Vos Droits",
-        "text": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que toutes les données sont stockées localement dans votre navigateur, vous pouvez les effacer à tout moment via les paramètres de votre navigateur."
+        "title": "Vos droits",
+        "text": "Accès, rectification, suppression : contactez-moi (voir les Mentions légales). Les données de la démo se gèrent directement dans votre navigateur."
       }
     },
     "cookies": {
       "title": "Cookies",
-      "desc": "Politique d'utilisation des cookies, analytics et stockage local.",
-      "p1": "Cette politique explique comment j'utilise les cookies et le stockage local sur NuxiPro.",
+      "desc": "Aucun cookie n'est déposé : voici ce que le site stocke vraiment, et comment refuser.",
+      "p1": "Rien n'est déposé sur votre appareil pour la mesure d'audience — d'où l'absence de bandeau. Seule la démo écrit dans votre navigateur (localStorage).",
       "exempt": {
         "title": "Mesure d'audience sans cookies",
-        "text": "En plus des analytics opt-in, ce site utilise Cloudflare Web Analytics, activé via mon hébergement Cloudflare Pages. Il compte les pages vues de façon agrégée, sans poser de cookies, sans stocker d'adresses IP et sans identifier les visiteurs. Aucun consentement n'est requis car aucune donnée personnelle n'est collectée."
+        "text": "PostHog (Cloud UE) suit les visites sans déposer de cookie ni écrire dans votre navigateur. L'identifiant de visite est un hachage calculé côté serveur à partir de votre IP et d'un sel renouvelé chaque jour : irréversible, sans lien possible avec votre identité."
       },
       "types": {
-        "title": "Types de Stockage Utilisés"
+        "title": "Ce que ce site stocke"
       },
       "storage": {
         "localStorage": {
-          "title": "localStorage",
-          "desc": "Stocke vos tâches, préférences et choix de consentement directement dans votre navigateur. Essentiel au fonctionnement de l'application. Les données persistent jusqu'à leur suppression."
-        },
-        "analytics": {
-          "title": "Analytics (PostHog)",
-          "desc": "Données d'utilisation anonymes pour améliorer le produit. Actif uniquement si vous consentez. Adresses IP écartées, aucune donnée personnelle collectée."
-        },
-        "consent": {
-          "title": "Stockage du Consentement",
-          "desc": "Mémorise vos préférences cookies (accepté/refusé) et l'état du toggle d'enregistrement de session."
+          "title": "localStorage (démo uniquement)",
+          "desc": "Vos tâches et préférences de la démo, dans votre navigateur. Rien d'autre."
         }
       },
       "manage": {
-        "title": "Gestion de Vos Préférences",
-        "text": "Vous pouvez modifier vos préférences de cookies à tout moment en cliquant sur l'icône de paramètres (rouage) en bas à droite de l'écran."
+        "title": "Refuser la mesure d'audience",
+        "text": "Activez « Do Not Track » dans votre navigateur : le signal est respecté automatiquement."
       },
       "demo": {
-        "title": "Avis Version Démo",
-        "text": "La version démo (demo.nuxipro.com) utilise uniquement le localStorage pour le stockage. Aucun cookie côté serveur n'est utilisé. Vos données restent uniquement dans votre navigateur."
+        "title": "La démo",
+        "text": "demo.nuxipro.com fonctionne 100 % dans votre navigateur : localStorage uniquement, aucun cookie, rien n'est envoyé."
       }
     },
     "cgu": {
       "title": "Conditions d'Utilisation",
-      "desc": "Termes et conditions d'utilisation de NuxiPro.",
+      "desc": "Les règles d'usage de la landing page et de la démo, en version lisible.",
       "intro": "En utilisant NuxiPro (landing page ou démo), vous acceptez ces conditions.",
+      "inshort": {
+        "s1": "La démo est un banc d'essai, pas un service de production.",
+        "s2": "Vos données de démo restent dans votre navigateur et peuvent être perdues.",
+        "s3": "Le service peut évoluer ou s'arrêter à tout moment.",
+        "s4": "Aucune vente de données, en aucun cas."
+      },
       "demo": {
-        "title": "Version Démo",
-        "text": "La version démo (demo.nuxipro.com) est fournie en l'état à des fins de test et d'évaluation. Ce n'est pas un service de production et ne doit pas être utilisé pour des données critiques."
+        "title": "La démo",
+        "text": "Un banc d'essai, fourni « en l'état ». Ce n'est pas un service de production, et la démo actuelle sera remplacée quand NuxiPro Cloud sera prêt."
       },
       "storage": {
-        "title": "Stockage des Données & Risques",
-        "text": "Toutes les données sont stockées localement dans le localStorage de votre navigateur. Les données peuvent être perdues si vous videz le cache, utilisez un autre navigateur ou accédez depuis un autre appareil. Vous assumez l'entière responsabilité des données saisies."
+        "title": "Vos données de démo",
+        "text": "Tout est stocké dans le localStorage de votre navigateur. Vider le cache, changer de navigateur ou passer sur un autre appareil les efface. Vous restez seul responsable de ce que vous y saisissez."
       },
       "responsability": {
-        "title": "Limitation de Responsabilité",
-        "text": "NuxiPro est fourni « en l'état » sans garantie. Je ne saurais être responsable de tout dommage, perte de données ou interruption de service. La démo peut être modifiée ou arrêtée à tout moment sans préavis."
+        "title": "Limitation de responsabilité",
+        "text": "Fourni « en l'état », sans garantie. Aucune perte de données, interruption d'accès ou dommage — direct ou indirect — ne pourra être compensé. Le service peut être modifié ou arrêté sans préavis."
       },
       "ip": {
-        "title": "Propriété Intellectuelle",
-        "text": "Ce site (landing page et démo) est un projet open source sous licence BSD 2-Clause. Le code source est disponible sur GitHub : https://github.com/NuxiPro/NuxiPro-page. La version Cloud (app.nuxipro.com) n'est pas sous la même licence et fait l'objet de conditions d'utilisation distinctes."
-      },
-      "availability": {
-        "title": "Disponibilité du Service",
-        "text": "Je m'efforce de maintenir la démo accessible mais ne donne aucune garantie concernant la disponibilité ou la persistance des données. Le service peut être modifié ou interrompu à tout moment."
+        "title": "Propriété intellectuelle",
+        "text": "Ce site (landing page et démo) est open source BSD 2-Clause, code sur github.com/NuxiPro/NuxiPro-page. La version Cloud (app.nuxipro.com) fait l'objet de conditions distinctes — détails dans les Mentions légales."
       },
       "jurisdiction": {
-        "title": "Droit Applicable",
-        "text": "Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents."
-      },
-      "clause": {
-        "title": "Clause de non-responsabilité",
-        "text": "La démo est fournie « en l'état » à des fins d'essai. En aucun cas l'éditeur ne pourra être tenu responsable de toute perte de données, interruption d'accès ou dommage direct ou indirect lié à l'utilisation de la démo ou au non-respect des avertissements d'usage énoncés ci-dessus."
+        "title": "Droit applicable",
+        "text": "Droit français : tribunaux français compétents en cas de litige."
       }
     },
     "notices": {
@@ -363,8 +380,8 @@
         },
         "posthog": {
           "name": "PostHog, Inc. (EU Cloud)",
-          "service": "Mesure d'audience & session recording",
-          "purpose": "Amélioration produit (avec consentement, anonymisé)",
+          "service": "Mesure d'audience (mode sans cookie)",
+          "purpose": "Amélioration produit (anonymisé, sans consentement)",
           "location": "UE (EU Cloud)"
         },
         "plunk": {
@@ -377,11 +394,11 @@
       },
       "ip": {
         "title": "Propriété Intellectuelle",
-        "text": "Ce site (landing page et démo) est un projet open source sous licence BSD 2-Clause. Le code source est disponible sur GitHub : https://github.com/NuxiPro/NuxiPro-page. La version Cloud (app.nuxipro.com) n'est pas sous la même licence et fait l'objet de conditions d'utilisation distinctes."
+        "text": "Ce site (landing page et démo) est open source sous licence BSD 2-Clause : https://github.com/NuxiPro/NuxiPro-page. La version Cloud (app.nuxipro.com) fait l'objet de conditions d'utilisation distinctes."
       },
       "contact": {
         "title": "Contact",
-        "text": "Le responsable du traitement des données personnelles collectées sur ce site est Sébastien Babas, joignable à l'adresse e-mail : contact@nuxipro.com."
+        "text": "Le responsable du traitement des données collectées sur ce site est Sébastien Babas — contact@nuxipro.com."
       }
     }
   },
@@ -397,42 +414,16 @@
     "back": "← Retour à l'accueil"
   },
   "banner": {
-    "title": "Cookies",
-    "close": "Fermer",
-    "text": "J'utilise des cookies pour améliorer votre expérience et mesurer l'audience du site. Je ne vends jamais vos données à des tiers.",
-    "analytics": "Mesure d'audience",
-    "analyticsDesc": "Mesure du nombre de visites anonymes sur le site",
-    "recording": "Enregistrement session",
-    "recordingDesc": "Capturer les interactions pour améliorer l'ergonomie",
-    "learnMore": "En savoir plus",
-    "decline": "Refuser",
-    "save": "Enregistrer mes choix",
-    "accept": "Tout accepter",
-    "modalTitle": "Politique de cookies",
-    "whatIs": "Qu'est-ce qu'un cookie ?",
-    "whatIsText": "Un cookie est un petit fichier texte déposé sur votre appareil lorsque vous visitez un site web. Il permet au site de mémoriser vos actions et préférences.",
     "cookiesUsed": "Cookies utilisés",
     "cookieCol": "Cookie",
     "purposeCol": "Finalité",
     "durationCol": "Durée",
-    "posthog": "PostHog Analytics",
-    "posthogPurpose": "Mesure d'audience",
-    "posthogDuration": "12 mois",
-    "sessionRec": "Session Recording",
-    "sessionRecPurpose": "Enregistrement des interactions",
-    "sessionRecDuration": "30 jours",
-    "consent": "Consentement",
-    "consentPurpose": "Mémoriser votre choix",
-    "consentDuration": "12 mois",
+    "posthog": "PostHog (sans cookie)",
+    "posthogPurpose": "Mesure d'audience (hachage serveur)",
+    "posthogDuration": "aucun cookie",
     "dataCollected": "Données collectées",
-    "dataCollectedText": "Avec votre consentement, PostHog collecte les pages visitées et les clics (adresses IP écartées, textes saisis masqués). Indépendamment, Cloudflare Web Analytics compte les pages vues de façon anonyme, sans cookies et sans stockage d'adresses IP.",
-    "preferences": "Gestion de vos préférences",
-    "preferencesText": "Vous pouvez modifier vos choix à tout moment en cliquant sur l'icône de rouage en bas à droite de l'écran. Vous pouvez activer ou désactiver l'enregistrement session indépendamment.",
+    "dataCollectedText": "Pages visitées, source de la visite et temps passé, via un identifiant haché côté serveur — sans cookie ni stockage navigateur. Détails dans la politique de confidentialité.",
     "rights": "Vos droits",
-    "rightsText": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour toute question, contactez-moi via la page de mentions légales.",
-    "legalLink": "Politique de cookies",
-    "understood": "Compris",
-    "lastUpdated": "Dernière mise à jour : août 2026",
-    "manageCookies": "Gérer les cookies"
+    "rightsText": "Accès, rectification, suppression : contactez-moi via la page de Mentions légales."
   }
 }

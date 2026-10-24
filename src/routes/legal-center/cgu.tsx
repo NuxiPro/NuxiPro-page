@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { LegalBrief } from "../../components/legal-brief";
 import { LegalSection } from "../../components/legal-section";
 import { LegalCenterBack } from "../../components/svg-icon";
 import { createPageHead, SITE_NAME, SITE_URL } from "../../config/seo";
@@ -29,9 +30,9 @@ export const Route = createFileRoute("/legal-center/cgu")({
 
 function CguPage() {
   const { t } = useTranslation();
-  const [active, setActive] = useState("landing");
+  const [active, setActive] = useState("demo");
   useEffect(() => {
-    const ids = ["landing", "demo"];
+    const ids = ["demo", "responsabilite", "droit"];
     const obs = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
@@ -90,42 +91,44 @@ function CguPage() {
             </p>
           </div>
 
-          <p className="text-[15px] text-body leading-relaxed mb-10">{t("legal.cgu.intro")}</p>
+          <p className="text-[15px] text-body leading-relaxed mb-5">{t("legal.cgu.intro")}</p>
 
-          {/* Mobile — 2 entrées seulement */}
+          <LegalBrief
+            items={[
+              t("legal.cgu.inshort.s1"),
+              t("legal.cgu.inshort.s2"),
+              t("legal.cgu.inshort.s3"),
+              t("legal.cgu.inshort.s4"),
+            ]}
+          />
+
+          {/* Mobile — 3 entrées */}
           <nav className="flex lg:hidden gap-2 mb-8">
-            <a
-              href="#landing"
-              className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${active === "landing" ? "bg-ink text-white border-ink shadow-sm font-medium" : "bg-white border-hairline text-muted hover:text-ink"}`}
-            >
-              {t("legal.privacy.landingPage.title")}
-            </a>
             <a
               href="#demo"
               className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${active === "demo" ? "bg-ink text-white border-ink shadow-sm font-medium" : "bg-white border-hairline text-muted hover:text-ink"}`}
             >
-              {t("legal.privacy.demo.title")}
+              {t("legal.cgu.demo.title")}
+            </a>
+            <a
+              href="#responsabilite"
+              className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${active === "responsabilite" ? "bg-ink text-white border-ink shadow-sm font-medium" : "bg-white border-hairline text-muted hover:text-ink"}`}
+            >
+              {t("legal.cgu.responsability.title")}
+            </a>
+            <a
+              href="#droit"
+              className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${active === "droit" ? "bg-ink text-white border-ink shadow-sm font-medium" : "bg-white border-hairline text-muted hover:text-ink"}`}
+            >
+              {t("legal.cgu.jurisdiction.title")}
             </a>
           </nav>
 
           <div className="space-y-12">
-            {/* Module 1 — Landing Page */}
-            <section id="landing" className="space-y-8 scroll-mt-24">
-              <h2 className="text-xl font-heading font-semibold tracking-tight">
-                {t("legal.privacy.landingPage.title")}
-              </h2>
-
-              <div id="availability">
-                <LegalSection title={t("legal.cgu.availability.title")}>
-                  <p>{t("legal.cgu.availability.text")}</p>
-                </LegalSection>
-              </div>
-            </section>
-
-            {/* Module 2 — Démo Interactive */}
+            {/* Module 1 — Démo */}
             <section id="demo" className="space-y-8 scroll-mt-24">
               <h2 className="text-xl font-heading font-semibold tracking-tight">
-                {t("legal.privacy.demo.title")}
+                {t("legal.cgu.demo.title")}
               </h2>
               <p className="text-[14px] text-body leading-relaxed">{t("legal.cgu.demo.text")}</p>
 
@@ -134,21 +137,20 @@ function CguPage() {
                   <p>{t("legal.cgu.storage.text")}</p>
                 </LegalSection>
               </div>
-
-              <div id="responsability" className="scroll-mt-24">
-                <LegalSection title={t("legal.cgu.responsability.title")}>
-                  <p>{t("legal.cgu.responsability.text")}</p>
-                </LegalSection>
-              </div>
-              <div id="clause" className="scroll-mt-24">
-                <LegalSection title={t("legal.cgu.clause.title")}>
-                  <p>{t("legal.cgu.clause.text")}</p>
-                </LegalSection>
-              </div>
             </section>
 
-            {/* Hors modules — éléments duplicables */}
-            <section className="space-y-8 pt-8 border-t border-hairline">
+            {/* Module 2 — Responsabilité */}
+            <section id="responsabilite" className="space-y-8 scroll-mt-24">
+              <h2 className="text-xl font-heading font-semibold tracking-tight">
+                {t("legal.cgu.responsability.title")}
+              </h2>
+              <p className="text-[14px] text-body leading-relaxed">
+                {t("legal.cgu.responsability.text")}
+              </p>
+            </section>
+
+            {/* Module 3 — Licence & droit */}
+            <section id="droit" className="space-y-8 pt-8 border-t border-hairline">
               <LegalSection title={t("legal.cgu.ip.title")}>
                 <div id="ip" className="scroll-mt-24">
                   <p>{t("legal.cgu.ip.text")}</p>
@@ -163,39 +165,6 @@ function CguPage() {
             </section>
           </div>
         </div>
-
-        {/* Sidebar droite premium — 2 entrées seulement */}
-        <aside className="hidden lg:block w-[200px] shrink-0">
-          <nav className="sticky top-24 rounded-2xl border border-hairline bg-white/60 backdrop-blur p-5">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-muted-soft mb-4">
-              Sommaire
-            </p>
-            <ul className="space-y-1 text-[13px] leading-none">
-              <li>
-                <a
-                  href="#landing"
-                  className={`flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors ${active === "landing" ? "bg-white text-ink font-medium shadow-sm border border-hairline" : "text-muted hover:text-ink"}`}
-                >
-                  <span
-                    className={`h-1.5 w-1.5 rounded-full shrink-0 transition-colors ${active === "landing" ? "bg-teal" : "bg-teal/50"}`}
-                  />
-                  {t("legal.privacy.landingPage.title")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#demo"
-                  className={`flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors ${active === "demo" ? "bg-white text-ink font-medium shadow-sm border border-hairline" : "text-muted hover:text-ink"}`}
-                >
-                  <span
-                    className={`h-1.5 w-1.5 rounded-full shrink-0 transition-colors ${active === "demo" ? "bg-teal" : "bg-teal/50"}`}
-                  />
-                  {t("legal.privacy.demo.title")}
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </aside>
       </div>
     </>
   );

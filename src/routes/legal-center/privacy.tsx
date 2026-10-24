@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { LegalBrief } from "../../components/legal-brief";
 import { LegalSection } from "../../components/legal-section";
 import { LegalCenterBack } from "../../components/svg-icon";
 import { createPageHead, SITE_NAME, SITE_URL } from "../../config/seo";
@@ -89,7 +90,17 @@ function PrivacyPage() {
             </p>
           </div>
 
-          <p className="text-[15px] text-body leading-relaxed mb-10">{t("legal.privacy.intro")}</p>
+          <p className="text-[15px] text-body leading-relaxed mb-5">{t("legal.privacy.intro")}</p>
+
+          <LegalBrief
+            items={[
+              t("legal.privacy.inshort.s1"),
+              t("legal.privacy.inshort.s2"),
+              t("legal.privacy.inshort.s3"),
+              t("legal.privacy.inshort.s4"),
+              t("legal.privacy.inshort.s5"),
+            ]}
+          />
 
           {/* Mobile — 2 entrées seulement */}
           <nav className="flex lg:hidden gap-2 mb-8">
@@ -118,35 +129,25 @@ function PrivacyPage() {
               </p>
 
               <LegalSection title={t("legal.privacy.landingPage.tools.title")}>
-                <div className="space-y-2">
-                  <p>{t("legal.privacy.landingPage.tools.text")}</p>
-                  <ul className="list-disc pl-5 space-y-1">
-                    <li>
-                      <strong>{t("legal.privacy.landingPage.tools.survol.title")} :</strong>{" "}
-                      {t("legal.privacy.landingPage.tools.survol.text")}
-                    </li>
-                    <li>
-                      <strong>{t("legal.privacy.landingPage.tools.conversion.title")} :</strong>{" "}
-                      {t("legal.privacy.landingPage.tools.conversion.text")}
-                    </li>
-                    <li>
-                      <strong>{t("legal.privacy.landingPage.tools.anonymous.title")} :</strong>{" "}
-                      {t("legal.privacy.landingPage.tools.anonymous.text")}
-                    </li>
-                    <li>
-                      <strong>{t("legal.privacy.landingPage.tools.recording.title")} :</strong>{" "}
-                      {t("legal.privacy.landingPage.tools.recording.text")}
-                    </li>
-                  </ul>
-                </div>
+                <ul className="list-disc pl-5 space-y-1.5">
+                  <li>{t("legal.privacy.landingPage.tools.cloudflare")}</li>
+                  <li>{t("legal.privacy.landingPage.tools.posthog")}</li>
+                </ul>
               </LegalSection>
 
-              <LegalSection title={t("legal.privacy.landingPage.protection.title")}>
-                <p>{t("legal.privacy.landingPage.protection.text")}</p>
+              <LegalSection title={t("legal.privacy.landingPage.tools.measures.title")}>
+                <ul className="list-disc pl-5 space-y-1.5">
+                  <li>{t("legal.privacy.landingPage.tools.measures.sections")}</li>
+                  <li>{t("legal.privacy.landingPage.tools.measures.cta")}</li>
+                </ul>
               </LegalSection>
 
-              <LegalSection title={t("legal.privacy.landingPage.cookies.title")}>
-                <p>{t("legal.privacy.landingPage.cookies.text")}</p>
+              <LegalSection title={t("legal.privacy.landingPage.tools.recording.title")}>
+                <p>{t("legal.privacy.landingPage.tools.recording.text")}</p>
+              </LegalSection>
+
+              <LegalSection title={t("legal.privacy.landingPage.optout.title")}>
+                <p>{t("legal.privacy.landingPage.optout.text")}</p>
               </LegalSection>
             </section>
 
@@ -159,29 +160,16 @@ function PrivacyPage() {
                 {t("legal.privacy.demo.intro")}
               </p>
 
-              <div className="space-y-6">
-                <h3 className="text-[14px] font-medium text-ink">
-                  {t("legal.privacy.demo.storage.title")}
-                </h3>
-                <LegalSection title={t("legal.privacy.demo.storage.local.title")}>
-                  <p>{t("legal.privacy.demo.storage.local.text")}</p>
-                </LegalSection>
-                <LegalSection title={t("legal.privacy.demo.storage.loss.title")}>
-                  <p>{t("legal.privacy.demo.storage.loss.text")}</p>
-                </LegalSection>
-              </div>
+              <ul className="list-disc pl-5 space-y-1.5 text-[14px] text-body leading-relaxed">
+                <li>{t("legal.privacy.demo.points.s1")}</li>
+                <li>{t("legal.privacy.demo.points.s2")}</li>
+                <li>{t("legal.privacy.demo.points.s3")}</li>
+                <li>{t("legal.privacy.demo.points.s4")}</li>
+              </ul>
 
-              <div className="space-y-6">
-                <h3 className="text-[14px] font-medium text-ink">
-                  {t("legal.privacy.demo.warning.title")}
-                </h3>
-                <LegalSection title={t("legal.privacy.demo.warning.experimental.title")}>
-                  <p>{t("legal.privacy.demo.warning.experimental.text")}</p>
-                </LegalSection>
-                <LegalSection title={t("legal.privacy.demo.warning.professional.title")}>
-                  <p>{t("legal.privacy.demo.warning.professional.text")}</p>
-                </LegalSection>
-              </div>
+              <LegalSection title={t("legal.privacy.demo.clause.title")}>
+                <p>{t("legal.privacy.demo.clause.text")}</p>
+              </LegalSection>
             </section>
 
             {/* Hors modules — éléments duplicables */}
